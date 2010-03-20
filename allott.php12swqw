@@ -1,0 +1,215 @@
+<?php
+session_start(); 
+if($_SESSION['key']!=2721750)
+{   session_destroy(); 
+	header( 'Location: ./index.php');
+				 } 
+Header("Cache-control: private, no-cache");
+Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+Header("Pragma: no-cache");
+
+include("./cnn.php");
+
+try
+{
+
+if(isset($_POST['sub']))
+{
+        if(isset($_POST['reqs']))
+        if(isset($_POST['reqs1']))
+        if(isset($_POST['reqs3']))
+        {$qty = $_POST['reqs1'];
+         $bgroup=$_POST['reqs3'];
+                $reqid = $_POST['reqs'];
+                echo "sdsd";
+                $k=0;
+                foreach ($reqid as $reqs)
+                { $result1="";
+                 echo $qty[$k];
+                   /*
+
+                        If(int($bgroup[$k])>0){
+                        {
+                         $result1="UPDATE request SET Status = 'Y'  WHERE ReqID  = '$reqs'";
+                                if(!mysql_query($result1,$link))
+                           {die ('Error' . mysql_error());
+                           }
+                           $result1="";
+                         $result1="UPDATE stock SET Stock = Stock -1   WHERE BGroup  ='$bgroup[$k]'";
+                         echo "<br>".$result1;
+                        if(!mysql_query($result1,$link))
+                           {
+                           die ('Error' . mysql_error());
+                           }
+
+
+                                                                //Issue of blood here
+                        // 1. Add to allott table
+                        //}
+
+                        echo $k;
+                        }
+                } */
+                /* $a = '<script language="javascript">  alert("Allotted...."); </script>';
+echo $a; */
+        $k=$k+1;}
+
+}
+}}
+catch(Exception $ex)
+{
+
+
+        //errorFunc("Some problem...");
+}
+
+
+
+
+?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+.nav-item {
+	display: block;
+	text-align:left;
+	height:20px;
+	width:150px;
+	padding:2px 2px 2px 2px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:normal;
+	color: #BA3224;
+	text-decoration:none;
+}
+
+.nav-item a:link {
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:normal;
+	color: #BA3224;
+	text-decoration:none;
+	width:150px;
+
+}
+.nav-item a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:normal;
+	color: #BA3224;
+	text-decoration:none;
+	width:150px;
+
+}
+
+.nav-item a:hover 
+	{
+		background-color: #BA3224;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		font-weight:bold;
+		color: #FFFFFF;
+		text-decoration: none;
+		width:150px;
+	}
+.style4 {
+	color: #CC9933;
+	font-weight: bold;
+}
+a:link {
+	color: #CC9933;
+}
+a:visited {
+	color: #CC9933;
+}
+a:hover {
+	color: #CC9933;
+}
+a:active {
+	color: #CC9933;
+}
+	
+-->
+</style>
+
+</head>
+
+<body>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><table width="848" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="2"><img src="images/title.jpg" width="1000" height="121" /></td>
+        </tr>
+      <tr bgcolor="#CC9933">
+        <td width="867" height="34"><strong> &nbsp;&nbsp;List of Donors  Blood Group
+           
+        </strong></td> 
+        <td width="133">&nbsp;</td>
+      </tr>
+      <tr bgcolor="#CC9933">
+        <td height="146" colspan="2"><table width="100%" cellspacing="0" cellpadding="0">
+        <form name="form1" action="allott.php" method="post">
+          
+          <tr>
+            <td><table width="713" align="center" cellpadding="5" cellspacing="0">
+                <tr>
+                  <td  width="23">Allot</td>
+                  <td width="470">Name</td>
+                  <td width="188" >Blood Gr</td>
+                  <td width="188" >Req.Quantity</td>
+                  <td width="188" >Quantity</td>
+                  <td width="188" >Date Required</td>
+                </tr>
+                <?php
+										
+										$sql = "select * from request where Status='N'";
+										$rst = mysql_query($sql);
+										
+										$rcolor="#CCCCCC";
+										while($row=mysql_fetch_array($rst))
+										{
+										
+											if($rcolor == "#CCCCCC") 	$rcolor = "#FFFFFF";
+											else   $rcolor = "#CCCCCC";
+											?>
+                <tr>
+                  <td bgcolor="<?php echo $rcolor;?>"><input type="checkbox" name="reqs[]" id="reqs[]" value="<?php echo $row["ReqID"]; ?>" /></td>
+                  <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["PName"]; ?></td>
+                  <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["BGroup"]; ?></td>
+                  <input type="hidden" name="reqs3[]" id="reqs3[]" value="<?php echo $row["BGroup"]; ?>" />
+                  <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["Quantity"]; ?></td>
+                  <td bgcolor="<?php echo $rcolor;?>"><input type="text" name="reqs1[]" id="reqs1[]"  style="width:50px;"  /></td>
+                 
+                  <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["NeedDate"]; ?></td>
+                </tr>
+                <?php
+										}
+									?>
+            </table></td>
+          </tr>
+          <tr>
+            <td><br />
+                <input type="submit" name="sub" id="sub" value="Alott" />
+                </form>
+            </td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr bgcolor="#990000">
+        <td height="15" colspan="2"><div align="right"><span class="style4"><a href="main.php">HOME</a> &nbsp;&nbsp;</span> </div></td>
+      </tr>
+      
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>
