@@ -63,7 +63,7 @@ Header("Pragma: no-cache");
         <td width="452"><form id="form1" name="form1" method="post" action="">
           <strong>Blood Group</strong>
           <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
-            <option>Select</option>
+            <option selected="selected"><?php echo $bgroup;?></option>
             <option>O+ve</option>
             <option>A+ve</option>
             <option>B+ve</option>
@@ -76,7 +76,7 @@ Header("Pragma: no-cache");
           <strong>
           <label>Class
           <select name="classs" id="classs" onchange="form1.submit();">
-		  <option selected="selected" value="0">Select</option>
+		<option selected="selected"><?php echo $classs;?></option>
                 <option> S1S2A </option>
                 <option> S1S2B </option>
                 <option> S1S2C </option>
