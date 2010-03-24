@@ -197,7 +197,7 @@ mysql_close($link );
       </tr>
       <tr bgcolor="#990000">
         <td height="15" colspan="2" bgcolor="#FFFFFF"><div align="right">
-          <div align="center"><span class="style4"><strong>* Admin Phone number : 8907509611</strong></span> </div>
+          <div align="center"><span class="style4"><strong>* Admin Phone number : 9446172320</strong></span> </div>
         </div></td>
       </tr>
       
