@@ -21,11 +21,11 @@
 	if($uid != "" && $pwd != "")
 	//cASE SENSITIVE CHECK CHEYYANANM
 	  {
-	     $sql  = "select * from user where UserID = '".$uid."' and PWD = '".$pwd."'";
+	         $sql  = "select * from user where UserID = '".$uid."' and PWD = '".$pwd."'";
 		 $rst = mysql_query($sql);
 		 if($nt=mysql_fetch_array($rst))
 		  	{    
-			    if($nt[UserID] == 'admin' && $nt[PWD] == 'ppp')
+			    if($nt[UserID] == 'admin')
 				{ $k=0;
 				  $i='1';
 				//$k=rand(10050,1999987);
