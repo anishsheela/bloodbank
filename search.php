@@ -59,12 +59,12 @@
       <tr bgcolor="#993300">
         <td width="701" height="169"><strong> &nbsp;&nbsp;List of 
           <?php
-		  if($sex==1)
-		  echo "Male";
-		  elseif($sex==2)
-		  echo "Female";
+		  if($sex == 1)
+		      echo "Male";
+		  elseif($sex == 2)
+		      echo "Female";
 		  else
-		  echo "All";
+		      echo "All";
 		?>
           Donors from  <?php
 		echo $district;
@@ -97,7 +97,8 @@
               <tr>
                 <td>&nbsp;</td>
                 <td>Blood Group</td>
-                <td><select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
+                <td>
+                  <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
                   <option>All</option>
                   <option>O+ve</option>
                   <option>A+ve</option>
@@ -107,7 +108,7 @@
                   <option>A-ve</option>
                   <option>B-ve</option>
                   <option>AB-ve</option>
-                                </select></td>
+                  </select></td>
                 </tr>
               <tr>
                 <td height="49">&nbsp;</td>
@@ -159,7 +160,7 @@ $rst = mysql_query($sql);
 $i = 0;
 
 while ($row = mysql_fetch_array($rst)) {
-    if($row["Moderation"]==1){
+    if($row["Moderation"] == 1){
 
 ?>
           <tr>
