@@ -9,48 +9,38 @@ if($_SESSION['key']!='admin')
 ?>
 <?php
 
-	include("./cnn.php");
-	
+require("./cnn.php");
 
-        if(isset($_POST['sub']))
-        {
 
-  
-          if(isset($_POST['rid']))
-            {   $req_element="";
-                $qty_element=0;
+if(isset($_POST['sub'])){
+    if(isset($_POST['rid']))
+    {   $req_element="";
+        $qty_element=0;
 
-                    $requests = $_POST['rid'];
+        $requests = $_POST['rid'];
 
-                    foreach ($requests as $request)
+        foreach ($requests as $request){
+            if(isset($_POST["req".$request]))
+                if(trim($_POST["req".$request]) != "")
+                    $req_element = $_POST["req".$request];
+            if(isset($_POST["grp".$request]))
+                if(trim($_POST["grp".$request]) != "")
+                    $grp_element = $_POST["grp".$request];
+                if(isset($_POST["qty".$request]))
+                    if(trim($_POST["qty".$request]) != "")
+                        $qty_element = $_POST["qty".$request];
+                    $A=DATE("m/d/y");
 
-                    {
-                    if(isset($_POST["req".$request]))
-                                            if(trim($_POST["req".$request]) != "")
-                                                    $req_element = $_POST["req".$request];
-                                                    //echo $req_element;
-                    if(isset($_POST["grp".$request]))
-                                            if(trim($_POST["grp".$request]) != "")
-                                                    $grp_element = $_POST["grp".$request];
-                                                    //echo $grp_element;
+            $result1="UPDATE request SET Status = 'Y' , AQty = '$qty_element' , ADate= '$A' WHERE ReqID  = '$request'";
+            mysql_query($result1,$link);
+            $result1="UPDATE stock SET Stock = Stock - $req_element  WHERE BGroup  ='$grp_element'";
+            mysql_query($result1,$link);
+        }
+    }
+}
 
-                                                    if(isset($_POST["qty".$request]))
-                                            if(trim($_POST["qty".$request]) != "")
-                                                    $qty_element = $_POST["qty".$request];
 
-                                                    $A=DATE("m/d/y");
 
-                     $result1="UPDATE request SET Status = 'Y' , AQty = '$qty_element' , ADate= '$A' WHERE ReqID  = '$request'";
-                    echo $result1;
-                    mysql_query($result1,$link);
-                    $result1="UPDATE stock SET Stock = Stock - $req_element  WHERE BGroup  ='$grp_element'";
-                mysql_query($result1,$link);
-                    }
-                    }
-                    }
-
-																
-								
 								
 ?>
 
@@ -97,14 +87,15 @@ if($_SESSION['key']!='admin')
                 $rst = mysql_query($sql);
 
                 $rcolor="#CCCCCC";
-                while($row=mysql_fetch_array($rst))
-                {
+                while($row=mysql_fetch_array($rst)){
 
-                        if($rcolor == "#CCCCCC") 	$rcolor = "#FFFFFF";
-                        else   $rcolor = "#CCCCCC";
+                        if($rcolor == "#CCCCCC")
+                            $rcolor = "#FFFFFF";
+                        else
+                            $rcolor = "#CCCCCC";
                 ?>
-                    <tr>
-                   <td bgcolor="<?php echo $rcolor;?>"><input name="rid[]" type="checkbox" id="rid<?php echo $row["ReqID"]; ?>" value="<?php echo $row["ReqID"]; ?>" style="visibility:hidden" /></td>
+                <tr>
+                  <td bgcolor="<?php echo $rcolor;?>"><input name="rid[]" type="checkbox" id="rid<?php echo $row["ReqID"]; ?>" value="<?php echo $row["ReqID"]; ?>" style="visibility:hidden" /></td>
                   <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["PName"]; ?></td>
                   <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["BGroup"]; ?></td>
                   <input type="hidden" name="grp<?php echo $row["ReqID"]; ?>" id="reqs3[]" value="<?php echo $row["BGroup"]; ?>" />
@@ -115,8 +106,8 @@ if($_SESSION['key']!='admin')
                   <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["NeedDate"]; ?></td>
                 </tr>
                 <?php
-										}
-									?>
+		}
+		?>
             </table></td>
 
          </tr>
