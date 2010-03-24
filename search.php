@@ -167,14 +167,18 @@ $i = 0;
 
 while ($row = mysql_fetch_array($rst)) {
     if($row["Moderation"] == 1){
+        if($rcolor == "#CC9933")
+            $rcolor = "#FFFFFF";
+	else
+            $rcolor = "#CC9933";
 
 ?>
           <tr>
-            <td width="10%" style="padding-top:5px" ><div align="justify"><b><?php echo $row["Regid"]; ?></b></div></td>
-            <td width="29%" style="padding-top:5px" ><div align="justify"><b><?php echo $row["Name"]; ?></b></div></td>
-            <td width="15%" style="padding-top:5px" ><div align="center"><b><?php echo $row["Bloodgroup"]; ?></b></div></td>
-            <td width="10%" style="padding-top:5px" ><div align="right"><b><?php echo $row["DOB"]; ?></b></div></td>
-            <td width="19%" style="padding-top:5px" ><div align="right"><b><?php
+            <td width="10%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="justify"><b><?php echo $row["Regid"]; ?></b></div></td>
+            <td width="29%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="justify"><b><?php echo $row["Name"]; ?></b></div></td>
+            <td width="15%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="center"><b><?php echo $row["Bloodgroup"]; ?></b></div></td>
+            <td width="10%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php echo $row["DOB"]; ?></b></div></td>
+            <td width="19%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php
                 if($row['Publish'] == '1'){
                     echo $row["ContactNo"];
                 } else {
@@ -182,7 +186,7 @@ while ($row = mysql_fetch_array($rst)) {
                 }
 
             ?></b></div></td>
-            <td width="17%" style="padding-top:5px" ><div align="right"><b>
+            <td width="17%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b>
             <?php
 
             $gender = $row["Gender"];
