@@ -65,13 +65,19 @@
 		      echo "Female";
 		  else
 		      echo "All";
-		?>
-          Donors from  <?php
-		echo $district;
-		?> with Blood Group        
+		?> Donors
            <?php
-		echo $bgroup;
-		?>
+		if ($district != ""){
+                    echo " from ";
+                    echo $district;
+                }
+		?>        
+           <?php
+		if ($bgroup != ""){
+                    echo " with Blood Group ";
+                    echo $bgroup;
+                }
+	   ?>
         </strong></td> 
         <td width="303"><form id="form1" name="form1" method="post" action=""><br />
             
