@@ -159,6 +159,8 @@ $rst = mysql_query($sql);
 $i = 0;
 
 while ($row = mysql_fetch_array($rst)) {
+    if($row["Moderation"]==1){
+
 ?>
           <tr>
             <td width="8%" style="padding-top:5px" ><div align="justify"><b><?php echo $row["Regid"]; ?></b></div></td>
@@ -172,7 +174,6 @@ while ($row = mysql_fetch_array($rst)) {
                 }
 
             ?></b></div></td>
-<!--            <td width="15%" style="padding-top:5px" ><div align="right"><b><?php echo $row["LastDonation"]; ?></b></div></td> -->
             <td width="15%" style="padding-top:5px" ><div align="right"><b>
             <?php
 
@@ -187,6 +188,7 @@ while ($row = mysql_fetch_array($rst)) {
                     </b></div></td>
           </tr>
           <?php
+    }
 }
 mysql_close($link );
 
