@@ -9,7 +9,7 @@
 #Layer1 {
 	position:absolute;
 	width:524px;
-	height:115px;
+	height:391px;
 	z-index:1;
 	left: 259px;
 	top: 262px;
@@ -54,9 +54,12 @@
               GNU General Public License for more details.</p>
             <p align="left"> You should have received a copy of the GNU General Public License 
               along with this program.  If not, see <a href="http://www.gnu.org/licenses/"> http://www.gnu.org/licenses/</a>.</p>
-            <p align="center"><a href="bloodbank.tar.bz2"><strong>Download Source Code (Tar.bz2)</strong></a><br />
+            <p align="center"><a href="bloodbank.tar.bz2"><strong>Download Source Code (Tar.bz2)</strong></a></p>
+            <p align="center"><a href="http://github.com/aneesh/bloodbank"><strong>Git Source Code Repository</strong></a><br />
             </p>
           </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
