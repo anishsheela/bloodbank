@@ -2,10 +2,10 @@
 
 <?php
 session_start(); 
-if($_SESSION['key']!='admin')
-{   session_destroy(); 
-	header( 'Location: ./index.php');
-				 } 
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+} 
 Header("Cache-control: private, no-cache");
 Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 Header("Pragma: no-cache");
@@ -21,30 +21,30 @@ Header("Pragma: no-cache");
 </head>
 
 <body>
- <?php
-       if(isset($_POST["jumpMenu"]))										
-		if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "") 
-		{ $bgroup = trim($_POST["jumpMenu"]);
+<?php
+       if(isset($_POST["jumpMenu"])){
 		
-		  $sql = "select * from registration where Bloodgroup  = '$bgroup' order by Regid"; 
-		}
-		  
-		if(!isset($_POST["jumpMenu"]))	  {$jumpMenu =  "";
-		$sql = "select * from registration order by Regid";
-		
-		}
-      if(isset($_POST["classs"]))
-		if($_POST["classs"] != "NULL" && $_POST["jumpMenu"]  != "")
-		{ $classs = trim($_POST["classs"]);
+                    $bgroup = trim($_POST["jumpMenu"]);
+                    $classs = trim($_POST["classs"]);
+                    if($bgroup == "0" OR $bgroup == ""){
+                        if($classs == "0"OR $classs == "")
+                            $sql = "select * from registration order by Regid";
+                        else
+                            $sql = "select * from registration WHERE Class = '$classs' order by Regid";
 
-		  $sql = "select * from registration where Class  = '$classs' order by Regid";
-		}
+                    } else {
+                        if($classs == "0" OR $classs == "")
+                            $sql = "select * from registration where Bloodgroup  = '$bgroup' order by Regid";
+                        else
+                            $sql = "select * from registration WHERE Class = '$classs' AND Bloodgroup = '$bgroup' order by Regid";
 
-		if(!isset($_POST["jumpMenu"]))	  {$jumpMenu =  "";
-		$sql = "select * from registration order by Regid";
+                    }
+echo $sql;
+       
 
-		}
-		 ?>
+}
+
+?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -64,6 +64,7 @@ Header("Pragma: no-cache");
           <strong>Blood Group</strong>
           <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
             <option selected="selected"><?php echo $bgroup;?></option>
+            <option value="0">All</option>
             <option>O+ve</option>
             <option>A+ve</option>
             <option>B+ve</option>
@@ -77,6 +78,7 @@ Header("Pragma: no-cache");
           <label>Class
           <select name="classs" id="classs" onchange="form1.submit();">
 		<option selected="selected"><?php echo $classs;?></option>
+                <option value="0">All</option>
                 <option> S1S2A </option>
                 <option> S1S2B </option>
                 <option> S1S2C </option>
@@ -135,7 +137,7 @@ Header("Pragma: no-cache");
       <tr bgcolor="#CC9933">
         <td height="146" colspan="2"><table width="89%" border="1" align="center" cellpadding="4" cellspacing="0">
           <tr>
-            <th>Sl No</th>
+            <th>Reg ID</th>
             <th>Name</th>
             <th>Blood Group </th>
             <th>Age</th>
@@ -144,6 +146,8 @@ Header("Pragma: no-cache");
             <th>Gender</th>
           </tr>
           <?php
+if($sql == "")
+    $sql = "select * from registration order by Regid";
 
 $rst = mysql_query($sql);
 

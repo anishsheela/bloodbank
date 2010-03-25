@@ -31,7 +31,7 @@
       <tr bgcolor="#CC9933">
         <td height="146" colspan="2"><table width="89%" border="1" align="center" cellpadding="4" cellspacing="0">
           <tr>
-            <th>Sl No</th>
+            <th>Reg ID</th>
             <th>Name</th>
             <th>Blood Group </th>
             <th>Age</th>
