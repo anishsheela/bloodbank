@@ -27,9 +27,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 function formCheck(formobj){
 	// Enter name of mandatory fields
-	var fieldRequired = Array("pname", "pDOB","psex","pweight","pquantity","pContaactP","Drref","pphone","address2","pHospital");
+	var fieldRequired = Array("pname", "pDOB","psex","pweight","pquantity","pContaactP","Drref","pphone","address","pHospital", "address2");
 	// Enter field description to appear in the dialog box
-	var fieldDescription = Array("Patient Name", "Date Required","Sex","Weight","Quantity","Contact Person","Doctor Reference","Phone Number","Address","Hospital");
+	var fieldDescription = Array("Patient Name", "Date Required","Sex","Weight","Quantity","Contact Person","Doctor Reference","Phone Number","Address","Hospital", "address2");
 	// dialog message
 	var alertMsg = "Please complete the following fields:\n";
 
@@ -163,8 +163,26 @@ function formCheck(formobj){
               <td><input name="pquantity" type="text" id="pquantity" value="1" /></td>
               <td colspan="3"><input type="text" name="pHospital" id="pHospital" style="width:200px"/></td>
               <td>&nbsp;</td>
-              <td>Place</td>
-              <td><input name="address2" type="text" id="address2" style="width:300px" value="" size="100" /></td>
+              <td>District</td>
+                <td colspan="2">
+                <select name="address2" id="address2" style="width:300px">
+                    <option selected="selected">Thiruvananthapuram</option>
+                    <option>Kollam</option>
+                    <option>Pathanamthitta</option>
+                    <option>Alappuzha</option>
+                    <option>Kottayam</option>
+                    <option>Idukki</option>
+                    <option>Ernakulam</option>
+                    <option>Thrissur</option>
+                    <option>Palakkad</option>
+                    <option>Malapuram</option>
+                    <option>Kozhikode</option>
+                    <option>Wayanad</option>
+                    <option>Kannur</option>
+                    <option>Kasargod</option>
+                    <option>Other</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>Date Required</td>
@@ -213,8 +231,8 @@ function formCheck(formobj){
               </table></td>
               <td><label></label></td>
               <td>&nbsp;</td>
-              <td>Post office</td>
-              <td><input name="address3" type="text" id="address3" style="width:300px" value="" size="100" /></td>
+              <td>Remarks</td>
+              <td><textarea name="address3" cols="100" id="address3" style="width:300px"></textarea></td>
             </tr>
             
             <tr>
@@ -223,7 +241,7 @@ function formCheck(formobj){
                   <input type="submit" name="submit" id="submit" value="Submit" style="width:100px"  />                
                   
                   
-                  <input type="reset" name="reset" id="reset" value="reset"  style="width:100px" />
+                  <input type="reset" name="reset" id="reset" value="Reset"  style="width:100px" />
                 </p>
                 </div>              </td>
               </tr>

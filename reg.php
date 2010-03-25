@@ -273,7 +273,6 @@ return false;
               <td>District</td>
               <td colspan="2">
                 <select name="address3" id="address3" style="width:300px">
-                  <!--  <option value="0" selected="selected">Select</option> -->
                     <option selected="selected">Thiruvananthapuram</option>
                     <option>Kollam</option>
                     <option>Pathanamthitta</option>
@@ -289,7 +288,8 @@ return false;
                     <option>Kannur</option>
                     <option>Kasargod</option>
                     <option>Other</option>
-                </select>              </td>
+                </select>
+              </td>
             </tr>
             
             <tr>
