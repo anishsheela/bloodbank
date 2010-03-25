@@ -41,6 +41,9 @@ if($_SESSION['key']!='admin'){
             <td><a href="allott.php" class="nav-item">Allotment</a></td>
           </tr>
           <tr>
+            <td><a href="requestdetails.php">Request Details </a></td>
+          </tr>
+          <tr>
             <td><a href="allott_reject.php">Reject Request</a></td>
           </tr>
           <tr>
@@ -48,6 +51,9 @@ if($_SESSION['key']!='admin'){
           </tr>
           <tr>
             <td><a href="rejected.php">Rejected List</a></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
           </tr>
           <tr>
             <td height="24"><a href="stockdisplay.php" class="nav-item">Stock of Blood</a></td>
