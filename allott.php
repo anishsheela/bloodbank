@@ -76,7 +76,7 @@ if(isset($_POST['sub'])){
                 <tr>
                   <td width="10"></td>
                   <td width="470">Name</td>
-                  <td width="188" >Blood Gr</td>
+                  <td width="188" >Blood Group</td>
                   <td width="188" >Req.Quantity</td>
                   <td width="188" >Quantity</td>
                   <td width="500" >Date Required</td>
@@ -102,7 +102,6 @@ if(isset($_POST['sub'])){
                   <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["Quantity"]; ?></td>
                   <input type="hidden" name="qty<?php echo $row["ReqID"]; ?>" id="reqs4[]" value="<?php echo $row["Quantity"]; ?>" />
                   <td bgcolor="<?php echo $rcolor;?>"><input type="text" name="req<?php echo $row["ReqID"]; ?>" id="reqs1[]"  style="width:50px;" onkeypress="javascript: document.getElementById('rid<?php echo $row["ReqID"]; ?>').checked = true;" /></td>
-                 
                   <td bgcolor="<?php echo $rcolor;?>"><?php echo $row["NeedDate"]; ?></td>
                 </tr>
                 <?php

@@ -3,10 +3,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <?php
 session_start(); 
-if($_SESSION['key']!='admin')
-{   session_destroy(); 
-	header( 'Location: ./index.php');
-				 } 
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+} 
 
 ?>
 <html>
@@ -28,7 +28,15 @@ if($_SESSION['key']!='admin')
           <tr>
             <td><a href="donors.php" class="nav-item">Donors</a></td>
           </tr>
-          
+          <tr>
+            <td><a href="moderate.php" class="nav-item">Moderate Donors</a></td>
+          </tr>
+          <tr>
+            <td><a href="reject.php">Rejected Donors</a> </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
           <tr>
             <td><a href="allott.php" class="nav-item">Allotment</a></td>
           </tr>

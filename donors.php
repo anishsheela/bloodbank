@@ -137,6 +137,7 @@ Header("Pragma: no-cache");
           <tr>
             <th>Sl No</th>
             <th>Name</th>
+            <th>Blood Group </th>
             <th>Age</th>
             <th>Contact No</th>
             <th>Class</th>
@@ -157,12 +158,13 @@ if($rcolor == "#CC9933")
 ?>
           <tr>
                                        
-            <td width="8%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
-            <td width="40%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"> <?php echo $row["Name"];?></td>
-            <td width="8%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["DOB"];?></td>
-            <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
-            <td width="15%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Class"];?></td>
-            <td width="15%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php
+            <td width="7%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
+            <td width="27%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"> <?php echo $row["Name"];?></td>
+            <td width="11%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php echo $row["Bloodgroup"];?></td>
+            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["DOB"];?></td>
+            <td width="16%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
+            <td width="14%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Class"];?></td>
+            <td width="18%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php
             if($row["Gender"] == 1){
                 echo "Male";
             } else {
