@@ -2,32 +2,30 @@
 
 <?php
 session_start();
-if($_SESSION['key'] =="")
-{   session_destroy(); 
-	header( 'Location: ./index.php');
-				 } 
+if($_SESSION['key'] ==""){
+    session_destroy();
+    header( 'Location: ./index.php');
+} 
 				 
 				 
 $user=$_SESSION['key'];
 
+require("./cnn.php");
+$sql = "select * from registration WHERE Emailid='$user' ";
+$rst = mysql_query($sql);
+$row = mysql_fetch_array($rst);
+$pass1 = "select PWD from user where UserID='$user'";
+$pass2 = mysql_query($pass1);
+$pass3 = mysql_fetch_array($pass2);
 
- include("./cnn.php");
- $sql = "select * from registration WHERE Emailid='$user' ";
- $rst = mysql_query($sql);
- $row = mysql_fetch_array($rst);
- $pass1 = "select PWD from user where UserID='$user'";
- $pass2 = mysql_query($pass1);
- $pass3 = mysql_fetch_array($pass2);
- if(isset($_POST["edit"]))
-{
-header( 'Location: ./edit.php?');
+if(isset($_POST["edit"])){
+    header( 'Location: ./edit.php?');
 }
-if(isset($_POST["logout"]))
-{
-$user=$_SESSION['key']="";
-session_destroy(); 
 
-header( 'Location: ./index.php');
+if(isset($_POST["logout"])){
+    $user=$_SESSION['key']="";
+    session_destroy();
+    header( 'Location: ./index.php');
 }
  ?>
 
@@ -116,9 +114,18 @@ header( 'Location: ./index.php');
                 <td height="32">Times Donated</td>
               <td></td>
               <td><?php echo $row['LastDonation']; ?></td>
-              <td colspan="5"><label></label></td>
-              <td colspan="3">&nbsp;</td>
-            </tr>
+              <td colspan="8"><label>Moderation Status : </label>
+              <?php
+                  if($row['Moderation'] == 1){
+                      echo "You are accepted.";
+                  } else if($row['Moderation'] == 0){
+                      echo "Awaiting Moderation.";
+                  } else if($row['Moderation'] == 2){
+                      echo "You are rejected";
+                  }
+              ?>
+              </td>
+              </tr>
             <tr>
               <td colspan="11"><div align="center">
                 <p></p>
