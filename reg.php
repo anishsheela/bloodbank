@@ -25,6 +25,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <body>
 <script language="JavaScript">
+
 function check()
 {
 if(document.formcheck.name.value=="")
@@ -76,12 +77,25 @@ alert("Enter Contact Phone Number");
 document.formcheck.phone.focus();
 return false;
 }
+if(document.formcheck.email.value !="")
+{
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    var address = document.forms[formcheck].elements[email].value;
+    if(reg.test(address) == false) {
+      alert('Invalid Email Address');
+      document.formcheck.email.focus();
+      return false;
+    }
+}
+
 if(document.formcheck.email.value=="")
 {
 alert("Enter Email");
 document.formcheck.email.focus();
 return false;
 }
+
+
 if(document.formcheck.password.value=="")
 {
 alert("Enter Password");
@@ -192,8 +206,7 @@ return false;
                 <option>O-Ve</option>
                 <option>A-ve</option>
                 <option>B-ve</option>
-                <option>AB-ve</option>
-                                                                                    </select></td>
+                <option>AB-ve</option></select></td>
               <td>Re-Enter Password</td>
               <td colspan="2"><label>
               <input type="password" name="repass" id="repass"  maxlength="100" style="width:300px"/>

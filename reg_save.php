@@ -20,11 +20,11 @@
         $publish1=0;
 	
 	$result="select * from user ";
-$result2=mysql_query($result,$link);
+        $result2=mysql_query($result,$link);
 while($detail=mysql_fetch_array($result2,MYSQL_ASSOC))
  {
  	@$usr=$detail['UserID'];
-	if($usr == $_POST["email"])
+	if($usr == strtolower($_POST["email"]))
 	{
 	        
 	        
@@ -45,6 +45,7 @@ while($detail=mysql_fetch_array($result2,MYSQL_ASSOC))
 		if( trim($_POST["quantity"]) != "" ) $quantity = trim($_POST["quantity"]);
 		if( trim($_POST["phone"]) != "" ) $phone = trim($_POST["phone"]);
 		if( trim($_POST["email"]) != "" ) $email = trim($_POST["email"]);
+                $email = strtolower($email);
 		if( trim($_POST["password"]) != "" ) $password = trim($_POST["password"]);
 		if( trim($_POST["address2"]) != "" ) $address = trim($_POST["address2"]);
 		if( trim($_POST["address3"]) != "" ) $district = trim($_POST["address3"]);
