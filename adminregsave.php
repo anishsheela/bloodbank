@@ -68,5 +68,11 @@
     mysql_query($result);
     mysql_query($resulto);
 
+   /* Mail all persons on sucessfull completion of registration*/
+    $sender = "aneesh.nl@gmail.com";
+    $subject = "NSS Blood Bank Registration";
+    $content = "Sucessfull registration";
+    $headers = "From: nssmcet@gmail.com";
+    mail($sender, $subject, $content, $headers);
     header("Location: ./adminreg.php");
 ?>
