@@ -25,9 +25,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <body>
 <script language="JavaScript">
-
 function check()
 {
+/*
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var address = document.forms['formcheck'].elements['email'].value;
+   if(reg.test(address) == false) {
+      alert('Invalid Email Address');
+      return false;
+   }*/
 if(document.formcheck.name.value=="")
 {
 alert("Enter name");
@@ -77,16 +83,6 @@ alert("Enter Contact Phone Number");
 document.formcheck.phone.focus();
 return false;
 }
-if(document.formcheck.email.value !="")
-{
-    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    var address = document.forms[formcheck].elements[email].value;
-    if(reg.test(address) == false) {
-      alert('Invalid Email Address');
-      document.formcheck.email.focus();
-      return false;
-    }
-}
 
 if(document.formcheck.email.value=="")
 {
@@ -94,7 +90,6 @@ alert("Enter Email");
 document.formcheck.email.focus();
 return false;
 }
-
 
 if(document.formcheck.password.value=="")
 {
@@ -139,7 +134,7 @@ return false;
         </tr>
       <tr bgcolor="#CC9933">
         <td height="292" colspan="3">
-       <form name="formcheck" id="formcheck" onsubmit="return check();"form action="./reg_save.php" method="post">
+       <form name="formcheck" id="formcheck" onsubmit="return check();" form action="./reg_save.php" method="post">
 
           <table width="790" border="0" align="center" cellpadding="5" cellspacing="0" >
             <tr>
