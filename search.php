@@ -27,7 +27,7 @@ require("./cnn.php");
  <?php 
   $district="";
   $bgroup="";
-        $sql = "SELECT * FROM `registration` WHERE 1=1";
+        $sql = "SELECT * FROM `registration`";
        if(isset($_POST["jumpMenu"]))										
 		
 		 if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") 
