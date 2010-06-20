@@ -34,7 +34,13 @@ function validate(form_id,email) {
    }
 }
 </script>
-
+<?php
+session_start();
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+}
+?>
 <div id="Layer1">
   <form id="form1" name="form1" method="post" action="adminregsave.php" onsubmit="javascript:return validate('form1','email');">
   <label></label>
@@ -164,6 +170,9 @@ function validate(form_id,email) {
     <label></label>
     <input name="submit" type="submit" id="submit" value="Submit" />
   </p>
-</form></div>
+</form></div><br/>
+<?php
+    echo $_GET['msg'];
+?>
 </body>
 </html>

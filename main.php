@@ -38,13 +38,16 @@ if($_SESSION['key']!='admin'){
       <tr>
         <td width="200" height="201"><table height="164" border="0" cellpadding="0" cellspacing="0" class="nav-item">
           <tr>
-            <td><a href="donors.php" class="nav-item">Donors</a></td>
+            <td width="120"><a href="donors.php" class="nav-item">Donors</a></td>
           </tr>
           <tr>
             <td><a href="moderate.php" class="nav-item">Moderate Donors</a></td>
           </tr>
           <tr>
             <td><a href="reject.php">Rejected Donors</a> </td>
+          </tr>
+          <tr>
+            <td><a href="adminreg.php">Admin Registration</a> </td>
           </tr>
           <tr>
             <td>&nbsp;</td>

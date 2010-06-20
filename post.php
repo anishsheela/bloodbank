@@ -1,5 +1,5 @@
 <?php
- include_once("./cnn.php");
+/* include_once("./cnn.php");
 $mg="";  
 $name=$_POST['name'];
 $place=$_POST['place'];
@@ -29,7 +29,7 @@ $email="";
 $comment="";
 $mg=""; 
 //header("Location: ./speak.php");
-}
+}*/
 ?>
 
 

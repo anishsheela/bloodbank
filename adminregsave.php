@@ -1,8 +1,46 @@
 <?php
+    session_start();
+    if($_SESSION['key']!='admin'){
+        session_destroy();
+        header( 'Location: ./index.php');
+    }
     require 'cnn.php';
     function starts_with($str, $src){
         return substr($src, 0, strlen($str))==$str;
     }
+    function createRandomPassword() {
+
+
+
+    $chars = "abcdefghijkmnopqrstuvwxyz023456789";
+
+    srand((double)microtime()*1000000);
+
+    $i = 0;
+
+    $pass = '' ;
+
+
+
+    while ($i <= 7) {
+
+        $num = rand() % 33;
+
+        $tmp = substr($chars, $num, 1);
+
+        $pass = $pass . $tmp;
+
+        $i++;
+
+    }
+
+
+
+    return $pass;
+
+
+
+}
     
     $class = trim($_POST["classs"]);
     setcookie("class", $class, time()+3600);
@@ -61,18 +99,62 @@
     $weight = 50;
     $last = 0;
     $address = " ";
-    $password = "pass";
+    $password = createRandomPassword();
     $result="INSERT INTO registration (Name,DOB,Gender,Bloodgroup,Weight,Class,ContactNo,Emailid,LastDonation,Publish,District,Post) VALUES ('$name','$age',$sex,'$bloodgroup','$weight','$class','$phone','$email','$last','$publish1','$district','$address')";
     $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$password')";
-//    echo $result."<br/>"."$resulto"."<br/>";
     mysql_query($result);
     mysql_query($resulto);
 
    /* Mail all persons on sucessfull completion of registration*/
-    $sender = "aneesh.nl@gmail.com";
-    $subject = "NSS Blood Bank Registration";
-    $content = "Sucessfull registration";
-    $headers = "From: nssmcet@gmail.com";
-    mail($sender, $subject, $content, $headers);
-    header("Location: ./adminreg.php");
+
+    // subject
+    $subject = 'NSS Blood Bank Registration';
+
+    // message
+    $message = 'Dear '.$name.',<br/><br/>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSS Unit of MCET has started an on-line blood donors directory. The directory contains the<br/>
+ information of the students, staffs & alumni\'s in our college. You have been registered at NSS<br/>
+ on-line blood donors directory. We appreciate your courage to save some life\'s.<br/><br/>
+
+
+
+Your user name is : <b>'.$email.'<br/></b>
+Your password is   : <b>'.$password.'<br/><br/></b>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can change the password after logging with this password.<br/><br/>
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>You can login using the above details to  <a href="http://mcet-nss.co.cc/bloodbank/">our site</a>. You can check and update profile by logging in.<br/><br/></b>
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can search for blood if anyone of your friends or relatives want blood.<br/><br/>
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is an open-source project. If you want to download, modify or suggest any changes,<br/>
+        you are free to do so. You can access our source code repository <a href="http://github.com/aneesh/bloodbank">here</a> .<br/><br/>
+
+
+Regards,<br/>
+Anish A & Arun Anson, S4CS<br/>
+Site administrators';
+
+    // To send HTML mail, the Content-type header must be set
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+    // Additional headers
+    $headers .= 'To: '.$name.' <'.$email.'>' . "\r\n";
+    $headers .= 'From: NSS Unit MCET <mcetnss@gmail.com>' . "\r\n";
+    
+
+    // Mail it
+    if(mail($email, $subject, $message, $headers))
+            $mes = 'Mail sucessfully sent to '.$email.$_GET['msg'];
+//    echo $message;
+    header("Location: ./adminreg.php?msg=$mes");
 ?>
