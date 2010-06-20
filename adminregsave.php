@@ -69,33 +69,10 @@
         $publish1 = 0;
 
     $post = " ";
-    $bloodgroup = trim($_POST["district"]);
-    $age = 18;
+    $district = trim($_POST["district"]);
+    $age = $year +10 - 2000; // Age according to joining year
 
-    /* TODO : Modify age finding fuction according to current system*/
-/*    if(starts_with("S1S2MC", $class))
-            $age = 21;
-    else if (starts_with("S3MC", $class) OR starts_with("S4MC", $class))
-            $age = 22;
-    else if (starts_with("S5MC", $class) OR starts_with("S6MC", $class))
-            $age = 23;
-    else if(starts_with("S1S2", $class))
-            $age = 18;
-    else if (starts_with("S3", $class) OR starts_with("S4", $class))
-            $age = 19;
-    else if (starts_with("S5", $class) OR starts_with("S6", $class))
-            $age = 20;
-    else if (starts_with("S6", $class) OR starts_with("S7", $class))
-            $age = 21;
-    else if (starts_with("S6", $class) OR starts_with("S7", $class))
-        $age = 18;
-    else if (starts_with("Sta", $class))
-        $age = 22;
-    else if (starts_with("Alu", $class))
-        $age = 22;
-    else if (starts_with("Oth", $class))
-        $age = 18;*/
-
+    
     if($gender == "Male")
         $sex = 1;
     else
