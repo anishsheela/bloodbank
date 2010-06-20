@@ -33,10 +33,11 @@
       <td bgcolor="#FFFFFF"><textarea name="comment" cols="50" rows="3" id="comment"></textarea></td>
     </tr>
     <tr>
-      <td bgcolor="#FFFFFF">
+        <td bgcolor="#FFFFFF" align="center">
         <?php
+        // Display Captcha
         require_once('recaptcha/recaptchalib.php');
-        $publickey = "6Lcd87oSAAAAAIjpzZC74bCCtSOMVRRiHnmTy2Mb"; // you got this from the signup page
+        $publickey = "6Lcd87oSAAAAAIjpzZC74bCCtSOMVRRiHnmTy2Mb";
         echo recaptcha_get_html($publickey);
         ?>
       </td>
@@ -45,9 +46,12 @@
       <td colspan="2" bgcolor="#FFFFFF">
         
         <div align="center">
-          <input name="post" type="submit" id="post" value="post" />
+          <input name="post" type="submit" id="post" value="Post" />
           <input type="submit" name="reset" value="Reset" id="reset" />
-        <?php echo $mg."Hai"; ?></div></td></tr>
+          <?php echo '<br/>'.$mg; ?>
+        </div>      
+      </td>
+    </tr>
   </table>
 </form>
 </body>

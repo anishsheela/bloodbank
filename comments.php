@@ -22,16 +22,15 @@
         <td height="31" bgcolor="" >&nbsp;</td>
       </tr>
       <tr bgcolor="#CC9933">
-        <td height="184" valign="top" bgcolor="#FFCCFF" ><form id="form1" name="form1" method="post" action="">
+        <td height="184" valign="top" bgcolor="#FFCCFF" >
           <table width="100%" border="0">
             <tr>
               <td bordercolor="#000000" bgcolor="#CACBB4"><?php include "post.php"; ?></td>
             </tr>
           </table>
-                </form>
         <p>&nbsp;</p>
 		<?php  
-		 $SEL=mysql_query("SELECT * FROM comments ");
+		 $SEL=mysql_query("SELECT * FROM comments ORDER BY Time DESC");
  while ($asd=mysql_fetch_array($SEL))
   {
        ?>
