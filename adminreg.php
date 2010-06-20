@@ -116,7 +116,7 @@ if($_SESSION['key']!='admin'){
     <label>
     Publish</label>
     <label>
-     <input name="publish" type="checkbox" value="checkbox" checked="checked" />
+     <input name="publish" type="checkbox" checked="checked" />
     </label>
   </p>
   <label>Bloodgroup
