@@ -1,44 +1,9 @@
-<?php
-/* include_once("./cnn.php");
-$mg="";  
-$name=$_POST['name'];
-$place=$_POST['place'];
-$email=$_POST['email'];
-$comment=$_POST['comment'];
-
-if(isset($_POST['post']))
-{
-if($name !="" && $place!="" && $email!="" && $comment!="")
-{
-$insert="INSERT INTO comments VALUES('$name','$place','$email','$comment')";
-mysql_query($insert,$link);
-$name="";
-$place="";
-$email="";
-$comment="";
-$mg=""; 
-}
-else
-{$mg='!!!!!!!!!!!!Enter All Datas!!!!!!!!!!!!!!!!!!!';}
-}
-if(isset($_POST['reset']))
-{
-$name="";
-$place="";
-$email="";
-$comment="";
-$mg=""; 
-//header("Location: ./speak.php");
-}*/
-?>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 
 <body>
-<form id="form" name="form" method="post" action="">
+<form id="form" name="form" method="post" action="post_action.php">
   <p class="style9">Post Your Comments</p>
   <table width="500" border="0" align="center" bordercolor="#000000" bgcolor="#FFFFFF">
        <tr>
@@ -60,6 +25,15 @@ $mg="";
     </tr>
     <tr>
       <td bgcolor="#FFFFFF"><textarea name="comment" cols="50" rows="3" id="comment"></textarea></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF">
+        <?php
+        require_once('recaptcha/recaptchalib.php');
+        $publickey = "6Lcd87oSAAAAAIjpzZC74bCCtSOMVRRiHnmTy2Mb"; // you got this from the signup page
+        echo recaptcha_get_html($publickey);
+            ?>
+      </td>
     </tr>
     <tr>
       <td colspan="2" bgcolor="#FFFFFF">

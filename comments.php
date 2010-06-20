@@ -54,9 +54,9 @@
             <td width="362" bgcolor="#FFFFFF"><?php echo $asd['comment']; ?></td>
           </tr>
         </table>
-		<?php
-		}
-		?>
+    <?php
+    }
+    ?>
           <p></p></td>
       </tr>
       <tr bgcolor="#CC9933">
