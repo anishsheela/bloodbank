@@ -12,7 +12,7 @@
 
 
 
-    $chars = "abcdefghijkmnopqrstuvwxyz023456789";
+    $chars = "123456789";
 
     srand((double)microtime()*1000000);
 
@@ -22,9 +22,9 @@
 
 
 
-    while ($i <= 7) {
+    while ($i < 4) {
 
-        $num = rand() % 33;
+        $num = rand() % 9;
 
         $tmp = substr($chars, $num, 1);
 
@@ -33,17 +33,20 @@
         $i++;
 
     }
-
-
-
     return $pass;
 
 
 
 }
     
-    $class = trim($_POST["classs"]);
-    setcookie("class", $class, time()+3600);
+    $year = trim($_POST["admission_year"]);
+    setcookie("admission_year", $year, time()+3600);
+
+    $batch = trim($_POST["batch"]);
+    setcookie("batch", $batch, time()+3600);
+
+    $class = trim($_POST["branch"]);
+    setcookie("branch", $branch, time()+3600);
 
     $gender = trim($_POST["gender"]);
 
@@ -65,10 +68,12 @@
     else
         $publish1 = 0;
 
-    $district = " ";
+    $post = " ";
+    $bloodgroup = trim($_POST["district"]);
     $age = 18;
 
-    if(starts_with("S1S2MC", $class))
+    /* TODO : Modify age finding fuction according to current system*/
+/*    if(starts_with("S1S2MC", $class))
             $age = 21;
     else if (starts_with("S3MC", $class) OR starts_with("S4MC", $class))
             $age = 22;
@@ -89,7 +94,7 @@
     else if (starts_with("Alu", $class))
         $age = 22;
     else if (starts_with("Oth", $class))
-        $age = 18;
+        $age = 18;*/
 
     if($gender == "Male")
         $sex = 1;
@@ -97,10 +102,12 @@
         $sex = 0;
 
     $weight = 50;
-    $last = 0;
+    // Donation date = current date - 6 months
+    $donation_date = mktime(0, 0, 0, date("m")-6, date("d"), date("Y"));
     $address = " ";
     $password = createRandomPassword();
-    $result="INSERT INTO registration (Name,DOB,Gender,Bloodgroup,Weight,Class,ContactNo,Emailid,LastDonation,Publish,District,Post) VALUES ('$name','$age',$sex,'$bloodgroup','$weight','$class','$phone','$email','$last','$publish1','$district','$address')";
+    $result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$age', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
+    echo $result;
     $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$password')";
     mysql_query($result);
     mysql_query($resulto);
@@ -140,7 +147,7 @@ Your password is   : <b>'.$password.'<br/><br/></b>
 
 
 Regards,<br/>
-Anish A & Arun Anson, S4CS<br/>
+Anish A & Arun Anson, S5CS<br/>
 Site administrators';
 
     // To send HTML mail, the Content-type header must be set
@@ -155,6 +162,6 @@ Site administrators';
     // Mail it
     if(mail($email, $subject, $message, $headers))
             $mes = 'Mail sucessfully sent to '.$email.$_GET['msg'];
-//    echo $message;
+    echo $message;
     header("Location: ./adminreg.php?msg=$mes");
 ?>

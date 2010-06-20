@@ -23,7 +23,7 @@
 
 <body>
     
-<script>
+<script type="javascript">
 function validate(form_id,email) {
    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    var address = document.forms[form_id].elements[email].value;
@@ -35,71 +35,66 @@ function validate(form_id,email) {
 }
 </script>
 <?php
-session_start();
+include('cnn.php');
+/*session_start();
 if($_SESSION['key']!='admin'){
     session_destroy();
     header( 'Location: ./index.php');
-}
+}*/
 ?>
 <div id="Layer1">
   <form id="form1" name="form1" method="post" action="adminregsave.php" onsubmit="javascript:return validate('form1','email');">
   <label></label>
   <p align="center" class="style2">ADMIN REGISTRATION FORM </p>
-  <p>Class <select name="classs" id="classs">
-                <option><?php
-                if(isset($_COOKIE['class']))
-                    echo $_COOKIE["class"];?>
-                </option>
-                <option> S1S2A </option>
-                <option> S1S2B </option>
-                <option> S1S2C </option>
-                <option> S1S2D </option>
-                <option> S1S2E </option>
-                <option> S1S2F </option>
-                <option> S3CS </option>
-                <option> S3IT </option>
-                <option> S3BT </option>
-                <option> S3ME </option>
-                <option> S3EE </option>
-                <option> S3EC </option>
-                <option> S4CS </option>
-                <option> S4IT </option>
-                <option> S4BT </option>
-                <option> S4ME </option>
-                <option> S4EE </option>
-                <option> S4EC </option>
-                <option> S5CS </option>
-                <option> S5IT </option>
-                <option> S5BT </option>
-                <option> S5ME </option>
-                <option> S5EE </option>
-                <option> S5EC </option>
-                <option> S6CS </option>
-                <option> S6IT </option>
-                <option> S6BT </option>
-                <option> S6ME </option>
-                <option> S6EE </option>
-                <option> S6EC </option>
-                <option> S7CS </option>
-                <option> S7IT </option>
-                <option> S7BT </option>
-                <option> S7ME </option>
-                <option> S7EE </option>
-                <option> S7EC </option>
-                <option> S8CS </option>
-                <option> S8IT </option>
-                <option> S8BT </option>
-                <option> S8ME </option>
-                <option> S8EE </option>
-                <option> S8EC </option>
-                <option> S1S2MCA </option>
-                <option> S3MCA </option>
-                <option> S4MCA </option>
-                <option> S5MCA </option>
-                <option> S6MCA </option>
-                <option> Staff </option>
-                <option> Alumini </option>
-                <option> Others </option>
+  <p>Admission year <select name="admission_year" id="admission_year">
+        <option><?php
+        // If cookie is set, then use it as default
+        if(isset($_COOKIE['admission_year']))
+            echo $_COOKIE["admission_year"];
+        ?>
+        </option>
+          <?php
+          /* Add the date from current year to 2002 (College Starting Year)*/
+          $year = date("Y");
+          for ($index = (int)$year; $index >= 2002; $index--) {
+              ?> <option><?php echo $index;?></option><?
+          }
+
+          ?>
+
+      </select>
+    </p>
+  <p>Branch <select name="branch" id="branch">
+        <option><?php
+        // If cookie is set, then use it as default
+        if(isset($_COOKIE['branch']))
+            echo $_COOKIE["branch"];
+        ?>
+        </option>
+          <?php
+          /* Add all the branches from the Table course and feild course */
+          $query = "SELECT course FROM course ORDER BY course ASC;";
+          $list = mysql_query($query, $link);
+          while($record = mysql_fetch_array($list)){
+              ?> <option> <?php echo $record['course'];?> </option><?php
+          }
+          ?>
+      </select>
+    </p>
+    <p>Batch <select name="batch" id="batch">
+        <option><?php
+        // If cookie is set, then use it as default
+        if(isset($_COOKIE['batch']))
+            echo $_COOKIE["batch"];
+        ?>
+        </option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+
       </select>
     </p>
   <p align="justify">
