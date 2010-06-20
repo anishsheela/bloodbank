@@ -84,7 +84,6 @@
     $address = " ";
     $password = createRandomPassword();
     $result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$age', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
-    echo $result;
     $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$password')";
     mysql_query($result);
     mysql_query($resulto);
@@ -139,6 +138,9 @@ Site administrators';
     // Mail it
     if(mail($email, $subject, $message, $headers))
             $mes = 'Mail sucessfully sent to '.$email.$_GET['msg'];
-    echo $message;
+    else {
+        $mes = "Mail sending failure";
+    }
+//    echo $message;
     header("Location: ./adminreg.php?msg=$mes");
 ?>

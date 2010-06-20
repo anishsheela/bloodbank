@@ -167,7 +167,7 @@ if($_SESSION['key']!='admin'){
   </p>
 </form></div><br/>
 <?php
-    echo $_GET['msg'];
+    echo 'Status : <b>'.$_GET['msg'].'</b>';
 ?>
 </body>
 </html>
