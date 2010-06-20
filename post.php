@@ -1,4 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script type= "text/javascript">
+    var RecaptchaOptions = {
+        theme: 'clean'
+    };
+</script>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 
@@ -32,16 +38,16 @@
         require_once('recaptcha/recaptchalib.php');
         $publickey = "6Lcd87oSAAAAAIjpzZC74bCCtSOMVRRiHnmTy2Mb"; // you got this from the signup page
         echo recaptcha_get_html($publickey);
-            ?>
+        ?>
       </td>
     </tr>
     <tr>
       <td colspan="2" bgcolor="#FFFFFF">
         
         <div align="center">
-          <input name="post" type="submit" id="post" value="Post" />
+          <input name="post" type="submit" id="post" value="post" />
           <input type="submit" name="reset" value="Reset" id="reset" />
-        <?php echo $mg; ?></div></td></tr>
+        <?php echo $mg."Hai"; ?></div></td></tr>
   </table>
 </form>
 </body>
