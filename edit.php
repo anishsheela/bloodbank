@@ -6,6 +6,7 @@ $user=$_SESSION['key'];
 
 ?>
 <?php
+ require("./calculate_class.php");
  include("./cnn.php");
  @$sql = "select * from registration WHERE Emailid='$user' ";
  @$rst = mysql_query($sql);
@@ -13,12 +14,7 @@ $user=$_SESSION['key'];
  @$pass1 = "select PWD from user where UserID='$user'";
  @$pass2 = mysql_query($pass1);
  @$pass3 = mysql_fetch_array($pass2)
- ?>
-
-
-
-
-
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,15 +31,37 @@ $user=$_SESSION['key'];
 
 <body>
 <script language="JavaScript">
-function check()
-{
-if(document.formcheck.password.value !== document.formcheck.repass.value)
-{
-alert("Password Mismatch Please Check It");
-document.formcheck.repass.focus();
-return false;
+function check() {
+    if(document.formcheck.password.value !== document.formcheck.repass.value) {
+        alert("Password Mismatch Please Check It");
+        document.formcheck.repass.focus();
+        return false;
+    }
 }
+</script>
+
+<script type="text/javascript">
+<!--
+function SelectDate()
+{
+	D = document.getElementById('Date').value;
+	if(D){
+		D = D.split('/');
+	}else{
+		Dat = new Date();
+		D = new Array(Dat.getDay(), Dat.getMonth(), Dat.getFullYear());
+	}
+	win = window.open("date-picker.html","win","status=no,scrollbars=no,toolbar=no,menubar=no,height=150,width=150");
+	if (parseInt(navigator.appVersion) == 2 && navigator.appName == "Netscape")
+		win = window.open("date-picker.html","win","status=yes,height=325,width=250");
+		//win'MakeDate',D[2], D[1],D[0], 'SetDate');
+		win.MakeDate(D[2], D[1], D[0]);
 }
+function SetDate(Day, Month, Year)
+{
+	document.getElementById('Date').value = Day + '/' + Month + '/' + Year;
+}
+//-->
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -73,7 +91,7 @@ return false;
                 } else {
                     echo "";
                 }
-                ?>" />
+                ?>></input>
                 Publish</label></td>
             </tr>
             <tr>
@@ -135,67 +153,17 @@ return false;
               <td><input name="address2" type="text" id="address2" style="width:300px" value="<?php echo $row['Post']; ?>" size="100" /></td>
             </tr>
             <tr>
-              <td height="59">Class</td>
+              <td height="59">Branch</td>
               <td>&nbsp;</td>
-              <td><select name="classs" id="classs">
-                <option value="<?php echo $row['Class']?>"><?php echo $row['Class']?></option>
-                <option> S1S2A </option>
-                <option> S1S2B </option>
-                <option> S1S2C </option>
-                <option> S1S2D </option>
-                <option> S1S2E </option>
-                <option> S1S2F </option>
-                <option> S3CS </option>
-                <option> S3IT </option>
-                <option> S3BT </option>
-                <option> S3ME </option>
-                <option> S3EE </option>
-                <option> S3EC </option>
-                <option> S4CS </option>
-                <option> S4IT </option>
-                <option> S4BT </option>
-                <option> S4ME </option>
-                <option> S4EE </option>
-                <option> S4EC </option>
-                <option> S5CS </option>
-                <option> S5IT </option>
-                <option> S5BT </option>
-                <option> S5ME </option>
-                <option> S5EE </option>
-                <option> S5EC </option>
-                <option> S6CS </option>
-                <option> S6IT </option>
-                <option> S6BT </option>
-                <option> S6ME </option>
-                <option> S6EE </option>
-                <option> S6EC </option>
-                <option> S7CS </option>
-                <option> S7IT </option>
-                <option> S7BT </option>
-                <option> S7ME </option>
-                <option> S7EE </option>
-                <option> S7EC </option>
-                <option> S8CS </option>
-                <option> S8IT </option>
-                <option> S8BT </option>
-                <option> S8ME </option>
-                <option> S8EE </option>
-                <option> S8EC </option>
-                <option> S1S2MCA </option>
-                <option> S3MCA </option>
-                <option> S4MCA </option>
-                <option> S5MCA </option>
-                <option> S6MCA </option>
-                <option> Staff </option>
-                <option> Alumini </option>
-                <option> Others </option>
+              <td><select name="branch" id="branch">
+                <option value="<?php echo "";?>"><?php echo $row['Class']?></option>
 
               </select>
               </td>
-              <td>Times Donated</td>
+              <td>Last Donation</td>
               <td>&nbsp;</td>
               <td><label>
-                <input name="last" type="text" id="last" value="<?php echo $row['LastDonation']; ?>" size="15" />
+                      <input type="text" name="last" id="last" value="<?php echo change_date_format($row['LastDonation'])?>" />
               </label></td>
               <td>&nbsp;</td>
               <td>District</td>

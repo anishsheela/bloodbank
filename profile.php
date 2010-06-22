@@ -5,7 +5,10 @@ session_start();
 if($_SESSION['key'] ==""){
     session_destroy();
     header( 'Location: ./index.php');
-} 
+}
+
+// Class calculation
+require("./calculate_class.php");
 				 
 				 
 $user=$_SESSION['key'];
@@ -87,16 +90,14 @@ if(isset($_POST["logout"])){
               <td rowspan="2">&nbsp;</td>
               <?php
               if($row['Gender'] == 1)
-			  {
-			    $gender = "Male";}
-			  else
-			    {$gender = "Female";
-			  }
-			  ?>
+                  $gender = "Male";
+              else
+                  $gender = "Female";
+              ?>
               <td width="92"><?php echo $row['Bloodgroup']; ?></td>
               <td width="105" height="30">Class</td>
               <td width="0"></td>
-              <td width="65"><?php echo $row['Class']; ?></td>
+              <td width="65"><?php echo calculate_class($row['Regid']); ?></td>
               <td rowspan="2"></td>
               <td>District</td>
               <td colspan="3"><label><?php echo $row['District']; ?></label></td>
@@ -111,9 +112,9 @@ if(isset($_POST["logout"])){
               <td colspan="3"><?php echo $row['Post']; ?></td>
             </tr>
             <tr>
-                <td height="32">Times Donated</td>
+                <td height="32">Last Donation</td>
               <td></td>
-              <td><?php echo $row['LastDonation']; ?></td>
+              <td><?php echo change_date_format($row['LastDonation']); ?></td>
               <td colspan="8"><label>Moderation Status : </label>
               <?php
                   if($row['Moderation'] == 1){

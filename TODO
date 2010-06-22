@@ -1,5 +1,5 @@
-* Add Captcha to comment page
-* Set the class to branch
+* Add Captcha to comment page [Finished : Anish A]
+* Set the class to branch [Work in progress : Anish A]
     - Database Changes
         - Feilds
             - Admission Year - Digit
@@ -8,4 +8,5 @@
             - Designation - Staff / Student / Others
     - File changes
     - Misc changes
-* Display public profile
+* Display public profile [Work in progress : Anish A]
+* Password is stored in database as plain text. Use md5 hash to store it. Hint: use md5(md5()) for added security [Assigned to : Mahesh]
