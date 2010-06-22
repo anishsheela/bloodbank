@@ -1,0 +1,11 @@
+* Add Captcha to comment page
+* Set the class to branch
+    - Database Changes
+        - Feilds
+            - Admission Year - Digit
+            - Branch - 3 Char
+            - Batch - 1 char
+            - Designation - Staff / Student / Others
+    - File changes
+    - Misc changes
+* Display public profile
