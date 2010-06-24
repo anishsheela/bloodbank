@@ -14,3 +14,4 @@
 * Create and installer that automatically creates database, allows us to customise the database details.
   - Design the user interface.
   - Use the Installer file if database is not found. Else proceed with normal operation.
+* Store the date of birth instead of age. Calculate age from it.
