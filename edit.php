@@ -130,15 +130,17 @@ function SetDate(Day, Month, Year)
               <td width="84" height="34">Blood Group</td>
               <td width="1">&nbsp;</td>
               <td width="74"><select name="jumpMenu" id="jumpMenu">
-                <option value="<?php echo $row['Bloodgroup']; ?>" selected="selected"><?php echo $row['Bloodgroup']; ?></option>
-                <option>O+ve</option>
-                <option>A+ve</option>
-                <option>B+ve</option>
-                <option>AB+ve</option>
-                <option>O-Ve</option>
-                <option>A-ve</option>
-                <option>B-ve</option>
-                <option>AB-ve</option>
+                <option><?php echo $row['Bloodgroup']; ?></option>
+                <?php
+                    $sql = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
+                    $result = mysql_query($sql);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["BloodGroup"];?></option>
+                <?php
+                    }
+                ?>
+                
               </select></td>
               <td>Re-Enter Password</td>
               <td><label>
@@ -153,10 +155,41 @@ function SetDate(Day, Month, Year)
               <td><input name="address2" type="text" id="address2" style="width:300px" value="<?php echo $row['Post']; ?>" size="100" /></td>
             </tr>
             <tr>
-              <td height="59">Branch</td>
+              <td height="59">Class</td>
               <td>&nbsp;</td>
+              <td><select name="admnyear" id="admnyear">
+                <option><?php echo $row['AdmissionYear']?></option>
+                <?php for($i = (int)date('Y'); $i > ((int)date('Y') - 20); $i--) {?>
+                <option><?php echo (string)$i;?></option>
+                <?php }?>
+
+              </select>
+              </td>
               <td><select name="branch" id="branch">
-                <option value="<?php echo "";?>"><?php echo $row['Class']?></option>
+                <option><?php echo $row['Branch']?></option>
+                <?php
+                    $sql = "SELECT DISTINCT course FROM course;";
+                    $result = mysql_query($sql);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["course"];?></option>
+                <?php
+                    }
+                ?>
+
+              </select>
+              </td>              
+              <td><select name="batch" id="batch">
+                <option><?php echo $row['Batch']?></option>
+                <?php
+                    $sql = "SELECT DISTINCT Batch FROM batch_list;";
+                    $result = mysql_query($sql);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["Batch"];?></option>
+                <?php
+                    }
+                ?>
 
               </select>
               </td>
@@ -169,21 +202,16 @@ function SetDate(Day, Month, Year)
               <td>District</td>
               <td>
                   <select name="address3" id="address3" style="width:300px" title="<?php echo $row['District']?>">
-                    <option selected="selected">Thiruvananthapuram</option>
-                    <option>Kollam</option>
-                    <option>Pathanamthitta</option>
-                    <option>Alappuzha</option>
-                    <option>Kottayam</option>
-                    <option>Idukki</option>
-                    <option>Ernakulam</option>
-                    <option>Thrissur</option>
-                    <option>Palakkad</option>
-                    <option>Malapuram</option>
-                    <option>Kozhikode</option>
-                    <option>Wayanad</option>
-                    <option>Kannur</option>
-                    <option>Kasargod</option>
-                    <option>Other</option>
+                    <option><?php echo $row['District']?></option>
+                    <?php
+                    $sql = "SELECT * FROM `district`;";
+                    $result = mysql_query($sql);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["Name"];?></option>
+                <?php
+                    }
+                ?>
                 </select>
                   <!--<input name="address3" type="text" id="address3" style="width:300px" value="<?php //echo $row['District']; ?>" size="100" />-->
               </td>
