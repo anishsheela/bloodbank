@@ -40,4 +40,3 @@ if($uid != "" && $pwd != ""){
 } 
 if($i !== '1')
     header("Location: ./index.php?msg=Invalid Username or Password");
-?>
