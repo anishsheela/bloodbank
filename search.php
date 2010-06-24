@@ -27,34 +27,34 @@ require("./cnn.php");
  <?php 
   $district="";
   $bgroup="";
-        $sql = "SELECT * FROM `registration`";
+        $sql = "SELECT * FROM `registration` WHERE 1 ";
        if(isset($_POST["jumpMenu"]))										
 		
 		 if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") 
 		{ $bgroup = trim($_POST["jumpMenu"]);
-		  $sql =$sql." and  Bloodgroup  = '$bgroup'"; 
+		  $sql =$sql."AND Bloodgroup  = '$bgroup'";
 		}
 		
 		  
 		if(isset($_POST["District"]))
 		if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All")
 		{ $district = trim($_POST["District"]);
-          $sql = $sql." and District = '$district'"; 
+          $sql = $sql." AND District = '$district'";
 		}
 		 
 		 if(isset($_POST["RadioGroup1"]))										
 		if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3) 
 		{ $sex = trim($_POST["RadioGroup1"]);
-          $sql = $sql." and Gender  = '$sex'"; 
+          $sql = $sql." AND Gender  = '$sex'";
 		} 
-		//echo $sql;
+	  $sql = $sql.';';
 		 ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="848" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td colspan="2"><a href="index.php"><img src="images/title.jpg" width="1000" height="121" /></a></td>
+        <td colspan="2"><a href="index.php"><img src="images/title.jpg" alt ="Blood bank" width="1000" height="121" /></a></td>
         </tr>
       <tr bgcolor="#993300">
         <td width="701" height="169"><strong> &nbsp;&nbsp;List of 
@@ -106,14 +106,15 @@ require("./cnn.php");
                 <td>
                   <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
                   <option>All</option>
-                  <option>O+ve</option>
-                  <option>A+ve</option>
-                  <option>B+ve</option>
-                  <option>AB+ve</option>
-                  <option>O-Ve</option>
-                  <option>A-ve</option>
-                  <option>B-ve</option>
-                  <option>AB-ve</option>
+                  <?php
+                    $sql1 = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
+                    $result = mysql_query($sql1);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["BloodGroup"];?></option>
+                    <?php
+                    }
+                    ?>
                   </select></td>
                 </tr>
               <tr>
@@ -159,8 +160,7 @@ require("./cnn.php");
             <th>Contact No</th> 
             <th>Gender</th>
           </tr>
-          <?php
-
+<?php
 $rst = mysql_query($sql);
 
 $i = 0;

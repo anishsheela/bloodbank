@@ -11,7 +11,8 @@ Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 Header("Pragma: no-cache");
 ?>
 <?php
- include("./cnn.php");
+ require("./cnn.php");
+ require("./calculate_class.php");
  $sql = "select * from request where Status='R' order by Reqid";
  ?>
 
@@ -98,7 +99,7 @@ while ($row = mysql_fetch_array($rst))
 				<td width="13%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactPh"]; ?></td>
 				<td width="8%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"> <?php echo $row["BGroup"];?></td>
 				<td width="13%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Quantity"];?></td>
-				<td width="12%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php echo $row["NeedDate"]; ?></td>
+				<td width="12%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php echo change_date_format($row["NeedDate"]); ?></td>
 				
 			  </tr>
 			  <?php

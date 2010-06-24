@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<form id="form1" name="form1" method="post" action="moderatechk.php">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="848" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -69,7 +70,6 @@ while ($row = mysql_fetch_array($rst)){
 
             ?></td>
             <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px">
-            <form id="form1" name="form1" method="post" action="moderatechk.php">
                <div align="center"><label>
                 <input type="checkbox" name=<?php echo "moderate".$row["Regid"];?> />
                 </label>

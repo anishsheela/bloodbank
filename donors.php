@@ -65,14 +65,16 @@ echo $sql;
           <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
             <option selected="selected"><?php echo $bgroup;?></option>
             <option value="0">All</option>
-            <option>O+ve</option>
-            <option>A+ve</option>
-            <option>B+ve</option>
-            <option>AB+ve</option>
-            <option>O-Ve</option>
-            <option>A-ve</option>
-            <option>B-ve</option>
-            <option>AB-ve</option>
+                <option><?php echo $row['Bloodgroup']; ?></option>
+                <?php
+                    $sql1 = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
+                    $result = mysql_query($sql);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["BloodGroup"];?></option>
+                <?php
+                    }
+                ?>
           </select>
           <strong>
           <label>Class

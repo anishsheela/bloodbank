@@ -19,10 +19,14 @@ $user=$_SESSION['key'];
 		if( trim($_POST["address2"]) != "" ) $post = trim($_POST["address2"]);
 		if( trim($_POST["address3"]) != "" ) $district = trim($_POST["address3"]);
 		if( trim($_POST["weight"]) != "" ) $weight = trim($_POST["weight"]);
-                if( trim($_POST["last"]) != "" ) $last = trim($_POST["last"]);
-                if( trim($_POST["classs"]) != "" ) $class = trim($_POST["classs"]);
+                if( trim($_POST["last"]) != "" ) $last1 = trim($_POST["last"]);
+                if( trim($_POST["admnyear"]) != "" ) $admnyear = trim($_POST["admnyear"]);
+                if( trim($_POST["branch"]) != "" ) $branch = trim($_POST["branch"]);
+                if( trim($_POST["batch"]) != "" ) $batch = trim($_POST["batch"]);
 
-                $result="UPDATE registration SET Name='$name',DOB='$Regdate',Gender='$sex',Bloodgroup='$bgroup',Weight='$weight',Class='$class',ContactNo='$phone',Emailid='$user',LastDonation='$last',District='$district',Post='$post' WHERE Emailid='$user'";
+                $last2 = str_replace('/', '-', $last1);
+                $last = date('Y-m-d H:i:s', strtotime($last2));
+                $result="UPDATE registration SET Name='$name',DOB='$Regdate',Gender='$sex',Bloodgroup='$bgroup',Weight='$weight',AdmissionYear='$admnyear',Branch='$branch',Batch='$batch',ContactNo='$phone',Emailid='$user',LastDonation='$last',District='$district',Post='$post' WHERE Emailid='$user'";
                 $resulto="UPDATE  user SET PWD='$password' WHERE UserID= '$user'";
 //                echo $bgroup;
 
@@ -30,13 +34,8 @@ $user=$_SESSION['key'];
 	
 				
                 if(!mysql_query($result,$link))
-                   {die ('Error' . mysql_error());
-                   }
-                    else
-                   {
-
-                        header( 'Location: ./profile.php');
-
-                   }
+                        die ('Error' . mysql_error());
+                else
+                    header( 'Location: ./profile.php');
    }
 ?>

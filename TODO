@@ -1,5 +1,5 @@
 * Add Captcha to comment page [Finished : Anish A]
-* Set the class to branch [Work in progress : Anish A]
+* Set the class to branch [Almost done : Anish A]
     - Database Changes
         - Feilds
             - Admission Year - Digit
@@ -15,3 +15,4 @@
   - Design the user interface.
   - Use the Installer file if database is not found. Else proceed with normal operation.
 * Store the date of birth instead of age. Calculate age from it.
+* Function to recalculate stock of blood
