@@ -3,8 +3,8 @@
 require_once ("recaptchalib.php");
 
 // get a key at http://www.google.com/recaptcha/mailhide/apikey
-$mailhide_pubkey = '';
-$mailhide_privkey = '';
+$mailhide_pubkey = '6Lcd87oSAAAAAIjpzZC74bCCtSOMVRRiHnmTy2Mb';
+$mailhide_privkey = '6Lcd87oSAAAAADrp5eUYCPPjX518FWsr87RfU9L5';
 
 ?>
 

@@ -1,6 +1,15 @@
 <?php
- include("./cnn.php");
+ require("./cnn.php");
+ require './recaptcha/recaptchalib.php';
+
+/*$mailhide_pubkey = '6Lcd87oSAAAAAIjpzZC74bCCtSOMVRRiHnmTy2Mb';
+$mailhide_privkey = '6Lcd87oSAAAAADrp5eUYCPPjX518FWsr87RfU9L5';*/
  ?>
+<script type= "text/javascript">
+    var RecaptchaOptions = {
+        theme: 'clean'
+    };
+</script>
 
 
 
@@ -10,7 +19,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Comments</title>
 </head>
-
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -47,7 +55,7 @@
                 </tr>
               <tr>
                 <td>&nbsp;</td>
-                <td bgcolor="#FFFF33"><?php echo $asd['email']; ?> </td>
+                <td bgcolor="#FFFF33"><?php echo $asd['email']; /*recaptcha_mailhide_html ($mailhide_pubkey, $mailhide_privkey, $asd['email']);*/ ?> </td>
               </tr>
             </table></td>
             <td width="362" bgcolor="#FFFFFF"><?php echo $asd['comment']; ?></td>

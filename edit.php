@@ -41,27 +41,6 @@ function check() {
 </script>
 
 <script type="text/javascript">
-<!--
-function SelectDate()
-{
-	D = document.getElementById('Date').value;
-	if(D){
-		D = D.split('/');
-	}else{
-		Dat = new Date();
-		D = new Array(Dat.getDay(), Dat.getMonth(), Dat.getFullYear());
-	}
-	win = window.open("date-picker.html","win","status=no,scrollbars=no,toolbar=no,menubar=no,height=150,width=150");
-	if (parseInt(navigator.appVersion) == 2 && navigator.appName == "Netscape")
-		win = window.open("date-picker.html","win","status=yes,height=325,width=250");
-		//win'MakeDate',D[2], D[1],D[0], 'SetDate');
-		win.MakeDate(D[2], D[1], D[0]);
-}
-function SetDate(Day, Month, Year)
-{
-	document.getElementById('Date').value = Day + '/' + Month + '/' + Year;
-}
-//-->
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>

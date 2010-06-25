@@ -1,4 +1,5 @@
 * Add Captcha to comment page [Finished : Anish A]
+    - Add mailhide to e-mails
 * Set the class to branch [Almost done : Anish A]
     - Database Changes
         - Feilds
@@ -14,6 +15,18 @@
 * Create and installer that automatically creates database, allows us to customise the database details.
   - Design the user interface.
   - Use the Installer file if database is not found. Else proceed with normal operation.
+  - Installer sould ask username of database, password, database name, etc.
+  - cnn.php will help in that
+  - Administrator password can be given. It is the matter of just changing admin password in the database
 * Store the date of birth instead of age. Calculate age from it.
 * Function to recalculate stock of blood
 * Update Privacy Policy
+* Handle persons with no e-mail
+    - Mobile number can be used to send SMS.
+    - Rest's persons can be assigned a single password or generate a report containing all password
+* Remove inconsistency in the user interface of edit profile
+* Set the date Feilds to day, Month and year
+* Handle the persons with no e-mail or mobile and make a list seperately.
+    - Need not be done using web interface. Can be done by query.
+    - But mobile number and e-mail can be null in Admin registration.
+* Update Readme file
