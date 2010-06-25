@@ -11,7 +11,8 @@ Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 Header("Pragma: no-cache");
 ?>
 <?php
- include("./cnn.php");
+require("./cnn.php");
+require("./calculate_class.php");
  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -165,11 +166,14 @@ if($rcolor == "#CC9933")
           <tr>
                                        
             <td width="7%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
-            <td width="27%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"> <?php echo $row["Name"];?></td>
+            <td width="27%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px">
+                <a href=<?php echo 'profilepub.php?regid='.$row['Regid']?>>
+                <?php echo $row["Name"];?>
+                </a></td>
             <td width="11%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php echo $row["Bloodgroup"];?></td>
             <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["DOB"];?></td>
             <td width="16%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
-            <td width="14%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Class"];?></td>
+            <td width="14%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo calculate_class($row["Regid"]);?></td>
             <td width="18%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php
             if($row["Gender"] == 1){
                 echo "Male";

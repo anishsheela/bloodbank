@@ -175,7 +175,9 @@ while ($row = mysql_fetch_array($rst)) {
 ?>
           <tr>
             <td width="10%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="justify"><b><?php echo $row["Regid"]; ?></b></div></td>
-            <td width="29%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="justify"><b><?php echo $row["Name"]; ?></b></div></td>
+            <td width="29%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="justify"><b>
+                        <a href=<?php echo 'profilepub.php?regid='.$row['Regid']?>><?php echo $row["Name"]; ?></a>
+            </b></div></td>
             <td width="15%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="center"><b><?php echo $row["Bloodgroup"]; ?></b></div></td>
             <td width="10%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php echo $row["DOB"]; ?></b></div></td>
             <td width="19%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php
