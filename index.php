@@ -34,7 +34,7 @@ $_SESSION['key']=0;
             <td width="199"><a href="search.php">Search</a></td>
           </tr>
           <tr>
-            <td><a href="reg.php">Register</a></td>
+            <td><a href="reg.php"><!--Register--></a></td>
           </tr>
           <tr>
             <td><a href="issue.php">Request Blood</a></td>

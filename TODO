@@ -16,3 +16,4 @@
   - Use the Installer file if database is not found. Else proceed with normal operation.
 * Store the date of birth instead of age. Calculate age from it.
 * Function to recalculate stock of blood
+* Update Privacy Policy
