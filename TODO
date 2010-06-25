@@ -9,7 +9,7 @@
             - Designation - Staff / Student / Others
     - File changes
     - Misc changes
-* Display public profile. [Work in progress : Anish A]
+* Display public profile. [Finished : Anish A]
     - Add clean URLs to display public profile
 * Password is stored in database as plain text. Use md5 hash to store it. Hint: use md5(md5()) for added security [Assigned to : Mahesh]
 * Create and installer that automatically creates database, allows us to customise the database details.
