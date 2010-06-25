@@ -47,7 +47,7 @@ $row = mysql_fetch_array($rst);
         <td height="292" colspan="3"><form name="formcheck" id="formcheck" onsubmit="" form="form" action="" method="post">
           <table width="888" border="0" align="center" cellpadding="5" cellspacing="0" >
             <tr>
-              <td height="56" colspan="11"><div align="center"><span class="style3 style1"><strong>YOUR PROFILE</strong></span></div></td>
+              <td height="56" colspan="11"><div align="center"><span class="style3 style1"><strong><?php echo $row['Name']?>'s Profile</strong></span></div></td>
             </tr>
             <tr>
               <td width="104">Name</td>
@@ -93,7 +93,7 @@ $row = mysql_fetch_array($rst);
                   ?>
               </td>
               <td width="65"><?php echo calculate_class($row['Regid']); ?></td>
-              <td rowspan="2"></td>
+              <td rowspan="0"></td>
               <td>District</td>
               <td colspan="0"><label><?php echo $row['District']; ?></label></td>
             </tr>
@@ -103,7 +103,7 @@ $row = mysql_fetch_array($rst);
               <td height="29">Weight</td>
               <td width="65"><?php echo $row['Weight']; ?> Kg</td>
               <td>Address</td>
-              <td colspan="1"><?php echo $row['Post']; ?></td>
+              <td colspan="0"><?php echo $row['Post']; ?></td>
             </tr>
             <tr>
                 <td height="32">Last Donation</td>

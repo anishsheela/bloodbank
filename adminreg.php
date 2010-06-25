@@ -94,7 +94,6 @@ if($_SESSION['key']!='admin'){
             <option>D</option>
             <option>E</option>
             <option>F</option>
-
       </select>
     </p>
   <p align="justify">
