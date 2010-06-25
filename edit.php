@@ -30,7 +30,7 @@ $user=$_SESSION['key'];
 </head>
 
 <body>
-<script language="JavaScript">
+<script type="text/javascript">
 function check() {
     if(document.formcheck.password.value !== document.formcheck.repass.value) {
         alert("Password Mismatch Please Check It");
@@ -42,6 +42,7 @@ function check() {
 
 <script type="text/javascript">
 </script>
+<form name="formcheck" id="formcheck" onsubmit="return check();"form="form" action="./edit_save.php" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="900" border="1" align="center" cellpadding="0" cellspacing="0">
@@ -49,7 +50,7 @@ function check() {
         <td width="900" colspan="3"><img src="images/title.jpg" width="1000" height="121" border="0" /></td>
       </tr>
       <tr bgcolor="#CC9933">
-        <td height="292" colspan="3"><form name="formcheck" id="formcheck" onsubmit="return check();"form="form" action="./edit_save.php" method="post">
+        <td height="292" colspan="3">
           <table width="790" border="0" align="center" cellpadding="5" cellspacing="0" >
             <tr>
               <td height="55" colspan="9"><div align="center"><span class="style3 style1"><strong>PROFILE EDIT PAGE</strong></span></div></td>
@@ -178,8 +179,11 @@ function check() {
                       <input type="text" name="last" id="last" value="<?php echo change_date_format($row['LastDonation'])?>" />
               </label></td>
               <td>&nbsp;</td>
-              <td>District</td>
-              <td>
+
+            </tr>
+            <tr>
+            <td height="55" colspan="0">District</td>
+            <td height="55" colspan="8" align="left">
                   <select name="address3" id="address3" style="width:300px" title="<?php echo $row['District']?>">
                     <option><?php echo $row['District']?></option>
                     <?php
@@ -193,9 +197,7 @@ function check() {
                 ?>
                 </select>
                   <!--<input name="address3" type="text" id="address3" style="width:300px" value="<?php //echo $row['District']; ?>" size="100" />-->
-              </td>
-            </tr>
-            <tr>
+              </td></tr><tr>
               <td colspan="9"><div align="center">
                 <p>&nbsp; </p>
                 <p>

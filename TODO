@@ -24,7 +24,7 @@
 * Handle persons with no e-mail
     - Mobile number can be used to send SMS.
     - Rest's persons can be assigned a single password or generate a report containing all password
-* Remove inconsistency in the user interface of edit profile
+* Remove inconsistency in the user interface of edit profile [Fixed : Anish A]
 * Set the date Feilds to day, Month and year
 * Handle the persons with no e-mail or mobile and make a list seperately.
     - Need not be done using web interface. Can be done by query.
