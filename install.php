@@ -1,0 +1,3 @@
+<?php
+// TODO : Installer script
+?>
