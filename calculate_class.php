@@ -79,4 +79,11 @@ function getAge($iTimestamp)
 
     return $iDiffYear;
 }
+
+// Function to split a given date and return day, month and year, in order
+// as an array.
+function split_date($date) {
+   list($year,$month,$day) = explode("-",$date);
+   return array ($day,$month,$year);
+}
 ?>
