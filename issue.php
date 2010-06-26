@@ -225,7 +225,7 @@ function formCheck(formobj){
 							}
 						?>
                       </select>
-                  </a> </td>
+                  </td>
                   <td width="51">&nbsp;</td>
                 </tr>
               </table></td>
