@@ -118,11 +118,11 @@ if(isset($_POST["logout"])){
               <td colspan="8"><label>Moderation Status : </label>
               <?php
                   if($row['Moderation'] == 1){
-                      echo "You are accepted.";
+                      echo "<font color=\"#00FF00\"> You are accepted </font>";
                   } else if($row['Moderation'] == 0){
-                      echo "Awaiting Moderation.";
+                      echo "<font color=\"#0000FF\"> Awaiting Moderation </font>";
                   } else if($row['Moderation'] == 2){
-                      echo "You are rejected";
+                      echo "<font color=\"#FF0000\"> You are rejected </font>";
                   }
               ?>
               </td>
