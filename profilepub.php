@@ -66,7 +66,7 @@ $row = mysql_fetch_array($rst);
             <tr>
               <td height="29">Age</td>
               <td>&nbsp;</td>
-              <td colspan="0"><label><?php echo $row['DOB']; ?></label></td>
+              <td colspan="0"><label><?php echo change_date_format($row['DOB']); ?></label></td>
               <td>&nbsp;</td>
               <td>Email ID</td>
               <td colspan="3"><label><?php echo $row['Emailid']; ?></label></td>
@@ -82,6 +82,7 @@ $row = mysql_fetch_array($rst);
                   $gender = "Female";
               ?>
               <td width="92"><?php echo $row['Bloodgroup']; ?></td>
+              <td>&nbsp;</td>
               <td width="105" height="30">
                   <?php
                   // If designation != Student, then print Designation else class
@@ -100,6 +101,7 @@ $row = mysql_fetch_array($rst);
             <tr>
               <td height="29">Gender</td>
               <td width="92"><?php echo $gender; ?></td>
+              <td>&nbsp;</td>
               <td height="29">Weight</td>
               <td width="65"><?php echo $row['Weight']; ?> Kg</td>
               <td>Address</td>
