@@ -9,9 +9,12 @@ $user=$_SESSION['key'];
 	if(isset($_POST["name"])) 
 	{
 		if( trim($_POST["name"]) != "" ) $name = trim($_POST["name"]);
-		if( trim($_POST["Regdate"]) != "" ) $Regdate = trim($_POST["Regdate"]);
+		// Date of birth
+                $dd = $_POST["dd"];
+                $dm = $_POST["dm"];
+                $dy = $_POST["dy"];
 		if( trim($_POST["sex"]) != "" ) $sex = trim($_POST["sex"]);
-		if( trim($_POST["jumpMenu"]) != "" ) $bgroup = trim($_POST["jumpMenu"]);
+		$bgroup = $_POST["jumpMenu"];
 		if( trim($_POST["quantity"]) != "" ) $quantity = trim($_POST["quantity"]);
 		if( trim($_POST["phone"]) != "" ) $phone = trim($_POST["phone"]);
 		if( trim($_POST["email"]) != "" ) $email = trim($_POST["email"]);
@@ -19,14 +22,22 @@ $user=$_SESSION['key'];
 		if( trim($_POST["address2"]) != "" ) $post = trim($_POST["address2"]);
 		if( trim($_POST["address3"]) != "" ) $district = trim($_POST["address3"]);
 		if( trim($_POST["weight"]) != "" ) $weight = trim($_POST["weight"]);
-                if( trim($_POST["last"]) != "" ) $last1 = trim($_POST["last"]);
+		// Last Date of Donation
+                $ld = $_POST["ld"];
+                $lm = $_POST["lm"];
+                $ly = $_POST["ly"];
                 if( trim($_POST["admnyear"]) != "" ) $admnyear = trim($_POST["admnyear"]);
                 if( trim($_POST["branch"]) != "" ) $branch = trim($_POST["branch"]);
                 if( trim($_POST["batch"]) != "" ) $batch = trim($_POST["batch"]);
 
-                $last2 = str_replace('/', '-', $last1);
+                // Convert Last date of Donation to correct format
+                $last2 = $ld.'-'.$lm.'-'.$ly;
                 $last = date('Y-m-d H:i:s', strtotime($last2));
-                $result="UPDATE registration SET Name='$name',DOB='$Regdate',Gender='$sex',Bloodgroup='$bgroup',Weight='$weight',AdmissionYear='$admnyear',Branch='$branch',Batch='$batch',ContactNo='$phone',Emailid='$user',LastDonation='$last',District='$district',Post='$post' WHERE Emailid='$user'";
+
+                // Convert date of bith to correct format
+                $dob = $dd.'-'.$dm.'-'.$dy;
+                $date_of_birth = date('Y-m-d H:i:s', strtotime($dob));
+                $result="UPDATE registration SET Name='$name',DOB='$date_of_birth',Gender='$sex',Bloodgroup='$bgroup',Weight='$weight',AdmissionYear='$admnyear',Branch='$branch',Batch='$batch',ContactNo='$phone',Emailid='$user',LastDonation='$last',District='$district',Post='$post' WHERE Emailid='$user'";
                 $resulto="UPDATE  user SET PWD='$password' WHERE UserID= '$user'";
 //                echo $bgroup;
 

@@ -7,7 +7,7 @@ $user=$_SESSION['key'];
 ?>
 <?php
  require("./calculate_class.php");
- include("./cnn.php");
+ require("./cnn.php");
  @$sql = "select * from registration WHERE Emailid='$user' ";
  @$rst = mysql_query($sql);
  @$row = mysql_fetch_array($rst);
@@ -42,7 +42,7 @@ function check() {
 
 <script type="text/javascript">
 </script>
-<form name="formcheck" id="formcheck" onsubmit="return check();"form="form" action="./edit_save.php" method="post">
+<form name="formcheck" id="formcheck" onsubmit="return check();" action="./edit_save.php" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="900" border="1" align="center" cellpadding="0" cellspacing="0">
@@ -76,24 +76,25 @@ function check() {
             </tr>
             <td height="32" width="70">Date Of Birth</td>
               <td>&nbsp;</td>
+              <?php list ($d, $m, $y) = split_date($row['DOB']);?>
                 <td width="50" height="62"><select  name="dd" class="Selection" id="dd" style="width:50px">
-                      <option><?php echo date("d"); ?></option>
+                      <option><?php echo $d; ?></option>
                       <?php for($i=1; $i<=31; $i++) { ?>
                       <option value="<?php echo $i;?>"  >
                       <?php  echo $i;?>
                       </option>
                       <?php } ?>
                     </select></td><td>
-                  <select name="dm" class="Selection" id="dm"  style="width:50px">
-                      <option value=<?php echo date("m"); ?>><?php echo date("M"); ?></option>
+                  <select name="dm" class="Selection" id="dm"  style="width:100px">
+                      <option value=<?php echo $m; ?>><?php echo date( 'F', mktime(0, 0, 0, $m) );?></option>
                       <?php
                         for($i=1; $i<=12; $i++)
                         { ?>
-                      <option> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,3) ; ?> </option>
+                      <option> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
                       <?php } ?>
                   </select></td><td>
                   <select name="dy" class="Selection" id="dy" style="width:60px">
-                        <option><?php echo date("Y"); ?></option>
+                        <option><?php echo $y; ?></option>
                         <?php
                         for($i=date("Y"); $i>=date("Y")-90; $i--)
                         { ?>
@@ -207,12 +208,12 @@ function check() {
                       </option>
                       <?php } ?>
                     </select>
-                  <select name="lm" class="Selection" id="lm"  style="width:50px">
-                      <option value=<?php echo date("m"); ?>><?php echo date("M"); ?></option>
+                  <select name="lm" class="Selection" id="lm"  style="width:100px">
+                      <option value=<?php echo date("m"); ?>><?php echo date( 'F', mktime(0, 0, 0, $m) );?></option>
                       <?php
                         for($i=1; $i<=12; $i++)
                         { ?>
-                      <option value="<?php echo $i;?>" > <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,3) ; ?> </option>
+                      <option value="<?php echo $i;?>" > <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
                       <?php } ?>
                   </select>
                   <select name="ly" class="Selection" id="ly" style="width:60px">
