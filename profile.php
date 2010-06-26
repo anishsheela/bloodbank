@@ -77,9 +77,9 @@ if(isset($_POST["logout"])){
               ?></td>
             </tr>
             <tr>
-              <td height="29">Age</td>
+              <td height="29">Date of Birth</td>
               <td>&nbsp;</td>
-              <td colspan="4"><label><?php echo $row['DOB']; ?></label></td>
+              <td colspan="4"><label><?php echo change_date_format($row['DOB']); ?></label></td>
               <td>&nbsp;</td>
               <td>Email ID</td>
               <td colspan="3"><label><?php echo $row['Emailid']; ?></label></td>
