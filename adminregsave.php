@@ -5,6 +5,7 @@
         header( 'Location: ./index.php');
     }
     require 'cnn.php';
+    require 'calculate_class.php';
     function starts_with($str, $src){
         return substr($src, 0, strlen($str))==$str;
     }
@@ -70,8 +71,7 @@
 
     $post = " ";
     $district = trim($_POST["district"]);
-    $age = $year +10 - 2000; // Age according to joining year
-
+    $dob = admnyeartodob($year);
     
     if($gender == "Male")
         $sex = 1;
@@ -80,10 +80,11 @@
 
     $weight = 50;
     // Donation date = current date - 6 months
-    $donation_date = mktime(0, 0, 0, date("m")-6, date("d"), date("Y"));
+    $donation_ts = mktime(0, 0, 0, date("m")-6, date("d"), date("Y"));
+    $donation_date = date('Y-m-d H:i:s', $donation_ts);
     $address = " ";
     $password = createRandomPassword();
-    $result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$age', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
+    $result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$dob', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
     $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$password')";
     mysql_query($result);
     mysql_query($resulto);
