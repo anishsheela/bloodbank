@@ -53,10 +53,10 @@ function check() {
         <td height="292" colspan="3">
           <table width="790" border="0" align="center" cellpadding="5" cellspacing="0" >
             <tr>
-              <td height="55" colspan="9"><div align="center"><span class="style3 style1"><strong>PROFILE EDIT PAGE</strong></span></div></td>
+              <td height="55" colspan="9"><div align="center"><span class="style3 style1"><strong>Edit Your Profile</strong></span></div></td>
             </tr>
             <tr>
-              <td width="51">Name</td>
+              <td width="70">Name</td>
               <td width="1">&nbsp;</td>
               <td colspan="4"><label>
                 <input name="name" type="text" id="name" style="width:300px" value="<?php echo $row['Name']; ?>" size="35" maxlength="100" />
@@ -74,12 +74,35 @@ function check() {
                 ?>></input>
                 Publish</label></td>
             </tr>
-            <tr>
-              <td height="32">Age</td>
+            <td height="32" width="70">Date Of Birth</td>
               <td>&nbsp;</td>
-              <td colspan="4"><label>
-                <input name="Regdate" type="text" id="Regdate"  style="width:300px" value="<?php echo $row['DOB']; ?>" />
-              </label></td>
+                <td width="50" height="62"><select  name="dd" class="Selection" id="dd" style="width:50px">
+                      <option><?php echo date("d"); ?></option>
+                      <?php for($i=1; $i<=31; $i++) { ?>
+                      <option value="<?php echo $i;?>"  >
+                      <?php  echo $i;?>
+                      </option>
+                      <?php } ?>
+                    </select></td><td>
+                  <select name="dm" class="Selection" id="dm"  style="width:50px">
+                      <option value=<?php echo date("m"); ?>><?php echo date("M"); ?></option>
+                      <?php
+                        for($i=1; $i<=12; $i++)
+                        { ?>
+                      <option> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,3) ; ?> </option>
+                      <?php } ?>
+                  </select></td><td>
+                  <select name="dy" class="Selection" id="dy" style="width:60px">
+                        <option><?php echo date("Y"); ?></option>
+                        <?php
+                        for($i=date("Y"); $i>=date("Y")-90; $i--)
+                        { ?>
+                        <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                        <?php } ?>
+                      </select>
+                  </td>
+              </td>
+              <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>Email ID </td>
               <td><label><?php echo $user; ?></label></td>
@@ -94,7 +117,7 @@ function check() {
                     Male</label></td>
                 </tr>
                 <tr>
-                  <td><label>
+                  <td width="90"><label>
                     <input type="radio" name="sex" value="2" id="sex_1" />
                     Female</label></td>
                 </tr>
@@ -108,7 +131,6 @@ function check() {
             </tr>
             <tr>
               <td width="84" height="34">Blood Group</td>
-              <td width="1">&nbsp;</td>
               <td width="74"><select name="jumpMenu" id="jumpMenu">
                 <option><?php echo $row['Bloodgroup']; ?></option>
                 <?php
@@ -122,6 +144,7 @@ function check() {
                 ?>
                 
               </select></td>
+              <td>&nbsp;</td>
               <td>Re-Enter Password</td>
               <td><label>
                 <input name="repass" type="password" id="repass" style="width:300px" value="<?php echo $pass3['PWD']; ?>"  maxlength="100"/>
@@ -129,8 +152,8 @@ function check() {
             </tr>
             <tr>
               <td height="46">Weight</td>
-              <td width="1">&nbsp;</td>
               <td width="74"><input name="weight" type="text" id="weight" value="<?php echo $row['Weight']; ?>" size="15" /></td>
+              <td>&nbsp;</td>
               <td>Address</td>
               <td><input name="address2" type="text" id="address2" style="width:300px" value="<?php echo $row['Post']; ?>" size="100" /></td>
             </tr>
@@ -173,16 +196,41 @@ function check() {
 
               </select>
               </td>
+              <td>&nbsp;</td> <td>&nbsp;</td>
               <td>Last Donation</td>
-              <td>&nbsp;</td>
-              <td><label>
-                      <input type="text" name="last" id="last" value="<?php echo change_date_format($row['LastDonation'])?>" />
-              </label></td>
+              
+                <td width="50" height="62"><select  name="ld" class="Selection" id="ld" style="width:50px">
+                      <option><?php echo date("d"); ?></option>
+                      <?php for($i=1; $i<=31; $i++) { ?>
+                      <option value="<?php echo $i;?>"  >
+                      <?php  echo $i;?>
+                      </option>
+                      <?php } ?>
+                    </select>
+                  <select name="lm" class="Selection" id="lm"  style="width:50px">
+                      <option value=<?php echo date("m"); ?>><?php echo date("M"); ?></option>
+                      <?php
+                        for($i=1; $i<=12; $i++)
+                        { ?>
+                      <option value="<?php echo $i;?>" > <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,3) ; ?> </option>
+                      <?php } ?>
+                  </select>
+                  <select name="ly" class="Selection" id="ly" style="width:60px">
+                        <option><?php echo date("Y"); ?></option>
+                        <?php
+                        for($i=date("Y"); $i>=date("Y")-90; $i--)
+                        { ?>
+                        <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                        <?php } ?>
+                      </select>
+                  </td>
+              
               <td>&nbsp;</td>
 
             </tr>
             <tr>
             <td height="55" colspan="0">District</td>
+            <td>&nbsp;</td>
             <td height="55" colspan="8" align="left">
                   <select name="address3" id="address3" style="width:300px" title="<?php echo $row['District']?>">
                     <option><?php echo $row['District']?></option>
