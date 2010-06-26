@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 24, 2010 at 06:04 AM
+-- Generation Time: Jun 27, 2010 at 12:54 AM
 -- Server version: 5.1.33
 -- PHP Version: 5.2.9
 
@@ -173,7 +173,7 @@ INSERT INTO `district` (`id`, `Name`) VALUES
 CREATE TABLE IF NOT EXISTS `registration` (
   `Regid` int(5) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) DEFAULT NULL,
-  `DOB` varchar(20) DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
   `Gender` smallint(1) NOT NULL,
   `Bloodgroup` varchar(6) NOT NULL,
   `Weight` mediumint(3) NOT NULL,
@@ -189,14 +189,16 @@ CREATE TABLE IF NOT EXISTS `registration` (
   `Post` varchar(100) DEFAULT NULL,
   `Moderation` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Regid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
 
 --
 -- Dumping data for table `registration`
 --
 
 INSERT INTO `registration` (`Regid`, `Name`, `DOB`, `Gender`, `Bloodgroup`, `Weight`, `AdmissionYear`, `Branch`, `Batch`, `Designation`, `ContactNo`, `Emailid`, `LastDonation`, `Publish`, `District`, `Post`, `Moderation`) VALUES
-(1, 'Anish A', '19', 1, 'A+ve', 50, 2008, 'CS', 'A', 'Student', '8907509611', 'aneesh.nl@gmail.com', '2010-05-20', 1, 'Thiruvananthapuram', 'Kamalalayam, SNRA - 79, Konchiravila, Manacaud P O, Thiruvananthapuram - 695009', 1),
+(1, 'Anish A', '1990-04-07', 1, 'A+ve', 50, 2008, 'CS', 'A', 'Student', '8907509611', 'aneesh.nl@gmail.com', '2010-06-01', 1, 'Thiruvananthapuram', 'Kamalalayam', 1),
+(4, 'Arun Anson Arouje', '1990-06-18', 1, 'AB+ve', 50, 2008, 'CS', 'A', 'Student', '9746825270', 'arunanson@gmail.com', '2010-06-01', 1, 'Alappuzha', 'Arasarkadavil \r\nPunnapra P O', 1),
+(8, 'Ismail P K', '1989-06-06', 1, 'B+ve', 55, 2008, 'CS', 'A', 'Student', '8891392729', 'ismuismailpk@gmail.com', '2010-06-04', 1, 'Kozhikode', 'Mukkam Calicut-12', 1);
 
 -- --------------------------------------------------------
 
@@ -231,7 +233,10 @@ CREATE TABLE IF NOT EXISTS `request` (
 --
 
 INSERT INTO `request` (`ReqID`, `PName`, `ReqDate`, `BGroup`, `Quantity`, `NeedDate`, `DrRef`, `Disease`, `Gender`, `ContactP`, `ContactPh`, `PHouse`, `PPlace`, `Post`, `Hospital`, `Status`, `ADate`, `AQty`) VALUES
-
+(1, 'Laila', '2010-03-23 10:27:54', 'O-Ve', 1, '2010-03-27', 'Dr', 'Cancer', 2, 'Sindu lekshmi', '9847781821', 'RCC', 'Trivandrum', '', 'RCC, Trivandrum', 'R', '', 0),
+(2, 'Makker', '2010-03-29 05:48:10', 'A-ve', 1, '2010-03-29', 'Rcc', 'RCC Patient', 2, 'Sajeev Kumar', '9946669126', 'Rcc', 'Thiruvananthapuram', '', 'Rcc', 'R', '', 0),
+(3, 'manna', '2010-04-13 08:30:16', 'O-Ve', 1, '2010-04-15', 'asha', 'cancer', 2, 'jalaja', '9495830737', 'sacret heart, tholicode p o', 'Thiruvananthapuram', '', 'RCC', 'R', '', 0),
+(4, 'sujith', '2010-05-22 08:01:26', 'O-Ve', 1, '2010-05-22', 'sa', 'cancer', 1, 'amreesh', '9895255095', 'shg,k\r\njk', 'Thiruvananthapuram', '', 'kims', 'R', '', 0);
 
 -- --------------------------------------------------------
 
@@ -278,4 +283,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`UserID`, `keyvalue`, `PWD`) VALUES
 ('admin', '5', 'cheesecake'),
-
+('arunanson@gmail.com', '', 'bmw'),
+('ismuismailpk@gmail.com', '', '123456789'),
+('aneesh.nl@gmail.com', '', 'witBompnba!'),
+('aneesh.nl@gmail.com', '', 'witBompnba!'),
+('aneesh.nl@gmail.com', '', 'witBompnba!');
