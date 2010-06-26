@@ -1,0 +1,341 @@
+commit 8fb9cfd25cd90136a0b19b18ba43ac0374eb9ab3
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 14:25:06 2010 +0530
+
+     Updated TODO
+
+commit 7cff9ce3ed76f399039951f047a7d6e54237235c
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 14:24:25 2010 +0530
+
+     Linked public profile to the names
+
+commit a0e1d5773fc576795b50f7d6ab63a3fe0a5cb707
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 14:15:26 2010 +0530
+
+     Minor changes
+
+commit b9904c44bf17fe885452893f1f8e24c5978c5f3b
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 14:07:38 2010 +0530
+
+    Public Profile engine ok
+
+commit 8e12d4c0fec8897d6aefc65c8090bd38d00a944d
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 12:39:08 2010 +0530
+
+    Remove inconsistency in the user interface of edit profile : Fixed
+
+commit 4908fefb606363f2985a19026407b712ca98e484
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 10:53:02 2010 +0530
+
+     Added empty file
+
+commit 16160acbafef258cedfc0a2434abe88810642ff9
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Fri Jun 25 10:52:31 2010 +0530
+
+    Changed TODO and removed datepicker
+
+commit aa4366937926197b5e73f76b914eb53e171f6413
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sat Jun 26 04:48:15 2010 +0530
+
+    Disabled registrations temporarly
+
+commit fca17441660c9be650fea31bdf6af1d5942ab765
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 07:11:02 2010 +0530
+
+    Various major changes
+
+commit 3ba94f579d79ec767cc2ff6ed931e59791409d55
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 06:10:06 2010 +0530
+
+    Added Database for convienience
+
+commit 0272744ac26b31b393410ce923b92641ad4a1f13
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 06:09:28 2010 +0530
+
+    Fixed some white spaces
+
+commit eb0d06d44644bdc40c29f992e4d0222e0cf88845
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 06:02:19 2010 +0530
+
+    TODO : Store date of birth instead of age
+
+commit 4ff34ff6d63ce5c605dd58b893cbde75d47556bd
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 05:39:41 2010 +0530
+
+    Changes in exit. Added new tables
+
+commit a8583546bd7b07f2a99b521856571202e2586902
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 04:13:15 2010 +0530
+
+    Added Hash function for password hashing
+
+commit 882be380dfb5c512a058de9726ea6d8383cf4bf5
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jun 24 03:44:01 2010 +0530
+
+    Chanded TODO : Create installer
+
+commit f98b6fa675bb885eed63b97d9f9f4d8b42cdd03d
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Wed Jun 23 03:08:26 2010 +0530
+
+    Static profile Partially complete. Inconsistent state
+
+commit 80c5c0f7a769003af9a816b8a93ca6682bb28f3d
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Wed Jun 23 03:07:17 2010 +0530
+
+    Chaned name of TODO file and added some tasks
+
+commit 67743a3b50d523698b17c0370af0088156fe0453
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Wed Jun 23 02:28:28 2010 +0530
+
+    Added the calender feature to select date
+
+commit 4b88345af73ba77668335407c5220a05beead9bd
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Mon Jun 21 04:59:13 2010 +0530
+
+    Calculate class from branch function
+
+commit 942a2db83d94f93418e236e2563097dfa5a6da4a
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Mon Jun 21 04:58:30 2010 +0530
+
+    Minor change
+
+commit 86e55220ae042ffb0428e10e5d9ae16c02336ef2
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Mon Jun 21 00:20:16 2010 +0530
+
+    Captha system ok and changed the comments to appear in reverse chronological order
+
+commit a9089d7192e2cfa5ff7f34573883959ac7c52bd2
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 21:01:55 2010 +0530
+
+    Added Status message
+
+commit 03383f55400a555536f87f179be02ba543da46b4
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 20:44:54 2010 +0530
+
+    Fixed bug in publish checkbox
+
+commit 0773f172a3402f728d9569d54660e5ac74d2b400
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 20:42:50 2010 +0530
+
+    Fixed some minor bugs. Admin registration Tested OK
+
+commit a808fe2b1743c78801d3c5b0c8dcc7d1259781b5
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 20:38:22 2010 +0530
+
+    Add option for last donation date and Based on year, not class
+
+commit 72ba9c78f2b3ab188238da1e72df1eb2f5b75d50
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 18:17:36 2010 +0530
+
+    Captch partly compleated
+
+commit 0fffafa4e5fbea3503a3df4e96f36263e31cbaec
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 17:22:43 2010 +0530
+
+    Changed permissions and indentation
+
+commit f9a207b79d39363da88f8ccb9a45626ab4bdc9d8
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 17:21:58 2010 +0530
+
+    Changed permissions and indentation
+
+commit 28aad6c64d362a41942bdaf73b95d045d9ea2e00
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 07:43:44 2010 +0530
+
+    Disable comments and some changes
+
+commit 4daea1998cb986bb19b49835b3ed377f913e610d
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 07:42:56 2010 +0530
+
+    Recaptha Library
+
+commit 9dd22614cb93d164dabd963c0f46b64fa0609286
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 07:40:11 2010 +0530
+
+    Changed TODO
+
+commit 4e3057448fde6686685025376b6cc7f48c2e2a4a
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 20 07:37:30 2010 +0530
+
+    Added TODO
+
+commit 0b92036b978c0f2d522a27984db4f1f459d78c4f
+Author: അനീഷ് അനില്‍ കുമാര്‍ <aneesh@aneesh-desktop.(none)>
+Date:   Sun Jun 20 07:26:32 2010 +0530
+
+    Updated readme
+
+commit 1a4262785b64657d932116be54842d5535df4aeb
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Fri Mar 26 21:57:09 2010 +0530
+
+    Getting mail worked
+
+commit 439baa42fc2dbeeafbb6bc1c0e2125cf36aef807
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Fri Mar 26 20:44:01 2010 +0530
+
+    Finished admin registration. Testing
+
+commit 106b976d7139d8bfd151719a46f544766d871b37
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Fri Mar 26 18:16:33 2010 +0530
+
+    Adding Admin Registration
+
+commit 52a0a46fb0f7abcf37c9666193c5296b426ef6a8
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 12:04:38 2010 +0530
+
+    Changed Blood request page
+
+commit 50d052600c33e757aa71d3f74235bc81cc2d8cbc
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 11:55:26 2010 +0530
+
+    Added Alotment details
+
+commit e4b3cd27c8c8f483a7b4c5743437ae194333dc34
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 11:32:53 2010 +0530
+
+    Fixed Bugs in Donors Display
+
+commit 1ebb339e34724b894e166500f745a064829aa700
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 10:50:47 2010 +0530
+
+    Compleated Moderation Facilities
+
+commit 568c6867c91584d6bb2818b979ee9d8df946dde1
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 10:50:33 2010 +0530
+
+    Compleated Moderation Facilities
+
+commit f9119c92ba41fab2b0d9a3d8a393871648ce973d
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 09:53:21 2010 +0530
+
+    Added Moderation status
+
+commit d1a4700cdb6206d3d4ff7b5bc2c51a525b0ac0ad
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Thu Mar 25 09:33:28 2010 +0530
+
+    Added Git Repository link to source code
+
+commit e2dce98a38b2a167cb9c41768a0040038ea93b50
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 21:37:05 2010 +0530
+
+    Cleanup
+
+commit ea54edf4bd857b021ff6b2eaad5a0a271ddc4903
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 21:13:46 2010 +0530
+
+    Changing colours
+
+commit 40bcf97783fc1a6ce108e4cb1dbd06ff59757ebf
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 21:09:41 2010 +0530
+
+    Cleanup
+
+commit 8c2c7850e35e97d9713772e23ec747e2e58f264a
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 21:02:53 2010 +0530
+
+    Deleted unwated file
+
+commit 76f32c3100dc8bbc618d5c0eb1bfad55986a6a40
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 21:01:38 2010 +0530
+
+    Read admin password directly from database
+
+commit c3d80a64c9f75db71bc64007126c90ac48fd4590
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 20:58:42 2010 +0530
+
+    Added Blood Group Column
+
+commit d8d9c1a1b529e5e358884b3f49cec1181d5b69fa
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 20:53:19 2010 +0530
+
+    Stripped off district & blood group strings when not selected
+
+commit d08c11543a4434e167cc8e7620059e7d837cfc4a
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 20:48:28 2010 +0530
+
+    Minor indentation changes
+
+commit 59d8981610861ee516b0ae39b849790984c9d6a2
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 20:46:11 2010 +0530
+
+    Changed admin's phone number
+
+commit ec48085c9f28b62153bacb81a425e217fe2390af
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Wed Mar 24 20:44:45 2010 +0530
+
+    Shows only moderated users
+
+commit dc633aae83201d5f03cd27dce2ec951119084c25
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Sun Mar 21 22:38:00 2010 -0700
+
+    Fixed Bug on resetting the combo box when selection is made.
+
+commit b62d40750a7504e9b2f7d341a5999bc509df738b
+Author: Aneesh A <aneesh@aneesh-desktop.(none)>
+Date:   Sun Mar 21 11:56:09 2010 +0530
+
+    Database
+
+commit e47526152ff11ac9ecd798488e45332fe014b4ea
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Sat Mar 20 17:44:34 2010 +0530
+
+    upload all
+
+commit ae7e9f9e3714b8b0110f158beb4586dce194a5e3
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Sat Mar 20 17:40:26 2010 +0530
+
+    first commit
