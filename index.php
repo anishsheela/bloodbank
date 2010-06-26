@@ -72,7 +72,7 @@ $_SESSION['key']=0;
                   </tr>
                   <tr>
                     <td class="BodyFont">Password</td>
-                    <td><input name="pwd" type="password"  id="pwd" size="36" maxlength="100"/></td>
+                    <td><input name="pwd" type="password"  id="pwd" size="35" maxlength="100"/></td>
                   </tr>
                   <tr>
                     <td colspan="2" align="center">                      

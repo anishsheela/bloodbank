@@ -19,12 +19,14 @@
       <tr bgcolor="#CC9933">
         <td height="184" bgcolor="#FFFFFF" ><div align="center">
           <p><strong>NSS BLOODBANK MANAGEMENT SYSTEM</strong></p>
-          <p><b>Development team, MCET</b></p>
+          <p><b>Development Team</b></p>
           <p>Anish A (890 750 96 11 , <a href="mailto:aneesh.nl@gmail.com">aneesh.nl@gmail.com</a>),</p>
-          <p>Arun Anson ( <a href="mailto:arunanson.gmail.com">arunanson.gmail.com</a>) S4CS<br />
+          <p>Arun Anson ( <a href="mailto:arunanson.gmail.com">arunanson.gmail.com</a>) S5CS<br />
           </p>
-          <p><b> Thanks to </b></p><br/>
-          Gireesh G, NSS Programme Officer <br/> Ashalatha Thampuran, Principal<br/>
+          <p><b> Thanks to </b></p>
+          Gireesh G, Faculty Electronics and Communications <br/>
+          Vishnu H, Faculty Computer Science & Engineering <br/>
+          Ashalatha Thampuran, Principal<br/>
           <p><b>Originally developed by </b></p>
           <p>Navaneeth T(9947834438, <a href="mailto:navanjo@gmail.com">navanjo@gmail.com</a> ),</p>
           <p>Ameena.Musthafa, Neethu K V, Vineeth K.<br />
