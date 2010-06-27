@@ -27,7 +27,7 @@ require("./cnn.php");
  <?php 
   $district="";
   $bgroup="";
-        $sql = "SELECT * FROM `registration` WHERE 1 ";
+        $sql = "SELECT * FROM `registration`";
        if(isset($_POST["jumpMenu"]))										
 		
 		 if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") 
@@ -90,14 +90,10 @@ require("./cnn.php");
            <option value="NULL" >All</option>
           <?php
 
-                        $rst = mysql_query("select DISTINCT District from registration ");
-                        while($nt=mysql_fetch_array($rst))
-                        {
-                                ?>
-                                  <option value="<?php echo $nt["District"];?>"><?php echo $nt["District"]?></option>
-                                  <?php
-                        }
-                ?>
+            $rst = mysql_query("select DISTINCT District from registration ");
+            while($nt=mysql_fetch_array($rst)) { ?>
+          <option value="<?php echo $nt["District"];?>"><?php echo $nt["District"]?></option>
+          <?php } ?>
           </select></td>
                 </tr>
               <tr>
@@ -106,15 +102,12 @@ require("./cnn.php");
                 <td>
                   <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
                   <option>All</option>
-                  <?php
+                <?php
                     $sql1 = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
                     $result = mysql_query($sql1);
-                    while ($row1 = mysql_fetch_array($result)) {
-                ?>
+                    while ($row1 = mysql_fetch_array($result)) { ?>
                     <option><?php echo $row1["BloodGroup"];?></option>
-                    <?php
-                    }
-                    ?>
+                <?php } ?>
                   </select></td>
                 </tr>
               <tr>

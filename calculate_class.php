@@ -86,4 +86,16 @@ function split_date($date) {
    list($year,$month,$day) = explode("-",$date);
    return array ($day,$month,$year);
 }
+
+// Function to recalculate the stock of blood
+// Bugs in this function
+function stock_calculate() {
+    $sql_registration = "SELECT * FROM registration";
+    $result = mysql_query($sql_registration);
+    while($row = mysql_fetch_array($result, MYSQL_NUM)) {
+        $bgroup = $row['Bloodgroup'];
+        $sql_stock = "UPDATE stock SET Stock = Stock + 1  WHERE BGroup  = '$bgroup'";
+        mysql_query($sql_stock);
+    }
+}
 ?>

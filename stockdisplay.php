@@ -3,14 +3,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <?php
 session_start(); 
-if($_SESSION['key']!='admin')
-{   session_destroy(); 
-	header( 'Location: ./index.php');
-				 } 
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+} 
+
+require("./cnn.php");
+require('./calculate_class.php');
 ?>
-<?php
- include("./cnn.php");
- ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,7 +36,7 @@ if($_SESSION['key']!='admin')
  <th>Quantity</th>
   </tr>
 <?php
-$sql = "select * from stock  order by BID  limit 0,10 ";
+$sql = "SELECT * FROM stock ORDER BY BID";
 $rst = mysql_query($sql);
 
 $i = 0;
@@ -57,6 +57,7 @@ mysql_close($link );
  </table>
           </td>
         </tr>
+        <tr><?php stock_calculate();?></tr>
       <tr bgcolor="#990000">
         <td height="15" colspan="3"><div align="right"><span class="style4"><a href="main.php">HOME</a> &nbsp;&nbsp;</span> </div></td>
       </tr>
