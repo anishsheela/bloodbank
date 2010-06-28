@@ -23,8 +23,8 @@
                     <strong>Database Settings</strong><br/>
                     User Name : <input name="dbuser"/> <br/>
                     Password  : <input name="dbpass"/> <br/>
-                    Host Name : <input name="dbhost"/> <br/><br/>
-                    Database name : <input name="db"/> <br/>
+                    Host Name : <input name="dbhost"/> <br/>
+                    Database name : <input name="db"/> <br/><br/>
                     <strong>User Settings</strong><br/>
                     User Name : <strong>admin</strong> <br/>
                     Password  : <input name="pass1"/> <br/>
