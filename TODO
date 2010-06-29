@@ -13,7 +13,7 @@
 * Display public profile. [Finished : Anish A]
     - Add clean URLs to display public profile
 * Password is stored in database as plain text. Use md5 hash to store it. Hint: use md5(md5()) for added security [Assigned to : Mahesh]
-* Create and installer that automatically creates database, allows us to customise the database details. [In Progress : Anish A]
+* Create and installer that automatically creates database, allows us to customise the database details. [Finished: Anish A]
   - Design the user interface.
   - Use the Installer file if database is not found. Else proceed with normal operation.
   - Installer sould ask username of database, password, database name, etc.
