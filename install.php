@@ -20,11 +20,12 @@
         <td height="184" bgcolor="#FFFFFF" >
             <div align="left">
                 <form name="install" action="install_action.php" method="post">
+                    <strong><?php echo $msg;?></strong>
                     <strong>Database Settings</strong><br/>
                     User Name : <input name="dbuser"/> <br/>
-                    Password  : <input name="dbpass"/> <br/>
+                    Password  : <input name="dbpass" type="password"/> <br/>
                     Host Name : <input name="dbhost"/> <br/>
-                    Database name : <input name="dbname" type="password"/> <br/><br/>
+                    Database name : <input name="dbname"/> <br/><br/>
                     <strong>User Settings</strong><br/>
                     User Name : <strong>admin</strong> <br/>
                     Password  : <input name="pass1" type="password"/> <br/>
