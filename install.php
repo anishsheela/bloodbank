@@ -19,14 +19,20 @@
       <tr bgcolor="#CC9933">
         <td height="184" bgcolor="#FFFFFF" >
             <div align="left">
-                <form name="install" action="install_action.php">
+                <form name="install" action="install_action.php" method="post">
+                    <strong><?php echo $msg;?></strong>
+                    <strong>Database Settings</strong><br/>
+                    User Name : <input name="dbuser"/> <br/>
+                    Password  : <input name="dbpass" type="password"/> <br/>
+                    Host Name : <input name="dbhost"/> <br/>
+                    Database name : <input name="dbname"/> <br/><br/>
+                    <strong>User Settings</strong><br/>
                     User Name : <strong>admin</strong> <br/>
-                    Password  : <input name="pass1"/> <br/>
-                    Retype Password  : <input name="pass2"/> <br/>
-                    Database name : <input name="db"/> <br/>
+                    Password  : <input name="pass1" type="password"/> <br/>
+                    Retype Password  : <input name="pass2" type="password"/> <br/>
                     <input type="submit" name="submit" id="submit" value="Install"/>
                 </form>
-                
+
             </div>
         </td>
       </tr>
@@ -36,7 +42,7 @@
       <tr bgcolor="#990000">
         <td height="19"><div align="right"><span class="style4"><a href="index.php" class="style5">HOME</a> &nbsp;&nbsp;</span> </div></td>
       </tr>
-      
+
     </table></td>
   </tr>
 </table>

@@ -1,9 +1,15 @@
 <?php
 session_start(); 
 if(isset($_SESSION["key"]))
+    $_SESSION['key']=0;
+$cnn_file = 'cnn.php';
+if(!file_exists($cnn_file))
+    header( 'Location: ./install.php?msg=Error: '.$cnn_file.' not found.<br/>');
 
-$_SESSION['key']=0;
-
+require $cnn_file;
+$test_sql = 'SELECT * FROM user';
+if(!mysql_query($test_sql, $link))
+    header( 'Location: ./install.php?msg=Error: Database not installed<br/>');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

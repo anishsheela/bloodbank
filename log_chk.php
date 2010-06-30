@@ -29,8 +29,7 @@ if($uid != "" && $pwd != ""){
             $i='1';
             $_SESSION['key']=$k;
             header( 'Location: ./main.php');
-            //$sql = "UPDATE user SET keyvalue ='333' where UserID='admin')";
-            //mysql_query("UPDATE user SET keyvalue ='".$k."' where UserID='".$uid."'");
+            mysql_query("UPDATE user SET keyvalue ='".$k."' where UserID='".$uid."'");
         } else {
             $i='1';
             $_SESSION['key']= $uid;
