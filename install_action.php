@@ -34,17 +34,21 @@ fclose($file_handler);
 require($cnn_file);
 // Install initial database
 $dbfile = 'database.sql';
-if(is_writable($cnn_file))
-    header( 'Location: ./install.php?msg=Error: '.$dbfile.' not readable<br/>');
+/*if(is_readable($dbfile))
+    header( 'Location: ./install.php?msg=Error: '.$dbfile.' not readable<br/>');*/
 $file_handler = fopen($dbfile, 'r');
 
+// Execute all the queries stored in database file
 while(!feof($file_handler)) {
     $sql_statement = fgets($file_handler);
     mysql_query($sql_statement, $link);
 }
 
+require 'hash.php';
+$hashed_pass = superHash($pass1);
+
 $user_sql = "INSERT INTO `user` (`UserID`, `keyvalue`, `PWD`)
-    VALUES ('admin', '5', '$pass1')";
+    VALUES ('admin', '5', '$hashed_pass')";
 mysql_query($user_sql, $link);
 
 header( 'Location: ./index.php?msg= Installation Sucessfull. You can now login.');
