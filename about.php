@@ -26,7 +26,7 @@
           <p><b> Thanks to </b></p>
           Gireesh G, Faculty Electronics and Communications <br/>
           Vishnu H, Faculty Computer Science & Engineering <br/>
-          Ashalatha Thampuran, Principal<br/>
+          Dr. Ashalatha Thampuran, Principal<br/>
           <p><b>Originally developed by </b></p>
           <p>Navaneeth T(9947834438, <a href="mailto:navanjo@gmail.com">navanjo@gmail.com</a> ),</p>
           <p>Ameena.Musthafa, Neethu K V, Vineeth K.<br />

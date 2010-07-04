@@ -1,3 +1,11 @@
+<?php
+include('cnn.php');
+session_start();
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,14 +42,6 @@ function validate(form_id,email) {
    }
 }
 </script>
-<?php
-include('cnn.php');
-/*session_start();
-if($_SESSION['key']!='admin'){
-    session_destroy();
-    header( 'Location: ./index.php');
-}*/
-?>
 <div id="Layer1">
   <form id="form1" name="form1" method="post" action="adminregsave.php" onsubmit="javascript:return validate('form1','email');">
   <label></label>
@@ -59,7 +59,6 @@ if($_SESSION['key']!='admin'){
           for ($index = (int)$year; $index >= 2002; $index--) {
               ?> <option><?php echo $index;?></option><?
           }
-
           ?>
 
       </select>
