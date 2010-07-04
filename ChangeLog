@@ -1,3 +1,109 @@
+commit 5f4a031f3b2b93e2632c41db1aead309352fdfc7
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Sun Jul 4 14:45:38 2010 +0530
+
+    Hashed password complete
+
+commit 1dc3ed651dba1efce07bfb9c364d792fadd52dc4
+Author: Anish A <aneesh.nl@gmail.com>
+Date:   Sun Jul 4 14:33:40 2010 +0530
+
+    Changed hasing function
+
+commit 84204fc4103696ba54d8582ddd3bb5cc5d8d163e
+Author: Aneesh A <aneesh@ACS-SUPER-COMPUTER.(none)>
+Date:   Sat Jul 3 23:42:19 2010 +0530
+
+    Added gitignore to ignore cnn.php and netbeans project files
+
+commit 87acdff0c626b7266655da388d6eed8ceb9ad915
+Merge: 941a3a6 5a55eea
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Thu Jul 1 00:27:02 2010 +0530
+
+    Merge branch 'installer'
+    
+    Conflicts:
+    	install.php
+
+commit 5a55eeaee40161476d97e92904912ce51c3f2a98
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Tue Jun 29 23:26:11 2010 +0530
+
+    Updated TODO
+
+commit 69c197b517c572911dc8bce94164252252920325
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Tue Jun 29 23:25:06 2010 +0530
+
+    Finished Installer
+
+commit f55eafa920ff8607dc77c5cd7d4b98517d5e2ea3
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Tue Jun 29 20:00:31 2010 +0530
+
+    Connection File generation ok. Continuing with database
+
+commit 8833320febf335a672cd2387a0853aabe3221be5
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Mon Jun 28 09:59:07 2010 +0530
+
+    Organized inputs
+
+commit 6b830cf6bf1b9405da68a85148f5294ec03a1aed
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Mon Jun 28 07:38:57 2010 +0530
+
+    Added some Feilds : User Interface OK
+
+commit 809439ac0c9dceba0f01d9eea1b10f6429fb1db5
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Mon Jun 28 07:37:58 2010 +0530
+
+    Code cleanup
+
+commit 0ac0c2e8ec338ccc92d5ab3c7ca85183dee491a2
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 23:16:56 2010 +0530
+
+    Switched to new branch for creating installer
+
+commit 941a3a657e42f94467b990c18cb10bc73ac06a57
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 20:09:30 2010 +0530
+
+    Installer work : User interface design in progress
+
+commit 11fcd90c92accc89df3a5d037aaebb0a3fe1baf9
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 20:09:05 2010 +0530
+
+    Installer work undertaken by Anish A
+
+commit d547a60b23ffa92646be9c520b3dfb1cea1e5c91
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 19:04:51 2010 +0530
+
+    Updated TODO and undertaken some.
+
+commit 8cc04cf264bc1d748f0248c20ca8d371f0b5d2c3
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 00:56:02 2010 +0530
+
+    Added updated database schema with sample data
+
+commit 76a66eda4b71b6564aed81dcc826337c378dedd0
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 00:53:43 2010 +0530
+
+    Updated About Us
+
+commit 4f828114bfd902000906dfb0ee4eedf1205f5231
+Author: aneesh <aneesh.nl@gmail.com>
+Date:   Sun Jun 27 00:47:36 2010 +0530
+
+    Updated Changelog
+
 commit 7ab8248bf28f33b140ed28b4a0746c463e6b0f99
 Author: aneesh <aneesh.nl@gmail.com>
 Date:   Sun Jun 27 00:47:01 2010 +0530
