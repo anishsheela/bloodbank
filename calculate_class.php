@@ -63,6 +63,20 @@ function admnyeartodob($year) {
     return agetodob(admnyeartoage($year));
 }
 
+
+/*
+* Function to turn a mysql datetime (YYYY-MM-DD HH:MM:SS) into a unix timestamp
+* @param str
+* The string to be formatted
+*/
+
+function date2timestamp($str) {
+    list($date, $time) = explode(' ', $str);
+    list($year, $month, $day) = explode('-', $date);
+    $timestamp = mktime(0, 0, 0, $month, $day, $year);
+    return $timestamp;
+}
+
 // Function that calculates age from date of birth
 function getAge($iTimestamp)
 {
