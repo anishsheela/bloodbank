@@ -8,13 +8,10 @@ if($_SESSION['key'] ==""){
     header( 'Location: ./index.php');
 }*/
 
-// Class calculation
+// Class and Age calculation
 require("./calculate_class.php");
-				 
-				 
-$user=$_SESSION['key'];
 
-require("./cnn.php");
+require "./cnn.php";
 $sql = "select * from registration WHERE Regid=$regid ";
 $rst = mysql_query($sql);
 $row = mysql_fetch_array($rst);
@@ -41,10 +38,10 @@ $row = mysql_fetch_array($rst);
   <tr>
     <td><table width="900" border="1" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="900" colspan="3"><img src="images/title.jpg" width="1000" height="121" /></td>
+          <td width="900" colspan="3"><img alt="Title image"  src="images/title.jpg" width="1000" height="121" /></td>
       </tr>
       <tr bgcolor="#CC9933">
-        <td height="292" colspan="3"><form name="formcheck" id="formcheck" onsubmit="" form="form" action="" method="post">
+        <td height="292" colspan="3"><form name="formcheck" id="formcheck" onsubmit="" action="" method="post">
           <table width="888" border="0" align="center" cellpadding="5" cellspacing="0" >
             <tr>
               <td height="56" colspan="11"><div align="center"><span class="style3 style1"><strong><?php echo $row['Name']?>'s Profile</strong></span></div></td>
@@ -66,7 +63,7 @@ $row = mysql_fetch_array($rst);
             <tr>
               <td height="29">Age</td>
               <td>&nbsp;</td>
-              <td colspan="0"><label><?php echo change_date_format($row['DOB']); ?></label></td>
+              <td colspan="0"><label><?php echo getAge(date2timestamp($row['DOB'])); ?></label></td>
               <td>&nbsp;</td>
               <td>Email ID</td>
               <td colspan="3"><label><?php echo $row['Emailid']; ?></label></td>
