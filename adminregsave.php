@@ -119,11 +119,14 @@ $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $headers .= 'To: '.$name.' <'.$email.'>' . "\r\n";
 
 
-if(mail($email, $subject, $message, $headers))
+if(mail($email, $subject, $message, $headers)) {
     $mes = 'Mail sucessfully sent to '.$email.$_GET['msg'];
-else
-    $mes = "Mail sending failure";
-
+    $status = 0;
+}
+else {
+    $mes = 'Mail sending failure';
+    $status = 1;
+}
 // Give the status message to adminreg.php
-header("Location: ./adminreg.php?msg=$mes Regid : ");
+header("Location: ./adminreg.php?msg=$mes&status=$status");
 ?>

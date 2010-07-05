@@ -25,6 +25,14 @@ if($_SESSION['key']!='admin'){
 	font-size: 18px;
 	font-weight: bold;
 }
+.status {
+    color: red;
+    border: red solid;
+}
+.status2 {
+    color :green;
+    border: green solid;
+}
 -->
 </style>
 </head>
@@ -37,7 +45,7 @@ function validate(form_id,email) {
    //var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    var reg = /^([A-Za-z0-9_\-\.])$/;
    var address = document.forms[form_id].elements[email].value;
-   if(reg.test(address) == false) {
+   if(address == '') {
       alert('Invalid Email Address');
       document.form1.email.focus();
       return false;
@@ -166,8 +174,14 @@ function validate(form_id,email) {
     <input name="submit" type="submit" id="submit" value="Submit" />
   </p>
 </form></div><br/>
+
+<div class ="<?php if($status == 0) echo 'status2'; else echo 'status';?>">
+Status :
+<b>
 <?php
-    echo 'Status : <b>'.$_GET['msg'].'</b>';
+    echo $_GET['msg'];
 ?>
+</b>
+</div>
 </body>
 </html>

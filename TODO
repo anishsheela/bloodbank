@@ -26,11 +26,11 @@
     - Mobile number can be used to send SMS. // Not possible
     - Rest's persons can be assigned a single password or generate a report containing all password
 * Remove inconsistency in the user interface of edit profile [Fixed : Anish A]
-* Set the date Feilds to day, Month and year [Finished : Anish A]
+* Set the date Fields to day, Month and year [Finished : Anish A]
 * Handle the persons with no e-mail or mobile and make a list separately.
     - Need not be done using web interface. Can be done by query.
     - But mobile number and e-mail can be null in Admin registration.
-* Update Readme file
+* Update Read me file
 
 Quick fixes to some problems
 ----------------------------
