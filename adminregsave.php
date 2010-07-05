@@ -40,11 +40,9 @@ $gender = trim($_POST["gender"]);
 if( trim($_POST["email"]) != "" )
     $email = trim($_POST["email"]);
 
-if( trim($_POST["phone"]) != "" )
-    $phone = trim($_POST["phone"]);
+$phone = trim($_POST["phone"]);
 
-if( trim($_POST["name"]) != "" )
-    $name = trim($_POST["name"]);
+$name = trim($_POST["name"]);
 
 $email = strtolower($email);
 $bloodgroup = trim($_POST["bloodgroup"]);
@@ -69,7 +67,8 @@ $weight = 50;
 $donation_ts = mktime(0, 0, 0, date("m")-6, date("d"), date("Y"));
 $donation_date = date('Y-m-d H:i:s', $donation_ts);
 $address = " ";
-$password = createRandomPassword();
+//$password = createRandomPassword();
+$password = 'nssmcet';
 $hashed_pass = superHash($password);
 $result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$dob', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
 $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$hashed_pass')";
@@ -118,14 +117,13 @@ $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 // Additional headers
 $headers .= 'To: '.$name.' <'.$email.'>' . "\r\n";
-$headers .= 'From: NSS Unit MCET <mcetnss@gmail.com>' . "\r\n";
 
 
-// Mail it
 if(mail($email, $subject, $message, $headers))
     $mes = 'Mail sucessfully sent to '.$email.$_GET['msg'];
 else
     $mes = "Mail sending failure";
+
 // Give the status message to adminreg.php
-header("Location: ./adminreg.php?msg=$mes");
+header("Location: ./adminreg.php?msg=$mes Regid : ");
 ?>

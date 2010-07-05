@@ -1,25 +1,3 @@
-<?php ob_start(); ?>
-
-<?php
-// No need for session 
-/*session_start();
-if($_SESSION['key'] ==""){
-    session_destroy();
-    header( 'Location: ./index.php');
-}*/
-
-// Class and Age calculation
-require("./calculate_class.php");
-
-require "./cnn.php";
-$sql = "select * from registration WHERE Regid=$regid ";
-$rst = mysql_query($sql);
-$row = mysql_fetch_array($rst);
-
- ?>
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,7 +11,16 @@ $row = mysql_fetch_array($rst);
 </head>
 
 <body>
+<?php
+// Class and Age calculation
+require "./calculate_class.php";
+require "./cnn.php";
 
+$sql = "select * from registration WHERE Regid=$regid ";
+$rst = mysql_query($sql);
+$row = mysql_fetch_array($rst);
+
+ ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="900" border="1" align="center" cellpadding="0" cellspacing="0">

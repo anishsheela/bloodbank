@@ -1,8 +1,8 @@
 * Add Captcha to comment page [Finished : Anish A]
-    - Add mailhide to e-mails
+    - Add mail hide to e-mails
 * Set the class to branch [Almost done : Anish A]
     - Database Changes
-        - Feilds
+        - Fields
             - Admission Year - Digit
             - Branch - 3 Char
             - Batch - 1 char
@@ -12,22 +12,29 @@
     - Admin page changes
 * Display public profile. [Finished : Anish A]
     - Add clean URLs to display public profile
-* Password is stored in database as plain text. Use md5 hash to store it. Hint: use md5(md5()) for added security [Assigned to : Mahesh]
-* Create and installer that automatically creates database, allows us to customise the database details. [Finished: Anish A]
+* Password is stored in database as plain text. Use md5 hash to store it. Hint: use md5(md5()) for added security [Finished : Anish A]
+* Create and installer that automatically creates database, allows us to customize the database details. [Finished: Anish A]
   - Design the user interface.
   - Use the Installer file if database is not found. Else proceed with normal operation.
-  - Installer sould ask username of database, password, database name, etc.
+  - Installer should ask username of database, password, database name, etc.
   - cnn.php will help in that
   - Administrator password can be given. It is the matter of just changing admin password in the database
 * Store the date of birth instead of age. Calculate age from it. [Finished : Anish A]
 * Function to recalculate stock of blood. [In progress, Bug : Anish A]
 * Update Privacy Policy
-* Handle persons with no e-mail
-    - Mobile number can be used to send SMS.
+* Handle persons with no e-mail // Set a default password
+    - Mobile number can be used to send SMS. // Not possible
     - Rest's persons can be assigned a single password or generate a report containing all password
 * Remove inconsistency in the user interface of edit profile [Fixed : Anish A]
 * Set the date Feilds to day, Month and year [Finished : Anish A]
-* Handle the persons with no e-mail or mobile and make a list seperately.
+* Handle the persons with no e-mail or mobile and make a list separately.
     - Need not be done using web interface. Can be done by query.
     - But mobile number and e-mail can be null in Admin registration.
 * Update Readme file
+
+Quick fixes to some problems
+----------------------------
+
+* Admin registration, set the password of all to a common password : nssmcet [Fixed]
+* Change password can be made to another form. // Not essential
+*
