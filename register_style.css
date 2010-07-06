@@ -1,0 +1,132 @@
+* { margin: 0px; padding: 0px; }
+
+body { 
+    margin: 0 auto;
+    background: #f5f5f5;
+    color: #555;
+    width: 800px;
+
+    /* make reference to the Yanone Kaffeesatz font */
+    font-family: 'Yanone Kaffeesatz', arial, sans-serif;
+}
+
+h1 { 
+    color: #555;
+    margin: 0 0 20px 0;
+    text-align: center;
+}	
+
+p {	
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+form { 
+    float: left;
+    border: 1px solid #ddd;
+    padding: 30px 40px 20px 40px;
+    margin: 75px 0 0 0;
+    width: 775px;
+    background: #fff;
+
+    /* -- CSS3 - define rounded corners for the form -- */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    /* -- CSS3 - create a background graident -- */
+    background: -webkit-gradient(linear, 0% 0%, 0% 40%, from(#EEE), to(#FFFFFF));
+    background: -moz-linear-gradient(0% 40% 90deg,#FFF, #EEE);
+
+    /* -- CSS3 - add a drop shadow -- */
+    -webkit-box-shadow:0px 0 50px #ccc;
+    -moz-box-shadow:0px 0 50px #ccc;
+}	
+
+#left-side { 
+    float: left;
+    margin: 0 40px 0 0;
+    width: 300px;
+}
+
+#right-side { 
+    float: right;
+    width: 420px;
+}
+#submit-button {
+    float:left;
+}
+
+input, textarea, select {
+    padding: 8px;
+    margin-bottom: 20px;
+    background: #fff;
+    width: 300px;
+    font-size: 14px;
+    color: #555;
+    border: 1px #ddd solid;
+
+    /* -- CSS3 Shadow - create a shadow around each input element -- */
+    -webkit-box-shadow: 0px 0px 4px #aaa;
+    -moz-box-shadow: 0px 0px 4px #aaa;
+
+    /* -- CSS3 Transition - define what the transition will be applied to (i.e. the background) -- */
+    -webkit-transition: background 0.3s linear;
+}
+
+textarea {
+    width: 290px;
+    height: 77px;
+}
+
+input:hover, textarea:hover, select:hover {
+    background: #eee;
+}
+
+input.submit {
+    width: 150px;
+    color: #eee;
+    text-transform: uppercase;
+    margin-top: 10px;
+    background-color: #18a5cc;
+    border: none;
+
+    /* -- CSS3 Transition - define which property to animate (i.e. the shadow)  -- */
+    -webkit-transition: -webkit-box-shadow 0.3s linear;
+
+    /* -- CSS3 - Rounded Corners -- */
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    /* -- CSS3 Shadow - create a shadow around each input element -- */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#18a5cc), to(#0a85a8));
+    background: -moz-linear-gradient(25% 75% 90deg,#0a85a8, #18a5cc);
+    position: relative;
+    left: 150px;
+} 
+
+input.reset {
+    width: 150px;
+    color: #eee;
+    text-transform: uppercase;
+    margin-top: 10px;
+    background-color: #18a5cc;
+    border: none;
+
+    /* -- CSS3 Transition - define which property to animate (i.e. the shadow)  -- */
+    -webkit-transition: -webkit-box-shadow 0.3s linear;
+
+    /* -- CSS3 - Rounded Corners -- */
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    /* -- CSS3 Shadow - create a shadow around each input element -- */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#18a5cc), to(#0a85a8));
+    background: -moz-linear-gradient(25% 75% 90deg,#0a85a8, #18a5cc);
+}
+
+input.submit:hover { 		
+    -webkit-box-shadow: 0px 0px 20px #555;
+    cursor:  pointer;
+}
+
