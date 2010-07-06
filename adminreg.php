@@ -1,7 +1,7 @@
 <?php
 include('cnn.php');
 session_start();
-if($_SESSION['key']!='admin'){
+if($_SESSION['key']!='admin') {
     session_destroy();
     header( 'Location: ./index.php');
 }
@@ -127,7 +127,7 @@ function validate(form_id,email) {
      <input name="publish" type="checkbox" checked="checked" />
     </label>
   </p>
-  <label>Bloodgroup
+  <label>Blood Group
     <select name="bloodgroup">
                 <option>O+ve</option>
                 <option>A+ve</option>
