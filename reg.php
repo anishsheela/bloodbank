@@ -17,102 +17,97 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </script>
 <style type="text/css">
 <!--
-.style1 {font-size: x-large}
-.style3 {color: #000000}
+#header {
+    font-size: 150pt;
+    font-weight: bold;
+    color: #000000;
+}
 -->
 </style>
 </head>
 
 <body>
-<script language="JavaScript">
-function check()
-{
-if(document.formcheck.name.value=="")
-{
-alert("Enter name");
-document.formcheck.name.focus();
-return false;
+<script type="text/javascript">
+function validate(form_id,email) {
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var address = document.forms[form_id].elements[email].value;
+   if(reg.test(address) == false) {
+      alert('Invalid Email Address');
+      return false;
+   }
 }
-if(document.formcheck.Regdate.value=="")
-{
-alert("Enter Your Age");
-document.formcheck.Regdate.focus();
-return false;
-}
-
-if(document.formcheck.Regdate.value < 18)
-{
-alert("You must be above 18 to donate blood.");
-document.formcheck.Regdate.focus();
-return false;
-}
-if(document.formcheck.classs.value=="")
-{
-alert("Select the class");
-document.formcheck.quantity.focus();
-return false;
-}
-if(document.formcheck.jumpMenu.selectedIndex==0)
-{
-alert("Select Your Blood Group");
-document.formcheck.jumpMenu.focus();
-return false;
-}
-if(document.formcheck.weight.value=="")
-{
-alert("Enter Weight");
-document.formcheck.weight.focus();
-return false;
-}
-if(document.formcheck.last.value=="")
-{
-alert("Enter Last Donated Date(Put 0 if never donate)");
-document.formcheck.last.focus();
-return false;
-}
-if(document.formcheck.phone.value=="")
-{
-alert("Enter Contact Phone Number");
-document.formcheck.phone.focus();
-return false;
-}
-if(document.formcheck.email.value=="")
-{
-alert("Enter Email");
-document.formcheck.email.focus();
-return false;
-}
-if(document.formcheck.password.value=="")
-{
-alert("Enter Password");
-document.formcheck.password.focus();
-return false;
-}
-if(document.formcheck.repass.value=="")
-{
-alert("Re-enter The Same Password Given Above");
-document.formcheck.repass.focus();
-return false;
-}
-if(document.formcheck.repass.value !== document.formcheck.password.value)
-{
-alert("Password Mismatch Please Check It");
-document.formcheck.repass.focus();
-return false;
-}
-if(document.formcheck.address2.value=="")
-{
-alert("Enter Address");
-document.formcheck.address2.focus();
-return false;
-}
-if(document.formcheck.address3.value=="Select")
-{
-alert("Select District");
-document.formcheck.address3.focus();
-return false;
-}
-
+function check() {
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var address = document.formcheck.email.value;
+   if(reg.test(address) == false) {
+      alert('Invalid Email Address');
+      return false;
+   }
+    if(document.formcheck.name.value=="") {
+        alert("Enter name");
+        document.formcheck.name.focus();
+        return false;
+    }
+    if(document.formcheck.Regdate.value=="") {
+        alert("Enter Your Age");
+        document.formcheck.Regdate.focus();
+        return false;
+    }
+    if(document.formcheck.Regdate.value < 18) {
+        alert("You must be above 18 to donate blood.");
+        document.formcheck.Regdate.focus();
+        return false;
+    }
+    if(document.formcheck.classs.value=="") {
+        alert("Select the class");
+        document.formcheck.quantity.focus();
+        return false;
+    }
+    if(document.formcheck.jumpMenu.selectedIndex==0) {
+        alert("Select Your Blood Group");
+        document.formcheck.jumpMenu.focus();
+        return false;
+    }
+    if(document.formcheck.weight.value=="") {
+        alert("Enter Weight");
+        document.formcheck.weight.focus();
+        return false;
+    }
+    if(document.formcheck.last.value=="") {
+        alert("Enter Last Donated Date(Put 0 if never donate)");
+        document.formcheck.last.focus();
+        return false;
+    }
+    if(document.formcheck.phone.value=="") {
+        alert("Enter Contact Phone Number");
+        document.formcheck.phone.focus();
+        return false;
+    }
+    if(document.formcheck.email.value=="") {
+        alert("Enter Email");
+        document.formcheck.email.focus();
+        return false;
+    }
+    if(document.formcheck.password.value=="") {
+        alert("Enter Password");
+        document.formcheck.password.focus();
+        return false;
+    }
+    if(document.formcheck.repass.value=="") {
+        alert("Re-enter The Same Password Given Above");
+        document.formcheck.repass.focus();
+        return false;
+    }
+    if(document.formcheck.repass.value !== document.formcheck.password.value) {
+        alert("Password Mismatch Please Check It");
+        document.formcheck.repass.focus();
+        return false;
+    }
+    if(document.formcheck.address3.value=="Select") {
+        alert("Select District");
+        document.formcheck.address3.focus();
+        return false;
+    }
 }
 </script>
 
@@ -125,11 +120,11 @@ return false;
         </tr>
       <tr bgcolor="#CC9933">
         <td height="292" colspan="3">
-       <form name="formcheck" id="formcheck" onsubmit="return check();"form action="./reg_save.php" method="post">
+       <form name="formcheck" id="formcheck" onsubmit="javascript:return check();" action="./reg_save.php" method="post">
 
           <table width="790" border="0" align="center" cellpadding="5" cellspacing="0" >
             <tr>
-              <td height="55" colspan="10"><div align="center"><span class="style3 style1"><strong>REGISTRATION FORM</strong></span></div></td>
+              <td height="55" colspan="10"><div align="center"><span class="header"><strong>REGISTRATION FORM</strong></span></div></td>
               </tr>
             <tr>
               <td width="51">Name</td>
@@ -193,7 +188,7 @@ return false;
                 <option>A-ve</option>
                 <option>B-ve</option>
                 <option>AB-ve</option>
-                                                                                    </select></td>
+            </select></td>
               <td>Re-Enter Password</td>
               <td colspan="2"><label>
               <input type="password" name="repass" id="repass"  maxlength="100" style="width:300px"/>
@@ -305,7 +300,7 @@ return false;
           </td>
         </tr>
       <tr bgcolor="#990000">
-        <td height="15" colspan="3" bgcolor="#FFFFFF"><div align="center"><span class="style4 style3"><a href="privacy.php">Privacy Policy</a></span></div></td>
+        <td height="15" colspan="3" bgcolor="#FFFFFF"><div align="center"><span class="style4 style3"><a href="privacy.xhtml">Privacy Policy</a></span></div></td>
       </tr>
       
     </table></td>

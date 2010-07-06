@@ -46,7 +46,7 @@ function check() {
   <tr>
     <td><table width="900" border="1" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="900" colspan="3"><img src="images/title.jpg" width="1000" height="121" border="0" /></td>
+        <td width="900" colspan="3"><img src="images/title.jpg" alt="Title" width="995" height="119" border="0" /></td>
       </tr>
       <tr bgcolor="#CC9933">
         <td height="292" colspan="3">
@@ -155,7 +155,7 @@ function check() {
               <td width="74"><input name="weight" type="text" id="weight" value="<?php echo $row['Weight']; ?>" size="15" /></td>
               <td>&nbsp;</td>
               <td>Address</td>
-              <td><input name="address2" type="text" id="address2" style="width:300px" value="<?php echo $row['Post']; ?>" size="100" /></td>
+              <td><textarea name="address2" id="address2" cols="40" rows="3"><?php echo $row['Post']; ?></textarea></td>
             </tr>
             <tr>
               <td height="59">Class</td>
@@ -165,7 +165,6 @@ function check() {
                 <?php for($i = (int)date('Y'); $i > ((int)date('Y') - 20); $i--) {?>
                 <option><?php echo (string)$i;?></option>
                 <?php }?>
-
               </select>
               </td>
               <td><select name="branch" id="branch">

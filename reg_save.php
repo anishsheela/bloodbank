@@ -1,7 +1,8 @@
 <?php 
 
-include("./cnn.php");
+require 'cnn.php';
 
+// Initialize all the values. It it necessary?
 $name="";
 $Regdate="";
 $sex="";
