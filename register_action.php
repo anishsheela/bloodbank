@@ -2,7 +2,7 @@
 
 require 'cnn.php';
 require 'calculate_class.php';
-require 'hash.php'
+require 'hash.php';
 
 // Initialize all the values
 $name="";
