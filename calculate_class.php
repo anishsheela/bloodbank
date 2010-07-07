@@ -1,7 +1,7 @@
 <?php
 
 // Connection settings
-require("./cnn.php");
+require 'cnn.php';
 
 // There is some bugs in this function. Please correct it.
 function calculate_class($regid) {
@@ -109,12 +109,12 @@ function dmy2mysql($d, $m, $y) {
 // Function to recalculate the stock of blood
 // Bugs in this function
 function stock_calculate() {
-    $sql_registration = "SELECT * FROM registration";
-    $result = mysql_query($sql_registration);
-    while($row = mysql_fetch_array($result)) {
-        $bgroup = $row['Bloodgroup'];
-        $sql_stock = "UPDATE stock SET Stock = Stock + 1  WHERE BGroup  = \'".$bgroup."\'";
-        mysql_query($sql_stock);
+    $sql_registration = "SELECT * FROM registration WHERE Moderation=1";
+    $result1 = mysql_query($sql_registration);
+    while($row = mysql_fetch_array($result1)) {
+        ;//$bgroup = $row['Bloodgroup'];
+ //       $sql_stock = "UPDATE stock SET Stock = Stock + 1  WHERE BGroup  = \'".$bgroup."\'";
+ //       mysql_query($sql_stock);
     }
 }
 ?>

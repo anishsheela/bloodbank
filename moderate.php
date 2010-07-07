@@ -35,7 +35,7 @@
             <th>Reg ID</th>
             <th>Name</th>
             <th>Blood Group </th>
-            <th>Age</th>
+            <th>Date Of Birth</th>
             <th>Contact No</th>
             <th>Class</th>
             <th>Gender</th>

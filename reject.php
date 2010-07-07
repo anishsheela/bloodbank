@@ -1,17 +1,17 @@
-<?php ob_start(); ?>
+<?php
+ob_start();
 
-<?php
-    session_start();
-    if($_SESSION['key']!='admin'){
-        session_destroy();
-        header( 'Location: ./index.php');
-    }
-    Header("Cache-control: private, no-cache");
-    Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
-    Header("Pragma: no-cache");
-?>
-<?php
-    require("./cnn.php");
+session_start();
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+}
+Header("Cache-control: private, no-cache");
+Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+Header("Pragma: no-cache");
+
+require 'cnn.php';
+require 'calculate_class.php';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<form id="form1" name="form1" method="post" action="rejectchk.php">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="848" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -34,7 +35,7 @@
             <th>Reg ID</th>
             <th>Name</th>
             <th>Blood Group </th>
-            <th>Age</th>
+            <th>Date Of Birth</th>
             <th>Contact No</th>
             <th>Class</th>
             <th>Gender</th>
@@ -53,13 +54,13 @@ while ($row = mysql_fetch_array($rst)){
         $rcolor = "#CC9933";
 ?>
           <tr>
-                                       
+
             <td width="7%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
             <td width="23%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"> <?php echo $row["Name"];?></td>
             <td width="12%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px" align="center"><?php echo $row["Bloodgroup"];?></td>
-            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["DOB"];?></td>
+            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo change_date_format($row["DOB"]);?></td>
             <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
-            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Class"];?></td>
+            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
             <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php
             if($row["Gender"] == 1){
                 echo "Male";
@@ -69,17 +70,16 @@ while ($row = mysql_fetch_array($rst)){
 
             ?></td>
             <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px">
-            <form id="form1" name="form1" method="post" action="rejectchk.php">
                <div align="center"><label>
                 <input type="checkbox" name=<?php echo "moderate".$row["Regid"];?> />
                 </label>
              </div>
-            
+
             </td>
           </tr>
           <?php
 }
-mysql_close($link);
+mysql_close($link );
 
 ?>
         </table></td>
