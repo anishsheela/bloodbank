@@ -30,6 +30,7 @@ if(is_writable($cnn_file))
 $file_handler = fopen($cnn_file, 'w');
 fwrite($file_handler, $cnn_string);
 fclose($file_handler);
+chmod("cnn.php", 0444);
 
 require($cnn_file);
 // Install initial database
