@@ -23,27 +23,40 @@ require("./calculate_class.php");
 
 <body>
 <?php
-       if(isset($_POST["jumpMenu"])){
-		
-                    $bgroup = trim($_POST["jumpMenu"]);
-                    $classs = trim($_POST["classs"]);
-                    if($bgroup == "0" OR $bgroup == ""){
-                        if($classs == "0"OR $classs == "")
-                            $sql = "select * from registration order by Regid";
-                        else
-                            $sql = "select * from registration WHERE Class = '$classs' order by Regid";
+if(!isset ($bgroup))
+    $bgroup = "All";
+if(!isset ($admnyear))
+    $admnyear = "All";
+if(!isset ($branch))
+    $branch = "All";
+if(!isset ($batch))
+    $batch = "All";
 
-                    } else {
-                        if($classs == "0" OR $classs == "")
-                            $sql = "select * from registration where Bloodgroup  = '$bgroup' order by Regid";
-                        else
-                            $sql = "select * from registration WHERE Class = '$classs' AND Bloodgroup = '$bgroup' order by Regid";
 
-                    }
+$sql = 'SELECT * FROM registration WHERE ';
+if(($_POST["bgroup"] != "All") or !(isset ($_POST["bgroup"])))
+    $sql .= 'Bloodgroup = \''.$bgroup.'\' AND ';
+else
+    $sql .= ' 1=1 AND ';
+
+if(($_POST["admnyear"] != "All") or !(isset ($_POST["admnyear"])))
+    $sql .= 'AdmissionYear  = \''.$admnyear.'\' AND ';
+else
+    $sql .= ' 1=1 AND ';
+
+if(($_POST["branch"] != "All") or !(isset ($_POST["branch"])))
+    $sql .= 'Branch = \''.$branch.'\' AND ';
+else
+    $sql .= ' 1=1 AND ';
+
+if(($_POST["batch"] != "All") or !(isset ($_POST["batch"])))
+    $sql .= 'Batch = \''.$batch.'\'';
+else
+    $sql .= ' 1=1';
+
+$sql .= ' AND Moderation=1';
+
 echo $sql;
-       
-
-}
 
 ?>
 
@@ -51,91 +64,68 @@ echo $sql;
   <tr>
     <td><table width="848" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td colspan="2"><a href="main.php"><img src="images/title.jpg" width="1000" height="121" border="0" /></a></td>
+        <td colspan="2"><a href="main.php"><img alt="" src="images/title.jpg" width="1000" height="121" border="0" /></a></td>
         </tr>
       <tr bgcolor="#CC9933">
-        <td width="548" height="34"><strong> &nbsp;&nbsp;List of Donors  Blood Group        
-           <?php
-		echo $bgroup;
-		?>
-            in class <?php echo $classs?>
+        <td width="548" height="34"><strong>List of Donors  Blood Group        
+           <?php echo $bgroup; ?> in branch <?php echo $branch?> at year <?php echo $admnyear;?> at batch <?php echo $batch;?>.
            <label></label>
         </strong></td> 
         <td width="452"><form id="form1" name="form1" method="post" action="">
           <strong>Blood Group</strong>
-          <select name="jumpMenu" size="1" id="jumpMenu" onchange="form1.submit();">
+          <select name="bgroup" size="1" id="bgroup" onchange="form1.submit();">
             <option selected="selected"><?php echo $bgroup;?></option>
-            <option value="0">All</option>
-                <option><?php echo $row['Bloodgroup']; ?></option>
-                <?php
-                    $sql1 = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
-                    $result = mysql_query($sql);
-                    while ($row1 = mysql_fetch_array($result)) {
-                ?>
-                    <option><?php echo $row1["BloodGroup"];?></option>
-                <?php
-                    }
-                ?>
+            <option>All</option>
+            <?php
+                $sql1 = "SELECT BloodGroup FROM bloodgroup";
+                $result1 = mysql_query($sql1);
+                while ($row1 = mysql_fetch_array($result1)) {
+            ?>
+                <option><?php echo $row1["BloodGroup"];?></option>
+            <?php } ?>
           </select>
           <strong>
-          <label>Class
-          <select name="classs" id="classs" onchange="form1.submit();">
-		<option selected="selected"><?php echo $classs;?></option>
-                <option value="0">All</option>
-                <option> S1S2A </option>
-                <option> S1S2B </option>
-                <option> S1S2C </option>
-                <option> S1S2D </option>
-                <option> S1S2E </option>
-                <option> S1S2F </option>
-                <option> S3CS </option>
-                <option> S3IT </option>
-                <option> S3BT </option>
-                <option> S3ME </option>
-                <option> S3EE </option>
-                <option> S3EC </option>
-                <option> S4CS </option>
-                <option> S4IT </option>
-                <option> S4BT </option>
-                <option> S4ME </option>
-                <option> S4EE </option>
-                <option> S4EC </option>
-                <option> S5CS </option>
-                <option> S5IT </option>
-                <option> S5BT </option>
-                <option> S5ME </option>
-                <option> S5EE </option>
-                <option> S5EC </option>
-                <option> S6CS </option>
-                <option> S6IT </option>
-                <option> S6BT </option>
-                <option> S6ME </option>
-                <option> S6EE </option>
-                <option> S6EC </option>
-                <option> S7CS </option>
-                <option> S7IT </option>
-                <option> S7BT </option>
-                <option> S7ME </option>
-                <option> S7EE </option>
-                <option> S7EC </option>
-                <option> S8CS </option>
-                <option> S8IT </option>
-                <option> S8BT </option>
-                <option> S8ME </option>
-                <option> S8EE </option>
-                <option> S8EC </option>
-                <option> S1S2MCA </option>
-                <option> S3MCA </option>
-                <option> S4MCA </option>
-                <option> S5MCA </option>
-                <option> S6MCA </option>
-                <option> Staff </option>
-                <option> Alumini </option>
-                <option> Others </option>
+          <label>Admission Year
+          <select name="admnyear" id="admnyear" onchange="form1.submit();">
+		<option selected="selected"><?php echo $admnyear;?></option>
+                <option>All</option>
+                <?php for($i = (int)date('Y'); $i > ((int)date('Y') - 11); $i--) {?>
+                <option><?php echo $i;?></option>
+                <?php }?>
               </select>
           </label>
           </strong>
-        </form>     </td>
+          <strong>
+          <label>Branch
+          <select name="branch" size="1" id="branch" onchange="form1.submit();">
+            <option selected="selected"><?php echo $branch;?></option>
+            <option>All</option>
+            <?php
+                $sql1 = "SELECT course FROM course";
+                $result1 = mysql_query($sql1);
+                while ($row1 = mysql_fetch_array($result1)) {
+            ?>
+                <option><?php echo $row1["course"];?></option>
+            <?php } ?>
+          </select>
+          </label>
+          </strong>
+        <strong>
+          <label>Batch
+          <select name="batch" size="1" id="batch" onchange="form1.submit();">
+            <option selected="selected"><?php echo $batch;?></option>
+            <option>All</option>
+            <?php
+                $sql1 = "SELECT batch FROM batch_list";
+                $result1 = mysql_query($sql1);
+                while ($row1 = mysql_fetch_array($result1)) {
+            ?>
+                <option><?php echo $row1["batch"];?></option>
+            <?php } ?>
+          </select>
+          </label>
+        </strong>
+        </form></td>
         </tr>
       <tr bgcolor="#CC9933">
         <td height="146" colspan="2"><table width="89%" border="1" align="center" cellpadding="4" cellspacing="0">

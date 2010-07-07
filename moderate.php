@@ -58,9 +58,9 @@ while ($row = mysql_fetch_array($rst)){
             <td width="7%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
             <td width="23%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"> <?php echo $row["Name"];?></td>
             <td width="12%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px" align="center"><?php echo $row["Bloodgroup"];?></td>
-            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["DOB"];?></td>
+            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo change_date_format($row["DOB"]);?></td>
             <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
-            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Class"];?></td>
+            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
             <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php
             if($row["Gender"] == 1){
                 echo "Male";
