@@ -1,9 +1,6 @@
 <?php require 'cnn.php';?>
 <html> 
 <head> 
-<!-- Import Google Font - Yanone Kaffeesatz  -->	
-<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css' />
-
 <title>Blood Donor Registration Form</title>
 <LINK href="register_style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
@@ -69,7 +66,7 @@ function check() {
 </head> 
  
 <body> 
-    <form name="formcheck" id="formcheck" onsubmit="javascript:return check();" action="test.php" method="post">
+    <form name="formcheck" id="formcheck" onsubmit="javascript:return check();" action="register_action.php" method="post">
 		
 		<h1>Blood Bank Registration</h1>
 		<div id="left-side">	
@@ -89,7 +86,7 @@ function check() {
               <?php
                 for($i=1; $i<=12; $i++)
                 { ?>
-              <option> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
+              <option value="<?php echo $i;?>"> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
               <?php } ?>
             </select>
             <select name="dy" style="width:auto">
@@ -152,7 +149,7 @@ function check() {
               <?php
                 for($i=1; $i<=12; $i++)
                 { ?>
-              <option> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
+              <option value="<?php echo $i;?>"> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
               <?php } ?>
             </select>
             <select name="ly" style="width:auto">
@@ -181,17 +178,16 @@ function check() {
 			<p>Email ID (This will be your username for login)</p>
 			<input type="text" name="email" id="email" value=""/>
             <p>Password</p>
-			<input type="text" name="password" value=""/>
+			<input type="password" name="password" value=""/>
             <p>Re Enter Password</p>
-			<input type="text" name="repass" value=""/>
+			<input type="password" name="repass" value=""/>
 			<p>Address</p>
             <textarea cols="" rows=""  name="address"></textarea>
             <p>&nbsp;</p><p>&nbsp;</p>
             <input type="reset" value="Reset" name="reset" class="reset"/>
 		</div><!-- end user-message -->
         <div id="submit-button">
-			<input type="submit" value="Submit" name="submit" class="submit" />
-            
+            <input type="submit" value="Submit" name="submit" class="submit" />
         </div>
 	</form>	
  

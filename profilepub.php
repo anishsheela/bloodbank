@@ -16,6 +16,7 @@
 require "./calculate_class.php";
 require "./cnn.php";
 
+$regid = $_GET['regid'];
 $sql = "select * from registration WHERE Regid=$regid ";
 $rst = mysql_query($sql);
 $row = mysql_fetch_array($rst);

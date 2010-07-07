@@ -1,6 +1,11 @@
 <?php
 //ob_start();
 session_start();
+if($_SESSION['key'] ==""){
+    session_destroy();
+    header( 'Location: ./index.php?msg=Session Expired. Please login again');
+}
+
 $user=$_SESSION['key'];
 
 ?>
@@ -126,7 +131,7 @@ function check() {
               <td rowspan="3">&nbsp;</td>
               <td>Password</td>
               <td><label>
-                <input name="password" type="password" id="password" style="width:300px" value="<?php echo $pass3['PWD']; ?>"  maxlength="100"/>
+                      <a href="change_password.php?email=<?php echo $user;?>&hash=<?php echo $pass3['PWD'];?>">Change Password</a>
               </label></td>
             </tr>
             <tr>
@@ -145,9 +150,9 @@ function check() {
                 
               </select></td>
               <td>&nbsp;</td>
-              <td>Re-Enter Password</td>
+              <td>&nbsp;</td>
               <td><label>
-                <input name="repass" type="password" id="repass" style="width:300px" value="<?php echo $pass3['PWD']; ?>"  maxlength="100"/>
+                      &nbsp;
               </label></td>
             </tr>
             <tr>

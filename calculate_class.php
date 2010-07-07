@@ -101,14 +101,19 @@ function split_date($date) {
    return array ($day,$month,$year);
 }
 
+// Function to convert the date, month, year to mysql date
+function dmy2mysql($d, $m, $y) {
+    $time_stamp = mktime(0, 0, 0, $m, $d, $y);
+    return date( 'Y-m-d', $time_stamp );
+}
 // Function to recalculate the stock of blood
 // Bugs in this function
 function stock_calculate() {
     $sql_registration = "SELECT * FROM registration";
     $result = mysql_query($sql_registration);
-    while($row = mysql_fetch_array($result, MYSQL_NUM)) {
+    while($row = mysql_fetch_array($result)) {
         $bgroup = $row['Bloodgroup'];
-        $sql_stock = "UPDATE stock SET Stock = Stock + 1  WHERE BGroup  = '$bgroup'";
+        $sql_stock = "UPDATE stock SET Stock = Stock + 1  WHERE BGroup  = \'".$bgroup."\'";
         mysql_query($sql_stock);
     }
 }

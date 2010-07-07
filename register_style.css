@@ -48,6 +48,10 @@ form {
     margin: 0 40px 0 0;
     width: 300px;
 }
+#center-side {
+    float: none;
+    margin: 0 40px 0 0;
+}
 
 #right-side { 
     float: right;
