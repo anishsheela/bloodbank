@@ -1,6 +1,5 @@
-<?php ob_start(); ?>
-
-<?php
+<?php 
+ob_start();
 session_start(); 
 if($_SESSION['key']!='admin'){
     session_destroy();
@@ -11,8 +10,8 @@ Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 Header("Pragma: no-cache");
 ?>
 <?php
-require("./cnn.php");
-require("./calculate_class.php");
+require 'cnn.php';
+require 'calculate_class.php';
  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,39 +22,37 @@ require("./calculate_class.php");
 
 <body>
 <?php
-if(!isset ($bgroup))
+if((!isset ($bgroup)) OR (!isset ($admnyear)) OR (!isset ($branch)) OR (!isset ($batch))) {
     $bgroup = "All";
-if(!isset ($admnyear))
     $admnyear = "All";
-if(!isset ($branch))
     $branch = "All";
-if(!isset ($batch))
     $batch = "All";
+    $sql = 'SELECT * FROM registration WHERE Moderation = 1';
+} else {
 
+    $sql = 'SELECT * FROM registration WHERE ';
+    if(($_POST["bgroup"] != "All") or !(isset ($_POST["bgroup"])))
+        $sql .= 'Bloodgroup = \''.$bgroup.'\' AND ';
+    else
+        $sql .= ' 1 = 1 AND ';
 
-$sql = 'SELECT * FROM registration WHERE ';
-if(($_POST["bgroup"] != "All") or !(isset ($_POST["bgroup"])))
-    $sql .= 'Bloodgroup = \''.$bgroup.'\' AND ';
-else
-    $sql .= ' 1=1 AND ';
+    if(($_POST["admnyear"] != "All") or !(isset ($_POST["admnyear"])))
+        $sql .= 'AdmissionYear  = \''.$admnyear.'\' AND ';
+    else
+        $sql .= ' 1 = 1 AND ';
 
-if(($_POST["admnyear"] != "All") or !(isset ($_POST["admnyear"])))
-    $sql .= 'AdmissionYear  = \''.$admnyear.'\' AND ';
-else
-    $sql .= ' 1=1 AND ';
+    if(($_POST["branch"] != "All") or !(isset ($_POST["branch"])))
+        $sql .= 'Branch = \''.$branch.'\' AND ';
+    else
+        $sql .= ' 1 = 1 AND ';
 
-if(($_POST["branch"] != "All") or !(isset ($_POST["branch"])))
-    $sql .= 'Branch = \''.$branch.'\' AND ';
-else
-    $sql .= ' 1=1 AND ';
+    if(($_POST["batch"] != "All") or !(isset ($_POST["batch"])))
+        $sql .= 'Batch = \''.$batch.'\'';
+    else
+        $sql .= ' 1 = 1';
 
-if(($_POST["batch"] != "All") or !(isset ($_POST["batch"])))
-    $sql .= 'Batch = \''.$batch.'\'';
-else
-    $sql .= ' 1=1';
-
-$sql .= ' AND Moderation=1';
-
+    $sql .= ' AND Moderation=1';
+}
 echo $sql;
 
 ?>
