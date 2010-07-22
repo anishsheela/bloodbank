@@ -110,6 +110,18 @@ function validate(form_id,email) {
     <input name="name" type="text" value="" />
 </label>
   </p>
+  <label>Blood Group
+    <select name="bloodgroup">
+                <option value="">Select</option>
+                <?php
+                    $sql = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
+                    $result = mysql_query($sql);
+                    while ($row1 = mysql_fetch_array($result)) {
+                ?>
+                    <option><?php echo $row1["BloodGroup"];?></option>
+                <?php } ?>
+    </select>
+</label>
   <p align="justify">
     <label>Email :
     <input name="email" type="text" id="email"/>
@@ -127,19 +139,6 @@ function validate(form_id,email) {
      <input name="publish" type="checkbox" checked="checked" />
     </label>
   </p>
-  <label>Blood Group
-    <select name="bloodgroup">
-                <option>O+ve</option>
-                <option>A+ve</option>
-                <option>B+ve</option>
-                <option>AB+ve</option>
-                <option>O-Ve</option>
-                <option>A-ve</option>
-                <option>B-ve</option>
-                <option>AB-ve</option>
-                                       
-    </select>
-</label>
     <p align="justify">
     <label>Gender
     <select name="gender">

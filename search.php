@@ -32,23 +32,22 @@ require("./cnn.php");
 		
 		 if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") 
 		{ $bgroup = trim($_POST["jumpMenu"]);
-		  $sql =$sql."AND Bloodgroup  = '$bgroup'";
+		  $sql =$sql." WHERE Bloodgroup  = '$bgroup'";
 		}
 		
 		  
 		if(isset($_POST["District"]))
 		if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All")
 		{ $district = trim($_POST["District"]);
-          $sql = $sql." AND District = '$district'";
+          $sql = $sql." WHERE District = '$district'";
 		}
 		 
 		 if(isset($_POST["RadioGroup1"]))										
 		if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3) 
 		{ $sex = trim($_POST["RadioGroup1"]);
-          $sql = $sql." AND Gender  = '$sex'";
+          $sql = $sql." WHERE Gender  = '$sex'";
 		} 
-	  $sql = $sql.';';
-		 ?>
+	  $sql = $sql.';'; ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -204,7 +203,7 @@ mysql_close($link );
       </tr>
       <tr bgcolor="#990000">
         <td height="15" colspan="2" bgcolor="#FFFFFF"><div align="right">
-          <div align="center"><span class="style4"><strong>* Admin Phone number : 9446172320</strong></span> </div>
+          <div align="center"><span class="style4"><strong>* Admin Phone number : 8907509611</strong></span> </div>
         </div></td>
       </tr>
       

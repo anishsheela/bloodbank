@@ -33,12 +33,15 @@
         <td height="146" colspan="2"><table width="89%" border="1" align="center" cellpadding="4" cellspacing="0">
           <tr>
             <th>Reg ID</th>
+            <th>Class</th>
             <th>Name</th>
             <th>Blood Group </th>
-            <th>Date Of Birth</th>
+            <th>Email</th>
             <th>Contact No</th>
-            <th>Class</th>
-            <th>Gender</th>
+            <th>Pub</th>
+            <th>Sex</th>
+            <th>District</th>
+
             <th>Moderate</th>
           </tr>
 <?php
@@ -56,11 +59,16 @@ while ($row = mysql_fetch_array($rst)){
           <tr>
                                        
             <td width="7%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
+            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
             <td width="23%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"> <?php echo $row["Name"];?></td>
             <td width="12%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px" align="center"><?php echo $row["Bloodgroup"];?></td>
-            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo change_date_format($row["DOB"]);?></td>
+            <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["Emailid"];?></td>
             <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
-            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
+            <td width="5%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php                 if($row['Publish'] == 1){
+                      echo 'Yes';
+                  } else {
+                      echo 'No';
+                  }?></td>
             <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php
             if($row["Gender"] == 1){
                 echo "Male";
@@ -69,6 +77,7 @@ while ($row = mysql_fetch_array($rst)){
             }
 
             ?></td>
+            <td width="12%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px" align="center"><?php echo $row["District"];?></td>
             <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px">
                <div align="center"><label>
                 <input type="checkbox" name=<?php echo "moderate".$row["Regid"];?> />

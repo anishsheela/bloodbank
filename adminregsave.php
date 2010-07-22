@@ -32,7 +32,7 @@ setcookie("admission_year", $year, time()+3600);
 $batch = trim($_POST["batch"]);
 setcookie("batch", $batch, time()+3600);
 
-$class = trim($_POST["branch"]);
+$branch = trim($_POST["branch"]);
 setcookie("branch", $branch, time()+3600);
 
 $gender = trim($_POST["gender"]);
@@ -68,7 +68,7 @@ $donation_ts = mktime(0, 0, 0, date("m")-6, date("d"), date("Y"));
 $donation_date = date('Y-m-d H:i:s', $donation_ts);
 $address = " ";
 //$password = createRandomPassword();
-$password = 'nssmcet';
+$password = $email;
 $hashed_pass = superHash($password);
 $result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$dob', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
 $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$hashed_pass')";
