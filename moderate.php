@@ -1,17 +1,16 @@
-<?php ob_start(); ?>
-
 <?php
-    session_start();
-    if($_SESSION['key']!='admin'){
-        session_destroy();
-        header( 'Location: ./index.php');
-    }
-    Header("Cache-control: private, no-cache");
-    Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
-    Header("Pragma: no-cache");
+ob_start();
+session_start();
+if($_SESSION['key']!='admin'){
+    session_destroy();
+    header( 'Location: ./index.php');
+}
+Header("Cache-control: private, no-cache");
+Header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+Header("Pragma: no-cache");
 
-    require "./cnn.php";
-    require './calculate_class.php';
+require 'cnn.php';
+require 'calculate_class.php';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

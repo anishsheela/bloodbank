@@ -88,6 +88,7 @@ mysql_close($link );
       <td>
             <center>
                 <input type="submit" name="accept" id="accept" value="Accept" style="width:100px"/>
+                <input type="submit" name="delete" id="accept" value="Delete" style="width:100px"/>
             </center>
       </td>
       </tr>
