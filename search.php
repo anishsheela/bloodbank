@@ -53,7 +53,6 @@ require("./cnn.php");
         else
             $sql .= " WHERE Gender  = '$sex'";
     }
-    echo $sql;
 ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
