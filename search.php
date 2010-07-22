@@ -1,8 +1,8 @@
-<?php ob_start(); ?>
-
 <?php
-require("./cnn.php");
- ?>
+ob_start();
+require 'cnn.php';
+require 'calculate_class.php';
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -177,7 +177,7 @@ while ($row = mysql_fetch_array($rst)) {
                         <a href=<?php echo 'profilepub.php?regid='.$row['Regid']?>><?php echo $row["Name"]; ?></a>
             </b></div></td>
             <td width="15%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="center"><b><?php echo $row["Bloodgroup"]; ?></b></div></td>
-            <td width="10%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php echo $row["DOB"]; ?></b></div></td>
+            <td width="10%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php echo getAge(date2timestamp($row["DOB"])); ?></b></div></td>
             <td width="19%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"><div align="right"><b><?php
                 if($row['Publish'] == '1'){
                     echo $row["ContactNo"];

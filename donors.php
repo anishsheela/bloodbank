@@ -53,8 +53,6 @@ if((!isset ($bgroup)) OR (!isset ($admnyear)) OR (!isset ($branch)) OR (!isset (
 
     $sql .= ' AND Moderation=1';
 }
-echo $sql;
-
 ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -158,7 +156,7 @@ if($rcolor == "#CC9933")
                 <?php echo $row["Name"];?>
                 </a></td>
             <td width="11%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php echo $row["Bloodgroup"];?></td>
-            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["DOB"];?></td>
+            <td width="7%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo getAge(date2timestamp($row["DOB"]));?></td>
             <td width="16%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
             <td width="14%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo calculate_class($row["Regid"]);?></td>
             <td width="18%" style="padding-top:5px"bgcolor="<?php echo $rcolor;?>"><?php
