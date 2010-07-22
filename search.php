@@ -24,30 +24,37 @@ require("./cnn.php");
 </head>
 
 <body>
- <?php 
+<?php 
   $district="";
   $bgroup="";
         $sql = "SELECT * FROM `registration`";
        if(isset($_POST["jumpMenu"]))										
-		
-		 if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") 
-		{ $bgroup = trim($_POST["jumpMenu"]);
-		  $sql =$sql." WHERE Bloodgroup  = '$bgroup'";
-		}
-		
-		  
-		if(isset($_POST["District"]))
-		if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All")
-		{ $district = trim($_POST["District"]);
-          $sql = $sql." WHERE District = '$district'";
-		}
-		 
-		 if(isset($_POST["RadioGroup1"]))										
-		if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3) 
-		{ $sex = trim($_POST["RadioGroup1"]);
-          $sql = $sql." WHERE Gender  = '$sex'";
-		} 
-	  $sql = $sql.';'; ?>
+
+     if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") {
+         $bgroup = trim($_POST["jumpMenu"]);
+         $sql =$sql." WHERE Bloodgroup  = '$bgroup'";
+     }
+
+
+    if(isset($_POST["District"]))
+    if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All") {
+        $district = trim($_POST["District"]);
+        if($bgroup != '')
+            $sql .= " AND District = '$district'";
+        else
+            $sql .= " WHERE District = '$district'";
+    }
+
+    if(isset($_POST["RadioGroup1"]))
+    if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3) {
+        $sex = trim($_POST["RadioGroup1"]);
+        if($bgroup != '' OR $district !='')
+            $sql .= " AND Gender = '$sex'";
+        else
+            $sql .= " WHERE Gender  = '$sex'";
+    }
+    echo $sql;
+?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
