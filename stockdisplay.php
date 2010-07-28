@@ -31,24 +31,34 @@ require('./calculate_class.php');
         <td height="292" colspan="3">
              <table width="39%" border="1" align="center" cellpadding="4" cellspacing="0">
              <tr>
-             <th>Sl No</th>
              <th>Blood Group</th>
              <th>Quantity</th>
               </tr>
                 <?php
-                $sql = "SELECT * FROM stock ORDER BY BID";
+                $sql = "SELECT Bloodgroup, COUNT(*) FROM registration WHERE Moderation = 1 GROUP BY Bloodgroup";
                 $rst = mysql_query($sql);
                 while ($row = mysql_fetch_array($rst)) {
                 ?>
 
             <tr>
-                <td width="18%" style="padding-top:5px" ><div align="justify"><b><?php echo $row["BID"]; ?></b></div></td>
-                <td width="53%" style="padding-top:5px" ><div align="justify"><b><?php echo $row["BGroup"]; ?></b></div></td>
-                <td width="29%" style="padding-top:5px" ><div align="right"><b><?php echo $row["Stock"]; ?></b></div></td>
+                <td width="53%" style="padding-top:5px" ><div align="center"><?php echo $row["Bloodgroup"]; ?></div></td>
+                <td width="29%" style="padding-top:5px" ><div align="center"><?php echo $row["COUNT(*)"]; ?></div></td>
             </tr>
-            <?php }
-            mysql_close($link);
-            stock_calculate(); ?>
+            <?php } ?>
+            <tr>
+                <td width="53%" style="padding-top:5px"><div align="center"><b>Total</b></div></td>
+                <td width="53%" style="padding-top:5px"><div align="center">
+                        <b>
+                        <?php 
+                        $sql = "SELECT COUNT(*) FROM `registration` WHERE Moderation=1";
+                        $rst = mysql_query($sql);
+                        $row = mysql_fetch_array($rst);
+                        echo $row["COUNT(*)"];
+                        ?>
+                        </b></div>
+                </td>
+            </tr>
+            <?php mysql_close($link); ?>
              </table>
           </td>
         </tr>

@@ -25,8 +25,4 @@ CREATE TABLE IF NOT EXISTS `registration` (  `Regid` int(5) NOT NULL AUTO_INCREM
 
 CREATE TABLE IF NOT EXISTS `request` (  `ReqID` bigint(5) NOT NULL AUTO_INCREMENT,  `PName` varchar(30) NOT NULL,  `ReqDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,  `BGroup` varchar(5) NOT NULL,  `Quantity` int(3) NOT NULL,  `NeedDate` date NOT NULL,  `DrRef` varchar(50) DEFAULT NULL,  `Disease` varchar(25) NOT NULL,  `Gender` smallint(1) NOT NULL,  `ContactP` varchar(50) NOT NULL,  `ContactPh` varchar(15) NOT NULL,  `PHouse` varchar(100) NOT NULL,  `PPlace` varchar(100) NOT NULL,  `Post` varchar(100) NOT NULL,  `Hospital` varchar(50) DEFAULT NULL,  `Status` varchar(1) DEFAULT 'N',  `ADate` varchar(25) NOT NULL,  `AQty` int(11) NOT NULL,  PRIMARY KEY (`ReqID`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `stock` (  `BID` bigint(5) NOT NULL AUTO_INCREMENT,  `BGroup` varchar(5) NOT NULL,  `Stock` int(5) NOT NULL,  PRIMARY KEY (`BID`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
-
-INSERT INTO `stock` (`BID`, `BGroup`, `Stock`) VALUES (1, 'O+ve', 0), (2, 'O-ve', 0), (4, 'A+ve', 0), (5, 'A-ve', 0), (6, 'B+ve', 0), (7, 'B-ve', 0), (8, 'AB+ve', 0), (9, 'AB-ve', 0);
-
 CREATE TABLE IF NOT EXISTS `user` ( `UserID` varchar(100) NOT NULL, `keyvalue` varchar(100) NOT NULL DEFAULT '', `PWD` varchar(100) NOT NULL DEFAULT '' ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
