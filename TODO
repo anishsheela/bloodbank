@@ -1,6 +1,6 @@
 * Add Captcha to comment page [Finished : Anish A]
     - Add mail hide to e-mails
-* Set the class to branch [Almost done : Anish A]
+* Set the class to branch [Done : Anish A]
     - Database Changes
         - Fields
             - Admission Year - Digit
@@ -10,6 +10,7 @@
     - File changes
     - Misc changes
     - Admin page changes
+    - calculate_class() -> Done by Kevin Madhu
 * Display public profile. [Finished : Anish A]
     - Add clean URLs to display public profile
 * Password is stored in database as plain text. Use md5 hash to store it. Hint: use md5(md5()) for added security [Finished : Anish A]
@@ -20,7 +21,7 @@
   - cnn.php will help in that
   - Administrator password can be given. It is the matter of just changing admin password in the database
 * Store the date of birth instead of age. Calculate age from it. [Finished : Anish A]
-* Function to recalculate stock of blood. [In progress, Bug : Anish A]
+* Function to recalculate stock of blood. [Discarded, Alternate way to find stock implimented : Anish A]
 * Update Privacy Policy
 * Handle persons with no e-mail // Set a default password
     - Mobile number can be used to send SMS. // Not possible

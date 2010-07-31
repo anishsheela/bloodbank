@@ -8,8 +8,8 @@ if($_SESSION['key']!='admin'){
     header( 'Location: ./index.php');
 } 
 
-require("./cnn.php");
-require('./calculate_class.php');
+require('cnn.php');
+require('calculate_class.php');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

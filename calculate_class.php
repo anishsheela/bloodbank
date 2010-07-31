@@ -3,8 +3,56 @@
 // Connection settings
 require 'cnn.php';
 
+// New calculate class from Kevin Madhu <kevin.madhu@gmail.com>
+
+function calculate_class($reg_id) {
+	$semesters = array("S1S2", "S3", "S4", "S5", "S6", "S7", "S8");
+	//For eg. S1S2 is in the period of 12 months(including vacation), S2 is in the period of 14-20 months etc
+    $periods = array(14, 20, 26, 32, 38, 44, 50);
+
+	$query = "SELECT AdmissionYear, Branch, Batch FROM registration WHERE Regid = " . $reg_id;
+    $result = mysql_query($query);
+    $row = mysql_fetch_array($result);
+    
+	$admn_date = mktime(0, 0, 0, 1, 1, $row['AdmissionYear']); //result from db
+	$branch = $row['Branch']; //result from db
+    $batch = $row['Batch'];
+
+	$then_year = date("Y", $admn_date);
+	$then_month = date("m", $admn_date);
+
+	$month = 0;
+	do {
+		if($then_month == 12) {
+			++$then_year;
+			$then_month = 1;
+		}
+
+		else
+			++$then_month;
+
+		$then_timestamp = mktime(24, 0, 0, $then_month, 1, $then_year);
+
+		if($then_timestamp < time())
+			++$month;
+		else
+			break;
+	}while(1);
+
+	if($month >= 0 and $month <= $periods[0])
+		$semester = 0;
+	else
+		for($i = 1; $i < 7; ++$i) {
+			if(($month > $periods[$i - 1]) and ($month <= $periods[$i])) {
+				$semester = $i;
+				break;
+			}
+		}
+
+	return $semesters[$semester] . $branch;
+}
 // There is some bugs in this function. Please correct it.
-function calculate_class($regid) {
+/*function calculate_class($regid) {
     // Select row and database
     $sql = 'SELECT * FROM `registration` WHERE Regid = '.$regid.';';
     $result = mysql_query($sql);
@@ -36,7 +84,7 @@ function calculate_class($regid) {
 
         // Append the class and batch if year == current. Else class and batch
     }
-}
+}*/
 
 // Change date format from dd-mm-yyyy to dd/mm/yyyy
 function change_date_format($date){
