@@ -5,7 +5,7 @@
 <LINK href="register_style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function check() {
-   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var reg = /^([a-z0-9_\-\.])+\@([a-z0-9_\-\.])+\.([a-z]{2,4})$/;
    var address = document.formcheck.email.value;
    if(reg.test(address) == false) {
       alert('Invalid Email Address');

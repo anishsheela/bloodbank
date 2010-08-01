@@ -40,6 +40,7 @@ if(isset($_POST["email"])){
     $batch = $_POST["batch"];
     if( trim($_POST["phone"]) != "" ) $phone = trim($_POST["phone"]);
     if( trim($_POST["email"]) != "" ) $email = trim($_POST["email"]);
+    $email = strtolower($email);
     $password = $_POST["password"];
     if( trim($_POST["address2"]) != "" ) $address = trim($_POST["address2"]);
     if( trim($_POST["address3"]) != "" ) $district = trim($_POST["address3"]);
