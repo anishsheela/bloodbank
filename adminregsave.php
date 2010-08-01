@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if($_SESSION['key']!='admin'){
     session_destroy();
@@ -25,27 +26,48 @@ function createRandomPassword() {
     }
     return $pass;
 }
-    
+$operator = trim($_POST["operator"]);
+setcookie("operator", $operator, time()+3600);
+
 $year = trim($_POST["admission_year"]);
 setcookie("admission_year", $year, time()+3600);
 
 $batch = trim($_POST["batch"]);
 setcookie("batch", $batch, time()+3600);
 
-$branch = trim($_POST["branch"]);
-setcookie("branch", $branch, time()+3600);
-
-$gender = trim($_POST["gender"]);
-
-if( trim($_POST["email"]) != "" )
-    $email = trim($_POST["email"]);
-
-$phone = trim($_POST["phone"]);
+$admission_number = trim($_POST["admission_number"]);
 
 $name = trim($_POST["name"]);
 
-$email = strtolower($email);
+//DOB
+$bd = $_POST["bd"];
+$bm = $_POST["bm"];
+$by = $_POST["by"];
+$dob = dmy2mysql($bd, $bm, $by);
+
+$sex = trim($_POST["sex"]);
+
+if($sex == "Male")
+    $sex = 1;
+else
+    $sex = 0;
+
 $bloodgroup = trim($_POST["bloodgroup"]);
+
+$weight = trim($_POST["weight"]);
+
+$branch = $_POST["branch"];
+
+// Last date of donation.
+$ld = $_POST["ld"];
+$lm = $_POST["lm"];
+$ly = $_POST["ly"];
+
+$last = dmy2mysql($ld, $lm, $ly);
+
+$district = trim($_POST["district"]);
+
+$phone = trim($_POST["phone"]);
 
 $publish = trim($_POST["publish"]);
 if($publish == "on")
@@ -53,24 +75,21 @@ if($publish == "on")
 else
     $publish1 = 0;
 
-$post = " ";
-$district = trim($_POST["district"]);
-$dob = admnyeartodob($year);
+if( trim($_POST["email"]) != "" )
+    $email = trim($_POST["email"]);
 
-if($gender == "Male")
-    $sex = 1;
-else
-    $sex = 0;
+$email = strtolower($email);
 
-$weight = 50;
-// Donation date = current date - 6 months
-$donation_ts = mktime(0, 0, 0, date("m")-6, date("d"), date("Y"));
-$donation_date = date('Y-m-d H:i:s', $donation_ts);
-$address = " ";
-//$password = createRandomPassword();
-$password = $email;
+$address = $_POST["address"];
+
+$password = $admission_number;
+
+
 $hashed_pass = superHash($password);
-$result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo, Emailid, LastDonation, Publish, District, Post, AdmissionYear, Branch, Batch) VALUES ('$name', '$dob', $sex, '$bloodgroup', '$weight', '$phone', '$email', '$donation_date', '$publish1', '$district', '$address', '$year', '$branch', '$batch')";
+$result="INSERT INTO registration (Name, DOB, Gender, Bloodgroup, Weight, ContactNo,
+Emailid, Publish, District, Post, AdmissionYear, Branch, Batch, LastDonation, enterd_by)
+VALUES ('$name', '$dob', '$sex', '$bloodgroup', '$weight', '$phone', '$email',
+'$publish1', '$district', '$address', '$year', '$branch', '$batch', '$last', '$operator')";
 $resulto="INSERT INTO user (UserID, PWD)VALUES ('$email' , '$hashed_pass')";
 mysql_query($result);
 mysql_query($resulto);

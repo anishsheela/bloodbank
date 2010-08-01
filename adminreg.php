@@ -38,25 +38,41 @@ if($_SESSION['key']!='admin') {
 </head>
 
 <body>
-    
-<script type="text/javascript">
-function validate(form_id,email) {
-    // Not a complete e-mail validation. Just checking if there is any e-mail
-   //var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-   var reg = /^([A-Za-z0-9_\-\.])$/;
-   var address = document.forms[form_id].elements[email].value;
-   if(address == '') {
-      alert('Invalid Email Address');
-      document.form1.email.focus();
-      return false;
-   }
-}
-</script>
-<div id="Layer1">
-  <form id="form1" name="form1" method="post" action="adminregsave.php" onsubmit="javascript:return validate('form1','email');">
-  <label></label>
-  <p align="center" class="style2">ADMIN REGISTRATION FORM </p>
-  <p>Admission year <select name="admission_year" id="admission_year">
+
+<script type="text/javascript" src="adminreg_check.js"> </script>
+<div id="">
+  <form id="form1" name="formcheck" method="post" action="adminregsave.php" onsubmit="javascript:return check();">
+    <div class ="<?php if($status == 0) echo 'status2'; else echo 'status';?>">
+        Status :
+        <b>
+        <?php
+            echo $_GET['msg'];
+        ?>
+        </b>
+    </div>
+  <p align="center" class="style2">Administrator Registration </p>
+  <p>
+      Data Entry Operator
+    <select name="operator" id="operator">
+        <option><?php
+        // If cookie is set, then use it as default
+        if(isset($_COOKIE['operator']))
+            echo $_COOKIE["operator"];
+        ?>
+        </option>
+            <?php
+            /* Add all the operators from the operator table, by alphabetic order*/
+                $sql = "SELECT DISTINCT operator FROM operator";
+                $result = mysql_query($sql);
+                while ($row1 = mysql_fetch_array($result)) {
+            ?>
+                <option><?php echo $row1["operator"];?></option>
+            <?php } ?>
+
+    </select>
+  </p>
+    <p>Admission year
+      <select name="admission_year" id="admission_year">
         <option><?php
         // If cookie is set, then use it as default
         if(isset($_COOKIE['admission_year']))
@@ -73,114 +89,162 @@ function validate(form_id,email) {
 
       </select>
     </p>
-  <p>Branch <select name="branch" id="branch">
-        <option><?php
-        // If cookie is set, then use it as default
-        if(isset($_COOKIE['branch']))
-            echo $_COOKIE["branch"];
-        ?>
-        </option>
-          <?php
-          /* Add all the branches from the Table course and feild course */
-          $query = "SELECT course FROM course ORDER BY course ASC;";
-          $list = mysql_query($query, $link);
-          while($record = mysql_fetch_array($list)){
-              ?> <option> <?php echo $record['course'];?> </option><?php
-          }
-          ?>
-      </select>
-    </p>
-    <p>Batch <select name="batch" id="batch">
+    <p>Batch
+        <select name="batch" id="batch">
         <option><?php
         // If cookie is set, then use it as default
         if(isset($_COOKIE['batch']))
             echo $_COOKIE["batch"];
         ?>
         </option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-            <option>E</option>
-            <option>F</option>
+        <?php
+            $sql = "SELECT DISTINCT Batch FROM batch_list;";
+            $result = mysql_query($sql);
+            while ($row1 = mysql_fetch_array($result)) {
+        ?> <option><?php echo $row1["Batch"];?></option>
+        <?php } ?>
       </select>
     </p>
   <p align="justify">
-    <label>Name : 
-    <input name="name" type="text" value="" />
-</label>
-  </p>
-  <label>Blood Group
-    <select name="bloodgroup">
-                <option value="">Select</option>
-                <?php
-                    $sql = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
-                    $result = mysql_query($sql);
-                    while ($row1 = mysql_fetch_array($result)) {
-                ?>
-                    <option><?php echo $row1["BloodGroup"];?></option>
-                <?php } ?>
-    </select>
-</label>
-  <p align="justify">
-    <label>Email :
-    <input name="email" type="text" id="email"/>
-</label>
-  </p>
-  <p align="justify">
-    <label>Phone :
-    <input type="text" name="phone" maxlength="11"/>
+    <label>Admission Number
+    <input name="admission_number" type="text" value="" maxlength ="4" size="4"/>
     </label>
   </p>
   <p align="justify">
-    <label>
-    Publish</label>
-    <label>
-     <input name="publish" type="checkbox" checked="checked" />
+    <label>Name :
+    <input name="name" type="text" value="" size="50"/>
     </label>
   </p>
+    <p>Date of birth
+        <select  name="bd" style="width:auto">
+          <option value="">Select</option>
+          <?php for($i=1; $i<=31; $i++) { ?>
+          <option value="<?php echo $i;?>"  >
+          <?php  echo $i;?>
+          </option>
+          <?php } ?>
+        </select>
+        <select name="bm" style="width:auto">
+          <option value="">Select</option>
+          <?php
+            for($i=1; $i<=12; $i++)
+            { ?>
+          <option value="<?php echo $i;?>"> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
+          <?php } ?>
+        </select>
+        <select name="by" style="width:auto">
+          <option value="">Select</option>
+          <?php
+            for($i=date("Y")-18; $i>=date("Y")-90; $i--)
+            { ?>
+            <option value="<?php echo $i;?>"><?php echo $i;?></option>
+            <?php } ?>
+        </select>
+    </p>
     <p align="justify">
-    <label>Gender
-    <select name="gender">
-      <option selected="selected">Male</option>
-      <option>Female</option>
-    </select>
+        <label>Sex
+        <select name="sex">
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        </label>
+    </p>
+    <p align="justify">
+    <label>Blood Group
+        <select name="bloodgroup">
+            <option value="">Select</option>
+            <?php
+                $sql = "SELECT DISTINCT BloodGroup FROM bloodgroup;";
+                $result = mysql_query($sql);
+                while ($row1 = mysql_fetch_array($result)) {
+            ?>
+                <option><?php echo $row1["BloodGroup"];?></option>
+            <?php } ?>
+        </select>
     </label>
-  </p>
-  <p align="justify">
-    <label></label>
-    <label>District    </label>
-    <select name="district" size="1">
-                    <option selected="selected">Thiruvananthapuram</option>
-                    <option>Kollam</option>
-                    <option>Pathanamthitta</option>
-                    <option>Alappuzha</option>
-                    <option>Kottayam</option>
-                    <option>Idukki</option>
-                    <option>Ernakulam</option>
-                    <option>Thrissur</option>
-                    <option>Palakkad</option>
-                    <option>Malapuram</option>
-                    <option>Kozhikode</option>
-                    <option>Wayanad</option>
-                    <option>Kannur</option>
-                    <option>Kasargod</option>
-                    <option>Other</option>
+    </p>
+    <p align="justify">
+        <label>Weight
+            <input name="weight" type="text" id="weight" size="3" maxlength="3"/>
+        </label>
+    </p>
+
+    <p>Branch 
+        <select name="branch" id="branch">
+            <option value="">Select</option>
+            <?php
+            /* Add all the branches from the Table course and feild course */
+            $query = "SELECT course FROM course ORDER BY course ASC;";
+            $list = mysql_query($query, $link);
+            while($record = mysql_fetch_array($list)){
+              ?> <option> <?php echo $record['course'];?> </option><?php
+            }
+            ?>
       </select>
-  </p>
+    </p>
+    <p>Date of Last Donation
+        <select  name="ld" style="width:auto">
+          <?php for($i=1; $i<=31; $i++) { ?>
+          <option value="<?php echo $i;?>"  >
+          <?php  echo $i;?>
+          </option>
+          <?php } ?>
+        </select>
+        <select name="lm" style="width:auto">
+          <?php
+            for($i=1; $i<=12; $i++)
+            { ?>
+          <option value="<?php echo $i;?>"> <?php echo  substr(date("F", strtotime("".$i."/1/1") ),0,9) ; ?> </option>
+          <?php } ?>
+        </select>
+        <select name="ly" style="width:auto">
+            <?php
+            for($i=date("Y"); $i>=date("Y")-90; $i--)
+            { ?>
+            <option value="<?php echo $i;?>"><?php echo $i;?></option>
+            <?php } ?>
+        </select>
+    </p>
+    <p align="justify">
+        <label>District</label>
+        <select name="district">
+            <option value="">Select</option>
+            <?php
+                $sql = "SELECT Name FROM district";
+                $result = mysql_query($sql);
+                while ($row1 = mysql_fetch_array($result)) {
+            ?> <option><?php echo $row1["Name"];?></option>
+            <?php } ?>
+         </select>
+    </p>
+    <p align="justify">
+        <label>Phone
+            <input type="text" name="phone" maxlength="11" size="11"/>
+        </label>
+    </p>
+    <p align="justify">
+        <label>
+            Publish
+        </label>
+        <label>
+             <input name="publish" type="checkbox"/>
+        </label>
+    </p>
+    <p align="justify">
+        <label>Email
+            <input name="email" type="text" id="email" size="50"/>
+        </label>
+    </p>
+    <p>Address</p>
+    <p>
+        <textarea cols="50" rows="4"  name="address"></textarea>
+    </p>
+
   <p align="justify">
     <label></label>
     <input name="submit" type="submit" id="submit" value="Submit" />
   </p>
 </form></div><br/>
-
-<div class ="<?php if($status == 0) echo 'status2'; else echo 'status';?>">
-Status :
-<b>
-<?php
-    echo $_GET['msg'];
-?>
-</b>
-</div>
 </body>
 </html>

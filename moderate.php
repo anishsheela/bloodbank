@@ -27,65 +27,88 @@ require 'calculate_class.php';
     <td><table width="848" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
         <td colspan="2"><a href="main.php"><img src="images/title.jpg" width="1000" height="121" border="0" /></a></td>
-        </tr>
+       </tr>
+       <tr>
+           <td>
+           Data Entry Operator
+            <select name="operator" id="operator">
+                <option><?php
+                // If cookie is set, then use it as default
+                if(isset($_COOKIE['operator']))
+                    echo $_COOKIE["operator"];
+                ?>
+                </option>
+                    <?php
+                    /* Add all the operators from the operator table, by alphabetic order*/
+                        $sql = "SELECT DISTINCT operator FROM operator";
+                        $result = mysql_query($sql);
+                        while ($row1 = mysql_fetch_array($result)) {
+                    ?>
+                        <option><?php echo $row1["operator"];?></option>
+                    <?php } ?>
+
+            </select>
+           </td>
+       </tr>
       <tr bgcolor="#CC9933">
         <td height="146" colspan="2"><table width="89%" border="1" align="center" cellpadding="4" cellspacing="0">
-          <tr>
-            <th>Reg ID</th>
-            <th>Class</th>
-            <th>Name</th>
-            <th>Blood Group </th>
-            <th>Email</th>
-            <th>Contact No</th>
-            <th>Pub</th>
-            <th>Sex</th>
-            <th>District</th>
-
-            <th>Moderate</th>
-          </tr>
 <?php
 $sql = "SELECT * FROM registration WHERE Moderation = 0";
 $rst = mysql_query($sql);
 
 $i = 0;
-$rcolor="#CC9933";
+$rcolor="#FFFFFF";
 while ($row = mysql_fetch_array($rst)){
-    if($rcolor == "#CC9933")
-        $rcolor = "#FFFFFF";
-    else
-        $rcolor = "#CC9933";
 ?>
-          <tr>
-                                       
-            <td width="7%" style="padding-top:5px" bgcolor=" <?php echo $rcolor;?>"> <?php echo $row["Regid"];?></td>
-            <td width="12%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
-            <td width="23%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"> <?php echo $row["Name"];?></td>
-            <td width="12%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px" align="center"><?php echo $row["Bloodgroup"];?></td>
-            <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">  <?php echo $row["Emailid"];?></td>
-            <td width="17%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
-            <td width="5%" style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php                 if($row['Publish'] == 1){
-                      echo 'Yes';
-                  } else {
-                      echo 'No';
-                  }?></td>
-            <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px"><?php
-            if($row["Gender"] == 1){
-                echo "Male";
-            } else {
-                echo "Female";
-            }
 
-            ?></td>
-            <td width="12%" bgcolor="<?php echo $rcolor;?>" style="padding-top:5px" align="center"><?php echo $row["District"];?></td>
-            <td width="11%"bgcolor="<?php echo $rcolor;?>" style="padding-top:5px">
-               <div align="center"><label>
-                <input type="checkbox" name=<?php echo "moderate".$row["Regid"];?> />
-                </label>
-             </div>
-            
-            </td>
+          <tr>
+            <th>Mod</th>
+            <th>Reg ID</th>
+            <th>Class</th>
+            <th>Name</th>
+            <th>Date of birth</th>
+            <th>Sex</th>
+            <th>Blood Group</th>
+            <th>Weight</th>
+            <th>Last Donation</th>
+            <th>District</th>
+            <th>Phone</th>
+            <th>Pub</th>
+            <th>Email</th>
+            <th>Address</th>
           </tr>
-          <?php
+          <tr>                                       
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>">
+               <div align="center">
+                   <label>
+                       <input type="checkbox" name=<?php echo "moderate".$row["Regid"];?> />
+                   </label>
+               </div>
+            </td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Regid"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Name"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["DOB"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo(($row["Gender"] == 1)? "Male": "Female");?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Bloodgroup"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Weight"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["LastDonation"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["District"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo(($row["Publish"] == 1)? 'Yes': 'No');?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Emailid"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Post"];?></td>
+          </tr>
+      <?php $i++; if($i%5 == 0) { ?>
+      <tr>
+      <td colspan="15">
+            <center>
+                <input type="submit" name="accept" id="accept" value="Accept" style="width:100px"/>
+                <input type="submit" name="reject" id="reject" value="Reject"  style="width:100px" />
+            </center>
+      </td>
+      </tr>
+     <?php }
 }
 mysql_close($link );
 
