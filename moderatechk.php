@@ -11,6 +11,9 @@ require("./cnn.php");
 $sql = "SELECT * FROM registration WHERE Moderation = 0";
 $rst = mysql_query($sql);
 
+$operator = trim($_POST["operator"]);
+setcookie("operator", $operator, time()+3600);
+
 while($row = mysql_fetch_array($rst)){
     $modsql="UPDATE registration SET Moderation = ";
     $moderate = trim($_POST["moderate".$row['Regid']]);
