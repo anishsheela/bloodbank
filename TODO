@@ -39,3 +39,4 @@ Quick fixes to some problems
 * Admin registration, set the password of all to a common password : nssmcet [Fixed : Anish A], changed to e-mail
 * Change password can be made to another form. // Not essential [Fixed]
 * Search is not working correctly. [Fixed : Anish A]
+* Fix the Donor page in admin section.
