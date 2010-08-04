@@ -21,72 +21,80 @@
     		$periods_btech = array(14, 20, 26, 32, 38, 44, 50);
     		$periods_mca = array(6, 20, 26, 32, 38, 44, 50);
 
-		$query = "SELECT AdmissionYear, Branch, Batch FROM registration WHERE Regid = " . $reg_id;
+		$query = "SELECT AdmissionYear, Branch, Batch, Designation FROM registration WHERE Regid = " . $reg_id;
     		$results = mysql_query($query);
 		$result = mysql_fetch_array($results);
     
-		$admn_year = $result['AdmissionYear'];
-		$admn_date = mktime(0, 0, 0, 1, 1, $admn_year); //result from db
-		$branch = $result['Branch']; //result from db
-		$batch = $result['Batch'];
+		$designation = $result['Designation'];
 
-		$then_year = date("Y", $admn_date);
-		$then_month = date("m", $admn_date);
+		if($designation == "Student")
+		{
+			$admn_year = $result['AdmissionYear'];
+			$admn_date = mktime(0, 0, 0, 1, 1, $admn_year); //result from db
+			$branch = $result['Branch']; //result from db
+			$batch = $result['Batch'];
 
-		$month = 0;
+			$then_year = date("Y", $admn_date);
+			$then_month = date("m", $admn_date);
+
+			$month = 0;
 		
-		do
-		{
-			if($then_month == 12)
+			do
 			{
-				++$then_year;
-				$then_month = 1;
-			}
-
-			else
-				++$then_month;
-
-			$then_timestamp = mktime(24, 0, 0, $then_month, 1, $then_year);
-
-			if($then_timestamp < time())
-				++$month;
-			else
-				break;
-		}
-		while(1);
-
-		if($branch == "MCA")
-		{
-			$periods = $periods_mca;
-			$semesters = $semesters_mca;
-			$limit = 7;
-		}
-
-		else
-		{
-			$periods = $periods_btech;
-			$semesters = $semesters_btech;
-			$limit = 7;
-		}
-	
-		$semester = -1;
-
-		if($month >= 0 and $month <= $periods[0])
-			$semester = 0;
-		else
-			for($i = 1; $i < 7; ++$i)
-			{
-				if(($month > $periods[$i - 1]) and ($month <= $periods[$i]))
+				if($then_month == 12)
 				{
-					$semester = $i;
-					break;
+					++$then_year;
+					$then_month = 1;
 				}
+
+				else
+					++$then_month;
+
+				$then_timestamp = mktime(24, 0, 0, $then_month, 1, $then_year);
+
+				if($then_timestamp < time())
+					++$month;
+				else
+					break;
+			}
+			while(1);
+
+			if($branch == "MCA")
+			{
+				$periods = $periods_mca;
+				$semesters = $semesters_mca;
+				$limit = 7;
 			}
 
-	if($semester == -1)
-		return "Alumini" . $admn_year . $branch ;
-	else
-		return $semesters[$semester] . $branch;
+			else
+			{
+				$periods = $periods_btech;
+				$semesters = $semesters_btech;
+				$limit = 7;
+			}
+	
+			$semester = -1;
+
+			if($month >= 0 and $month <= $periods[0])
+				$semester = 0;
+			else
+				for($i = 1; $i < 7; ++$i)
+				{
+					if(($month > $periods[$i - 1]) and ($month <= $periods[$i]))
+					{
+						$semester = $i;
+						break;
+					}
+				}
+
+			if($semester == -1)
+				return "Alumini" . $admn_year . $branch ;
+			else
+				return $semesters[$semester] . $branch;
+		}
+
+		else
+			return "Staff";
 }
 
 // Change date format from dd-mm-yyyy to dd/mm/yyyy
