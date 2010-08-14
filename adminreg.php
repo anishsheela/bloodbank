@@ -135,7 +135,7 @@ if($_SESSION['key']!='admin') {
         <select name="by" style="width:auto">
           <option value="">Select</option>
           <?php
-            for($i=date("Y")-18; $i>=date("Y")-90; $i--)
+            for($i=date("Y")-17; $i>=date("Y")-90; $i--)
             { ?>
             <option value="<?php echo $i;?>"><?php echo $i;?></option>
             <?php } ?>
