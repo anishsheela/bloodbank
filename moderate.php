@@ -88,11 +88,11 @@ while ($row = mysql_fetch_array($rst)){
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Regid"];?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["AdmissionYear"].' '.$row['Branch'].' '.$row['Batch'];?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Name"];?></td>
-            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["DOB"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo change_date_format($row["DOB"]);?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo(($row["Gender"] == 1)? "Male": "Female");?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Bloodgroup"];?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["Weight"];?></td>
-            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["LastDonation"];?></td>
+            <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo change_date_format($row["LastDonation"]);?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["District"];?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo $row["ContactNo"];?></td>
             <td style="padding-top:5px" bgcolor="<?php echo $rcolor;?>"><?php echo(($row["Publish"] == 1)? 'Yes': 'No');?></td>
