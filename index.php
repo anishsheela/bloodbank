@@ -13,37 +13,35 @@ if(!mysql_query($test_sql, $link))
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>MCET Online Blood Donor's Directory</title>
-<link href="index_page.css" rel="stylesheet" type="text/css"> </link>
-</head>
-<body>
-<img alt="header" src="images/main_header.png"/>
-<div class="sidelink">
-    <p><a href="search.php">Search</a></p>
-    <p><a href="issue.php">Request Blood</a></p>
-    <p><a href="comments.php">Comments</a></p>
-    <p><a href="tips.php">Tips of Blood Donation</a></p>
-    <p><a href="fact.php">Blood Facts</a></p>
-    <p><a href="about.php">About Us</a></p>
-    <p><a href="source.php">Source Code </a></p>
-</div>
-
-<img src="images/footer.png" alt="Footer"/>
-<p id="message"><?php echo $_GET['msg'] ?></p>
-    <form action="log_chk.php" method="post" name="form1" id="form1"  >
-        <div class="login">
-
-            <p>Email
-                <input name="userid" type="text" size="25" maxlength="100" class="login_input"/>
-            </p>
-            <p>Password
-                <input name="pwd" type="password" size="25" maxlength="100" class="login_input"/>
-            </p>
-            <p><input name="Submit" type="submit"value="Login" class="login_button"/></p>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>MCET Online Blood Donor's Directory</title>
+        <link href="index_page.css" rel="stylesheet" type="text/css"> </link>
+    </head>
+    <body>
+        <img alt="header" src="images/main_header.png"/>
+        <div class="sidelink">
+            <p><a href="search.php">Search</a></p>
+            <p><a href="issue.php">Request Blood</a></p>
+            <p><a href="comments.php">Comments</a></p>
+            <p><a href="tips.php">Tips of Blood Donation</a></p>
+            <p><a href="fact.php">Blood Facts</a></p>
+            <p><a href="about.php">About Us</a></p>
+            <p><a href="source.php">Source Code </a></p>
         </div>
-    </form>
+        <img src="images/footer.png" alt="Footer"/>
+        <p id="message"><?php echo $_GET['msg'] ?></p>
+            <form action="log_chk.php" method="post" name="form1" id="form1"  >
+                <div class="login">
 
-</body>
+                    <p>Email
+                        <input name="userid" type="text" size="25" maxlength="100" class="login_input"/>
+                    </p>
+                    <p>Password
+                        <input name="pwd" type="password" size="25" maxlength="100" class="login_input"/>
+                    </p>
+                    <p><input name="Submit" type="submit"value="Login" class="login_button"/></p>
+                </div>
+            </form>
+    </body>
 </html>
