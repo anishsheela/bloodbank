@@ -1,9 +1,9 @@
 div.sidelink{
     padding: 0px 10px;
-    font-size: large;
+    font: large;
     font-family: sans-serif;
     left: 10px;
-    top: 100px;
+    top: 125px;
     width: 250px;
     position: absolute;
 }
