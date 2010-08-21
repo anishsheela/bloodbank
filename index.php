@@ -33,15 +33,12 @@ if(!mysql_query($test_sql, $link))
         <p id="message"><?php echo $_GET['msg'] ?></p>
             <form action="log_chk.php" method="post" name="form1" id="form1"  >
                 <div class="login">
-
-                    <p>Email
-                        <input name="userid" type="text" size="25" maxlength="100" class="login_input"/>
-                    </p>
-                    <p>Password
-                        <input name="pwd" type="password" size="25" maxlength="100" class="login_input"/>
-                    </p>
-                    <p><input name="Submit" type="submit"value="Login" class="login_button"/></p>
+                    <p>Email</p>
+                    <p>Password</p>
                 </div>
+                <input name="userid" type="text" size="25" maxlength="100" id="login_user"/><br/>
+                <input name="pwd" type="password" size="25" maxlength="100" id="login_pwd"/>
+                <input name="Submit" type="submit"value="Login" id="login_button"/>
             </form>
     </body>
 </html>
