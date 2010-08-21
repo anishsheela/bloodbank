@@ -1,0 +1,35 @@
+div.sidelink{
+    padding: 0px 10px;
+    font-size: large;
+    font-family: sans-serif;
+    left: 10px;
+    top: 20%;
+    width: 25%;
+    position: absolute;
+}
+.login{
+    font-family: sans-serif;
+    padding: 0px;
+    top: 65%;
+    left: 55%;
+    position: absolute;
+    color: white;
+}
+
+.login_input{
+    position: absolute;
+    left: 110%;
+}
+.login_button{
+    position: absolute;
+    margin-left: 150px;
+}
+
+#message{
+    font-family: sans-serif;
+    padding: 0px;
+    top: 60%;
+    left: 60%;
+    position: absolute;
+    color: white;
+}
