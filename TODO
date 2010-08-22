@@ -1,11 +1,17 @@
 TODO
 ----
-* Update Privacy Policy
-* Update Read me file
+* Update Privacy Policy.
+* Update Read me file.
 * Fix the Donor page in admin section. [Assigned to Kevin Madhu]
+* The search page should display only 10-20 persons. Rest can be acessed by clicking more. [Assigned to Kevin Madhu]
+
+Work in progress
+----------------
+* Improve the blood request page according to new design.
 
 Done
 ----
+* The about page should be filled by the database.[Done : Anish A]
 * Add Captcha to comment page [Finished : Anish A]
     - Add mail hide to e-mails
 * Set the class to branch [Done : Anish A]

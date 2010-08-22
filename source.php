@@ -8,10 +8,10 @@
 <!--
 #Layer1 {
 	position:absolute;
-	width:524px;
+	width:600px;
 	height:391px;
 	z-index:1;
-	left: 259px;
+	left: 220px;
 	top: 262px;
 }
 -->
@@ -43,7 +43,7 @@
           <p>&nbsp;</p>
           <div id="Layer1">
             <p align="left">Copyright (C) 2010  Anish A &lt;aneesh.nl@gmail.com&gt;, Navaneeth T &lt;navanjo@gmail.com&gt;,
-  Arun Anson &lt;arunanson@gmail.com&gt;and others</p>
+  Arun Anson &lt;arunanson@gmail.com&gt;, Kevin Madhu &lt;kevin.madhu@gmail.com&gt;and others</p>
             <p align="left"> This program is free software: you can redistribute it and/or modify 
               it under the terms of the GNU General Public License as published by 
               the Free Software Foundation, either version 3 of the License, or 
@@ -54,7 +54,6 @@
               GNU General Public License for more details.</p>
             <p align="left"> You should have received a copy of the GNU General Public License 
               along with this program.  If not, see <a href="http://www.gnu.org/licenses/"> http://www.gnu.org/licenses/</a>.</p>
-            <p align="center"><a href="bloodbank.tar.bz2"><strong>Download Source Code (Tar.bz2)</strong></a></p>
             <p align="center"><a href="http://github.com/aneesh/bloodbank"><strong>Git Source Code Repository</strong></a><br />
             </p>
           </div>

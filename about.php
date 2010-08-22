@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <?php
 function  class_calculate($admn_year, $branch, $batch, $designation)
@@ -20,7 +20,7 @@ function  class_calculate($admn_year, $branch, $batch, $designation)
     		$periods_mca = array(6, 20, 26, 32, 38, 44, 50);
 
 
-		if($designation == "Student")
+		if($designation == "")
 		{
 			$admn_date = mktime(0, 0, 0, 1, 1, $admn_year);
 			$then_year = date("Y", $admn_date);
@@ -83,13 +83,10 @@ function  class_calculate($admn_year, $branch, $batch, $designation)
 		}
 
 		else
-			return "Staff";
+			return $designation;
 }
 
 require 'cnn.php';
-$sql = 'SELECT * FROM operator';
-$result = mysql_query($sql);
-
 ?>
 
 <head>
@@ -108,37 +105,82 @@ $result = mysql_query($sql);
         <td height="31" bgcolor="" >&nbsp;</td>
       </tr>
       <tr bgcolor="#CC9933">
-        <td height="184" bgcolor="#FFFFFF" ><div align="center">
-          <p><strong>NSS Online Blood Donor's Directory</strong></p>
-          <p><b>Development Team</b></p>
+        <td height="184" bgcolor="#FFFFFF" ><div align="left" style="padding: 10px">
+          <p align="center"><strong>NSS Online Blood Donor's Directory Team</strong></p>
+          <p><b> Thanks to </b></p>
           <?php
+              $sql = 'SELECT * FROM operator ORDER BY operator';
+              $result = mysql_query($sql);
               while($row = mysql_fetch_array($result)) {
-                $str = '<p>'.$row['operator'].' ';
-                if( $row['phone'] != '' && $row['email'] != "") {
-                    $str .= '('.$row['phone'].', <a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
-                } elseif( $row['phone'] != '' && $row['email'] == "") {
-                    $str .= '('.$row['phone'].')';
-                } elseif( $row['phone'] == '' && $row['email'] != "") {
-                    $str .= '(<a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
-                } elseif( $row['phone'] == '' && $row['email'] == "") {
-                    ;
-                }
-                $str .= "</p>";
-                echo $str;
+                  if($row['role']=='thanks') {
+                    $str = $row['operator'].' ';
+                    if( $row['phone'] != '' && $row['email'] != "") {
+                        $str .= '('.$row['phone'].', <a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
+                    } elseif( $row['phone'] != '' && $row['email'] == "") {
+                        $str .= '('.$row['phone'].')';
+                    } elseif( $row['phone'] == '' && $row['email'] != "") {
+                        $str .= '(<a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
+                    } elseif( $row['phone'] == '' && $row['email'] == "") {
+                        ;
+                    }
+                    $class = class_calculate($row['admission_year'], $row['branch'], $row['batch'], $row['designation']);
+                    $str .= ', '.$class;
+                    $str .= "<br/>";
+                    echo $str;
+                  }
               }
           ?>
-          <p>Anish A (890 750 96 11 , <a href="mailto:aneesh.nl@gmail.com">aneesh.nl@gmail.com</a>),</p>
-          <p>Arun Anson ( <a href="mailto:arunanson.gmail.com">arunanson.gmail.com</a>) S5CS<br />
-          </p>
-          <p><b> Thanks to </b></p>
-          Gireesh G, Faculty Electronics and Communications <br/>
-          Vishnu H, Faculty Computer Science & Engineering <br/>
-          Dr. Ashalatha Thampuran, Principal<br/>
-          <p><b>Originally developed by </b></p>
-          <p>Navaneeth T(9947834438, <a href="mailto:navanjo@gmail.com">navanjo@gmail.com</a> ),</p>
-          <p>Ameena.Musthafa, Neethu K V, Vineeth K.<br />
+          <p><b>Development Team</b></p>
+          <?php
+              $sql = 'SELECT * FROM operator ORDER BY operator';
+              $result = mysql_query($sql);
+              while($row = mysql_fetch_array($result)) {
+                  if($row['role']=='dev') {
+                    $str = $row['operator'].' ';
+                    if( $row['phone'] != '' && $row['email'] != "") {
+                        $str .= '('.$row['phone'].', <a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
+                    } elseif( $row['phone'] != '' && $row['email'] == "") {
+                        $str .= '('.$row['phone'].')';
+                    } elseif( $row['phone'] == '' && $row['email'] != "") {
+                        $str .= '(<a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
+                    } elseif( $row['phone'] == '' && $row['email'] == "") {
+                        ;
+                    }
+                    $class = class_calculate($row['admission_year'], $row['branch'], $row['batch'], $row['designation']);
+                    $str .= ', '.$class;
+                    $str .= "<br/>";
+                    echo $str;
+                  }
+              }
+          ?>
+          <p><b>First Development Team </b></p>
+          <p>Navaneeth T(9947834438, <a href="mailto:navanjo@gmail.com">navanjo@gmail.com</a> ),<br/>
+            Ameena Musthafa, Neethu K V, Vineeth K<br />
             3rd Year BSc Computer Sciences<br />
             IHRD Applied Sciences College</p>
+          <p><b>Data Entry Team</b></p>
+          <?php
+              $sql = 'SELECT * FROM operator ORDER BY operator';
+              $result = mysql_query($sql);
+              while($row = mysql_fetch_array($result)) {
+                  if($row['role']=='data') {
+                    $str = $row['operator'].' ';
+                    if( $row['phone'] != '' && $row['email'] != "") {
+                        $str .= '('.$row['phone'].', <a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
+                    } elseif( $row['phone'] != '' && $row['email'] == "") {
+                        $str .= '('.$row['phone'].')';
+                    } elseif( $row['phone'] == '' && $row['email'] != "") {
+                        $str .= '(<a href="mailto:'.$row['email'].'">'.$row['email'].'</a>)';
+                    } elseif( $row['phone'] == '' && $row['email'] == "") {
+                        ;
+                    }
+                    $class = class_calculate($row['admission_year'], $row['branch'], $row['batch'], $row['designation']);
+                    $str .= ', '.$class;
+                    $str .= "<br/>";
+                    echo $str;
+                  }
+              }
+          ?>
           </div></td>
       </tr>
       <tr bgcolor="#CC9933">
