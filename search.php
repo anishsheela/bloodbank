@@ -24,36 +24,42 @@ require 'calculate_class.php';
 </head>
 
 <body>
-<?php 
-  $district="";
-  $bgroup="";
-        $sql = "SELECT * FROM `registration`";
-       if(isset($_POST["jumpMenu"]))										
+	<?php
+		$max_records_per_page = 10;
 
-     if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All") {
-         $bgroup = trim($_POST["jumpMenu"]);
-         $sql =$sql." WHERE Bloodgroup  = '$bgroup'";
-     }
+		$district="";
+		$bgroup="";
 
+		$sql = "SELECT * FROM `registration` where(moderation = 1";
+		
+		if(isset($_POST["jumpMenu"]))										
+			if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All")
+			{
+         			$bgroup = trim($_POST["jumpMenu"]);
+				$sql =$sql." AND Bloodgroup  = '$bgroup'";
+     			}
 
-    if(isset($_POST["District"]))
-    if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All") {
-        $district = trim($_POST["District"]);
-        if($bgroup != '')
-            $sql .= " AND District = '$district'";
-        else
-            $sql .= " WHERE District = '$district'";
-    }
+		if(isset($_POST["District"]))
+			if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All")
+			{
+				$district = trim($_POST["District"]);
+				$sql .= " AND District = '$district'";
+			}
 
-    if(isset($_POST["RadioGroup1"]))
-    if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3) {
-        $sex = trim($_POST["RadioGroup1"]);
-        if($bgroup != '' OR $district !='')
-            $sql .= " AND Gender = '$sex'";
-        else
-            $sql .= " WHERE Gender  = '$sex'";
-    }
-?>
+		if(isset($_POST["RadioGroup1"]))
+			if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3)
+			{
+				$sex = trim($_POST["RadioGroup1"]);
+				$sql .= " AND Gender = '$sex'";
+			}
+
+		$sql .= ")";
+
+		$results = mysql_query($sql);
+		$num_records = mysql_num_rows($results);
+
+		$sql .= " limit " . (($_GET['page'] - 1) * $max_records_per_page) . ", " . $max_records_per_page;
+	?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -159,12 +165,12 @@ require 'calculate_class.php';
             <th>Gender</th>
           </tr>
 <?php
+
 $rst = mysql_query($sql);
 
 $i = 0;
 
 while ($row = mysql_fetch_array($rst)) {
-    if($row["Moderation"] == 1){
         if($rcolor == "#CC9933")
             $rcolor = "#FFFFFF";
 	else
@@ -200,13 +206,49 @@ while ($row = mysql_fetch_array($rst)) {
                     </b></div></td>
           </tr>
           <?php
-    }
 }
 mysql_close($link );
 
 ?>
         </table></td>
       </tr>
+
+	<tr>
+		<td colspan="2"height="60px" align="center">
+			<?php
+				$no_of_links = 4;
+
+				if($_GET['page'] != 1)
+				{
+					echo "<a href=\"search.php?page=" . ($page-1) . "\"><b><i>\t<< Back\t</b></i></a>";
+
+					for($i = ($_GET['page']- $no_of_links), $j = $no_of_links; $j > 0; ++$i, --$j)
+					{
+						if($i >= 1)
+							echo "<a href=\"search.php?page=" . $i . "\"><i>\t" . $i . "\t</i></a>";
+						else
+							continue;
+					}
+				}
+
+				echo "\t<big><b><i>" . $_GET['page'] . "</i></b></big>\t";
+
+				$max_pages = floor($num_records / $max_records_per_page);
+				for($i = ($_GET['page'] + 1), $j = $no_of_links; $j > 0; ++$i, --$j)
+				{
+					if($i <= $max_pages)
+						echo "<a href=\"search.php?page=" . $i . "\"><i>\t" . $i . "\t</i></a>";
+					else
+						break;
+				}
+
+				if($max_pages != $_GET['page'])
+					echo "<a href=\"search.php?page=" . ($page+1) . "\"><b><i>\tNext >>\t</b></i></a>";					
+				
+			?>
+		</td>
+	</tr>
+
       <tr bgcolor="#990000">
         <td height="15" colspan="2" bgcolor="#FFFFFF"><div align="right">
           <div align="center"><span class="style4"><strong>* Admin Phone number : 8907509611</strong></span> </div>
