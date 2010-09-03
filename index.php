@@ -37,7 +37,7 @@ if(!mysql_query($test_sql, $link))
       <tr>
         <td width="208"><table width="199" height="83" border="0" cellpadding="0" cellspacing="0" class="nav-item">
           <tr>
-            <td width="199"><a href="search.php?page=1">Search</a></td>
+            <td width="199"><a href="search.php?page=1&new_page=yes">Search</a></td>
           </tr>
           <tr>
             <td><a href="reg.php"><!--Register--></a></td>

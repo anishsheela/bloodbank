@@ -1,7 +1,16 @@
 <?php
+
 ob_start();
 require 'cnn.php';
 require 'calculate_class.php';
+
+?>
+
+<?php
+	session_start();
+
+	if($_GET['new_page'] == "yes")
+		session_unset();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E N" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,31 +36,34 @@ require 'calculate_class.php';
 	<?php
 		$max_records_per_page = 10;
 
-		$district="";
-		$bgroup="";
-
 		$sql = "SELECT * FROM `registration` where(moderation = 1";
-		
-		if(isset($_POST["jumpMenu"]))										
+
+		if(isset($_POST['submit']))
+		{
 			if($_POST["jumpMenu"] != "NULL" && $_POST["jumpMenu"]  != "" && $_POST["jumpMenu"]  != "All")
-			{
-         			$bgroup = trim($_POST["jumpMenu"]);
-				$sql =$sql." AND Bloodgroup  = '$bgroup'";
-     			}
+         			$_SESSION['bgroup'] = trim($_POST["jumpMenu"]);
+			else
+				unset($_SESSION['bgroup']);
 
-		if(isset($_POST["District"]))
 			if($_POST["District"] != "NULL" && $_POST["District"]  != "" && $_POST["District"]  != "All")
-			{
-				$district = trim($_POST["District"]);
-				$sql .= " AND District = '$district'";
-			}
+				$_SESSION['District'] = trim($_POST["District"]);
+			else
+				unset($_SESSION['District']);
 
-		if(isset($_POST["RadioGroup1"]))
 			if($_POST["RadioGroup1"] != "NULL" && $_POST["RadioGroup1"]  != "" && $_POST["RadioGroup1"]  != 3)
-			{
-				$sex = trim($_POST["RadioGroup1"]);
-				$sql .= " AND Gender = '$sex'";
-			}
+				$_SESSION['sex'] = trim($_POST["RadioGroup1"]);
+			else
+				unset($_SESSION['sex']);
+		}
+
+		if(isset($_SESSION["bgroup"]))										
+			$sql =$sql." AND Bloodgroup  = '" . $_SESSION['bgroup'] . "'";
+
+		if(isset($_SESSION["District"]))
+			$sql .= " AND District = '" . $_SESSION['District'] . "'";
+
+		if(isset($_SESSION["sex"]))										
+			$sql =$sql." AND Gender = '" . $_SESSION['sex'] . "'";
 
 		$sql .= ")";
 
@@ -70,27 +82,27 @@ require 'calculate_class.php';
       <tr bgcolor="#993300">
         <td width="701" height="169"><strong> &nbsp;&nbsp;List of 
           <?php
-		  if($sex == 1)
+		  if($_SESSION['sex'] == 1)
 		      echo "Male";
-		  elseif($sex == 2)
+		  elseif($_SESSION['sex'] == 2)
 		      echo "Female";
 		  else
 		      echo "All";
 		?> Donors
            <?php
-		if ($district != ""){
+		if ($_SESSION['district'] != ""){
                     echo " from ";
-                    echo $district;
+                    echo $_SESSION['district'];
                 }
 		?>        
            <?php
-		if ($bgroup != ""){
+		if ($_SESSION['bgroup'] != ""){
                     echo " with Blood Group ";
-                    echo $bgroup;
+                    echo $_SESSION['bgroup'];
                 }
 	   ?>
         </strong></td> 
-        <td width="303"><form id="form1" name="form1" method="post" action=""><br />
+        <td width="303"><form id="form1" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?page=1&new_page=yes'; ?>"<br />
             
             <label>              </label>
             <table bgcolor="#CC9933" width="296" border="0" cellspacing="0" cellpadding="0">
@@ -133,7 +145,7 @@ require 'calculate_class.php';
           
           
             <td width="56"><label>
-              <input type="radio" name="RadioGroup1" value="2" id="RadioGroup1_1" />
+              <input type="radio" name="RadioGroup1" value="0" id="RadioGroup1_1" />
                 Female
                 </label></td>
             <td width="33"><label>
@@ -215,17 +227,21 @@ mysql_close($link );
 
 	<tr>
 		<td colspan="2"height="60px" align="center">
+			<style type="text/css">
+				.search_link:visited {color: black;}
+			</style>
+
 			<?php
 				$no_of_links = 4;
 
 				if($_GET['page'] != 1)
 				{
-					echo "<a href=\"search.php?page=" . ($page-1) . "\"><b><i>\t<< Back\t</b></i></a>";
+					echo "<a class=\"search_link\" href=\"search.php?page=" . ($page-1) . "\"><b><i>\t<< Back\t</b></i></a>";
 
 					for($i = ($_GET['page']- $no_of_links), $j = $no_of_links; $j > 0; ++$i, --$j)
 					{
 						if($i >= 1)
-							echo "<a href=\"search.php?page=" . $i . "\"><i>\t" . $i . "\t</i></a>";
+							echo "<a class=\"search_link\" href=\"search.php?page=" . $i . "\"><i>\t" . $i . "\t</i></a>";
 						else
 							continue;
 					}
@@ -233,18 +249,23 @@ mysql_close($link );
 
 				echo "\t<big><b><i>" . $_GET['page'] . "</i></b></big>\t";
 
-				$max_pages = floor($num_records / $max_records_per_page);
+				$max_pages = $num_records / $max_records_per_page;
+
+				if($max_pages >=1)
+					$max_pages = floor($max_pages);
+				else
+					$max_pages = 1;
+
 				for($i = ($_GET['page'] + 1), $j = $no_of_links; $j > 0; ++$i, --$j)
 				{
 					if($i <= $max_pages)
-						echo "<a href=\"search.php?page=" . $i . "\"><i>\t" . $i . "\t</i></a>";
+						echo "<a class=\"search_link\" href=\"search.php?page=" . $i . "\"><i>\t" . $i . "\t</i></a>";
 					else
 						break;
 				}
 
 				if($max_pages != $_GET['page'])
-					echo "<a href=\"search.php?page=" . ($page+1) . "\"><b><i>\tNext >>\t</b></i></a>";					
-				
+					echo "<a class=\"search_link\" href=\"search.php?page=" . ($page+1) . "\"><b><i>\tNext >>\t</b></i></a>";
 			?>
 		</td>
 	</tr>
