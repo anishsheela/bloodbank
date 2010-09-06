@@ -34,6 +34,12 @@ require 'calculate_class.php';
 
 <body>
 	<?php
+
+		$_GET['page'] = (int) $_GET['page'];
+
+		if($_GET['page'] == 0)
+			$_GET['page'] = 1;
+
 		$max_records_per_page = 10;
 
 		$sql = "SELECT * FROM `registration` where(moderation = 1";
