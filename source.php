@@ -31,7 +31,7 @@
       <tr bgcolor="#CC9933">
         <td height="184" bgcolor="#FFFFFF" ><div align="center">
           <p><strong>NSS BLOODBANK MANAGEMENT SYSTEM</strong></p>
-          <p><strong>Licenced Under GNU General Public Licence </strong></p>
+          <p><strong>Licenced Under GNU Affero General Public Licence </strong></p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -45,14 +45,14 @@
             <p align="left">Copyright (C) 2010  Anish A &lt;aneesh.nl@gmail.com&gt;, Navaneeth T &lt;navanjo@gmail.com&gt;,
   Arun Anson &lt;arunanson@gmail.com&gt;, Kevin Madhu &lt;kevin.madhu@gmail.com&gt;and others</p>
             <p align="left"> This program is free software: you can redistribute it and/or modify 
-              it under the terms of the GNU General Public License as published by 
+              it under the terms of the GNU Affero General Public License as published by 
               the Free Software Foundation, either version 3 of the License, or 
               (at your option) any later version.</p>
             <p align="left"> This program is distributed in the hope that it will be useful, 
               but WITHOUT ANY WARRANTY; without even the implied warranty of 
               MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
               GNU General Public License for more details.</p>
-            <p align="left"> You should have received a copy of the GNU General Public License 
+            <p align="left"> You should have received a copy of the GNU Affero General Public License 
               along with this program.  If not, see <a href="http://www.gnu.org/licenses/"> http://www.gnu.org/licenses/</a>.</p>
             <p align="center"><a href="http://github.com/aneesh/bloodbank"><strong>Git Source Code Repository</strong></a><br />
             </p>
